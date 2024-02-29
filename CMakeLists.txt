@@ -4,7 +4,7 @@ project(proj_da_01)
 set(CMAKE_C_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include_directories(.)
+include_directories(${PROJECT_SOURCE_DIR}/include)
 
 add_executable(proj_da_01
         include/Station.h
@@ -12,4 +12,5 @@ add_executable(proj_da_01
         include/Graph.h
         include/City.h
         include/Pipe.h
-        include/Code.h)
+        include/Code.h
+        main.cpp)
