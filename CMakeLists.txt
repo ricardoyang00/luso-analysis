@@ -10,4 +10,5 @@ add_executable(proj_da_01
         include/Station.h
         include/Reservoir.h
         include/Graph.h
-        include/City.h)
+        include/City.h
+        include/Pipe.h)
