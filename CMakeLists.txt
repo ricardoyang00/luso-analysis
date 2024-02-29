@@ -6,4 +6,4 @@ set(CMAKE_C_STANDARD 11)
 include_directories(.)
 
 add_executable(proj_da_01
-        reservoir.h)
+        include/reservoir.h)
