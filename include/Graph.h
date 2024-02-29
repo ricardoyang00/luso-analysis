@@ -1,14 +1,22 @@
-#ifndef FEUP_DA_GRAPH_H
-#define FEUP_DA_GRAPH_H
+// Original code by Gonçalo Leão
+// Updated by DA 2023/2024 Team
+
+#ifndef DA_TP_CLASSES_GRAPH
+#define DA_TP_CLASSES_GRAPH
 
 #include <iostream>
 #include <vector>
 #include <queue>
 #include <limits>
 #include <algorithm>
+#include "../data_structures/MutablePriorityQueue.h"
 
 template <class T>
 class Edge;
+
+#define INF std::numeric_limits<double>::max()
+
+/************************* Vertex  **************************/
 
 template <class T>
 class Vertex {
@@ -54,6 +62,8 @@ protected:
     void deleteEdge(Edge<T> *edge);
 };
 
+/********************** Edge  ****************************/
+
 template <class T>
 class Edge {
 public:
@@ -82,6 +92,8 @@ protected:
 
     double flow; // for flow-related problems
 };
+
+/********************** Graph  ****************************/
 
 template <class T>
 class Graph {
@@ -133,6 +145,8 @@ protected:
 void deleteMatrix(int **m, int n);
 void deleteMatrix(double **m, int n);
 
+
+/************************* Vertex  **************************/
 
 template <class T>
 Vertex<T>::Vertex(T in): info(in) {}
@@ -276,6 +290,8 @@ void Vertex<T>::deleteEdge(Edge<T> *edge) {
     delete edge;
 }
 
+/********************** Edge  ****************************/
+
 template <class T>
 Edge<T>::Edge(Vertex<T> *orig, Vertex<T> *dest, double w): orig(orig), dest(dest), weight(w) {}
 
@@ -323,6 +339,8 @@ template <class T>
 void Edge<T>::setFlow(double flow) {
     this->flow = flow;
 }
+
+/********************** Graph  ****************************/
 
 template <class T>
 int Graph<T>::getNumVertex() const {
@@ -429,30 +447,6 @@ bool Graph<T>::addBidirectionalEdge(const T &sourc, const T &dest, double w) {
     e1->setReverse(e2);
     e2->setReverse(e1);
     return true;
-}
-
-inline void deleteMatrix(int **m, int n) {
-    if (m != nullptr) {
-        for (int i = 0; i < n; i++)
-            if (m[i] != nullptr)
-                delete [] m[i];
-        delete [] m;
-    }
-}
-
-inline void deleteMatrix(double **m, int n) {
-    if (m != nullptr) {
-        for (int i = 0; i < n; i++)
-            if (m[i] != nullptr)
-                delete [] m[i];
-        delete [] m;
-    }
-}
-
-template <class T>
-Graph<T>::~Graph() {
-    deleteMatrix(distMatrix, vertexSet.size());
-    deleteMatrix(pathMatrix, vertexSet.size());
 }
 
 /****************** DFS ********************/
@@ -645,4 +639,29 @@ std::vector<T> Graph<T>::topsort() const {
 
     return res;
 }
-#endif //FEUP_DA_GRAPH_H
+
+inline void deleteMatrix(int **m, int n) {
+    if (m != nullptr) {
+        for (int i = 0; i < n; i++)
+            if (m[i] != nullptr)
+                delete [] m[i];
+        delete [] m;
+    }
+}
+
+inline void deleteMatrix(double **m, int n) {
+    if (m != nullptr) {
+        for (int i = 0; i < n; i++)
+            if (m[i] != nullptr)
+                delete [] m[i];
+        delete [] m;
+    }
+}
+
+template <class T>
+Graph<T>::~Graph() {
+    deleteMatrix(distMatrix, vertexSet.size());
+    deleteMatrix(pathMatrix, vertexSet.size());
+}
+
+#endif /* DA_TP_CLASSES_GRAPH */
