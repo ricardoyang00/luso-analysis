@@ -1,15 +1,15 @@
 // Original code by Gonçalo Leão
 // Updated by DA 2023/2024 Team
 
-#ifndef DA_TP_CLASSES_GRAPH
-#define DA_TP_CLASSES_GRAPH
+#ifndef PROJ_DA_01_GRAPH
+#define PROJ_DA_01_GRAPH
 
 #include <iostream>
 #include <vector>
 #include <queue>
 #include <limits>
 #include <algorithm>
-#include "../data_structures/MutablePriorityQueue.h"
+#include "../include/MutablePriorityQueue.h"
 
 template <class T>
 class Edge;
@@ -664,4 +664,4 @@ Graph<T>::~Graph() {
     deleteMatrix(pathMatrix, vertexSet.size());
 }
 
-#endif /* DA_TP_CLASSES_GRAPH */
+#endif /* PROJ_DA_01_GRAPH */
