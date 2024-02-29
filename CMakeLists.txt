@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.27)
 project(proj_da_01)
 
-# Set the C++ standard to 11
-set(CMAKE_CXX_STANDARD 11)
+# Set the C++ standard to 14
+set(CMAKE_CXX_STANDARD 14)
 # Ensure that the C++ standard is required
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
