@@ -12,7 +12,6 @@ public:
     int getId();
     std::string getCode();
     int getMaxDelivery();
-
 private:
     std::string name;
     std::string municipality;

@@ -7,6 +7,8 @@ class Station {
 public:
     Station();
     Station(int id, std::string code);
+    int getId();
+    std::string getCode();
 private:
     int id;
     std::string code;
