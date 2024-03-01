@@ -52,3 +52,15 @@ void ParseData::parseReservoirs() {
     }
     file.close();
 }
+
+void ParseData::parseStations() {
+
+}
+
+void ParseData::parseCities() {
+
+}
+
+void ParseData::parsePipes() {
+
+}
