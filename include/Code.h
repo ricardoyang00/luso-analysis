@@ -2,12 +2,15 @@
 #define PROJ_DA_01_CODE_H
 
 #include <string>
+#include <iostream>
 
 enum class CodeType { RESERVOIR, STATION, CITY };
 
 class Code {
 public:
     Code(const std::string& code);
+    CodeType getType() const;
+    int getNumber() const;
 private:
     CodeType type;
     int number;
@@ -25,9 +28,25 @@ Code::Code(const std::string& code) {
             type = CodeType::STATION;
         } else if (typeStr == "C") {
             type = CodeType::CITY;
+        } else {
+            std::cerr << "Invalid code type: " << typeStr << std::endl;
+            type = CodeType::CITY; // Set a default type or handle error accordingly
         }
         number = std::stoi(code.substr(pos + delimiter.length()));
+    } else {
+        std::cerr << "Invalid code format: " << code << std::endl;
+        // Set default values or handle error accordingly
+        type = CodeType::CITY;
+        number = 0;
     }
+}
+
+CodeType Code::getType() const {
+    return type;
+}
+
+int Code::getNumber() const {
+    return number;
 }
 
 #endif //PROJ_DA_01_CODE_H
