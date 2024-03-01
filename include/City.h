@@ -2,7 +2,6 @@
 #define PROJ_DA_01_CITY_H
 
 #include "Code.h"
-#include <string>
 
 class City {
 public:
