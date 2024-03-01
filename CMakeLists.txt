@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.27)
-project(proj_da_01)
+project(feup-da-01)
 # Set the C++ standard to 17
 set(CMAKE_CXX_STANDARD 17)
 # Ensure that the C++ standard is required
@@ -11,7 +11,7 @@ file(COPY small-dataSet/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/small-dataset/)
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
 # Add source files to the executable
-add_executable(proj_da_01
+add_executable(feup-da-01
         main.cpp
         include/Graph.h
         include/MutablePriorityQueue.h
