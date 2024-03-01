@@ -8,7 +8,7 @@ Code::Code(const std::string& code) {
 
     if (pos != std::string::npos) {
         std::string typeStr = code.substr(0, pos);
-        if (typeStr == "WR") {
+        if (typeStr == "R") {
             type = CodeType::RESERVOIR;
         } else if (typeStr == "PS") {
             type = CodeType::STATION;
