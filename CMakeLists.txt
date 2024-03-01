@@ -13,18 +13,13 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 # Add source files to the executable
 add_executable(proj_da_01
         main.cpp
-        include/Station.h
-        include/Reservoir.h
         include/Graph.h
-        include/City.h
-        include/Pipe.h
-        include/Code.h
         include/MutablePriorityQueue.h
-        include/City.cpp
-        include/Code.cpp
-        include/Pipe.cpp
-        include/Reservoir.cpp
-        include/Station.cpp
-        include/Utilities.cpp
-        include/ParseData.cpp
+        include/Station.h       src/Station.cpp
+        include/Reservoir.h     src/Reservoir.cpp
+        include/City.h          src/City.cpp
+        include/Pipe.h          src/Pipe.cpp
+        include/Code.h          src/Code.cpp
+        include/Utilities.h     src/Utilities.cpp
+        include/ParseData.h     src/ParseData.cpp
 )
