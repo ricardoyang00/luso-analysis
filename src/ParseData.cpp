@@ -43,10 +43,8 @@ void ParseData::parseReservoirs() {
         Code code = Code(TrimString(nonTrimmed));
         reservoir.setCode(code);
 
-        getline(ss, nonTrimmed, ',');
+        getline(ss, nonTrimmed);
         reservoir.setMaxDelivery(stoi(TrimString(nonTrimmed)));
-
-        getline(ss, nonTrimmed, ',');
 
         dataContainer.dataMap[code.getType()].emplace(code.getNumber(), std::move(reservoir));
     }
@@ -54,11 +52,71 @@ void ParseData::parseReservoirs() {
 }
 
 void ParseData::parseStations() {
+    ifstream file(stationsCSV);
+    if (!file.is_open()) {
+        cerr << "ERROR: Unable to open file " << stationsCSV << endl;
+        return;
+    }
 
+    string line;
+    getline(file, line);
+
+    while(getline(file, line)) {
+        stringstream ss(line);
+
+        string nonTrimmed;
+
+        Station station;
+
+        getline(ss, nonTrimmed, ',');
+        station.setId(stoi(TrimString(nonTrimmed)));
+
+        getline(ss, nonTrimmed);
+        Code code = Code(TrimString(nonTrimmed));
+        station.setCode(code);
+
+        dataContainer.dataMap[code.getType()].emplace(code.getNumber(), std::move(station));
+    }
 }
 
 void ParseData::parseCities() {
+    ifstream file(citiesCSV);
+    if (!file.is_open()) {
+        cerr << "ERROR: Unable to open file " << citiesCSV << endl;
+        return;
+    }
 
+    string line;
+    getline(file, line);
+
+    while(getline(file, line)) {
+        stringstream ss(line);
+
+        string nonTrimmed;
+
+        City city;
+
+        getline(ss, nonTrimmed, ',');
+        city.setName(TrimString(nonTrimmed));
+
+        getline(ss, nonTrimmed, ',');
+        city.setId(stoi(TrimString(nonTrimmed)));
+
+        getline(ss, nonTrimmed, ',');
+        Code code = Code(TrimString(nonTrimmed));
+        city.setCode(code);
+
+        getline(ss, nonTrimmed, ',');
+        city.setDemand(stod(TrimString(nonTrimmed)));
+
+        getline(ss, nonTrimmed);
+        string populationStr = TrimString(nonTrimmed);
+        populationStr.erase(remove(populationStr.begin(), populationStr.end(), '\"'), populationStr.end());
+        populationStr.erase(remove(populationStr.begin(), populationStr.end(), ','), populationStr.end());
+        city.setPopulation((stoi(populationStr)));
+
+        dataContainer.dataMap[code.getType()].emplace(code.getNumber(), std::move(city));
+    }
 }
 
 void ParseData::parsePipes() {

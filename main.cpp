@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ParseData.h"
+#include <iomanip>
 
 using namespace std;
 
@@ -8,14 +9,35 @@ void PrintInfo(const DataContainer& dataContainer, const Code& code) {
     if (type != dataContainer.dataMap.end()) {
         auto innerMap = type->second.find(code.getNumber());
         if (innerMap != type->second.end()) {
-            const Reservoir& reservoir = get<Reservoir>(innerMap->second);
-
-            cout << "Reservoir Info: " << endl;
-            cout << "    Name: " << reservoir.getName() << endl;
-            cout << "    Municipality: " << reservoir.getMunicipality() << endl;
-            cout << "    ID: " << reservoir.getId() << endl;
-            cout << "    Code: " << reservoir.getCode().getCompleteCode() << endl;
-            cout << "    Max Delivery: " << reservoir.getMaxDelivery() << endl;
+            switch(code.getType()) {
+                case CodeType::RESERVOIR: {
+                    const Reservoir& reservoir = get<Reservoir>(innerMap->second);
+                    cout << "Reservoir Info: " << endl;
+                    cout << "    Name: " << reservoir.getName() << endl;
+                    cout << "    Municipality: " << reservoir.getMunicipality() << endl;
+                    cout << "    ID: " << reservoir.getId() << endl;
+                    cout << "    Code: " << reservoir.getCode().getCompleteCode() << endl;
+                    cout << "    Max Delivery: " << reservoir.getMaxDelivery() << endl;
+                    break;
+                }
+                case CodeType::STATION: {
+                    const Station& station = get<Station>(innerMap->second);
+                    cout << "Pipe Station Info: " << endl;
+                    cout << "    ID: " << station.getId() << endl;
+                    cout << "    Code: " << station.getCode().getCompleteCode() << endl;
+                    break;
+                }
+                case CodeType::CITY: {
+                    const City& city = get<City>(innerMap->second);
+                    cout << "City Info: " << endl;
+                    cout << "    City: " << city.getName() << endl;
+                    cout << "    ID: " << city.getId() << endl;
+                    cout << "    Code: " << city.getCode().getCompleteCode() << endl;
+                    cout << fixed << setprecision(2) << "    Demand: " << city.getDemand() << endl;
+                    cout << "    Population: " << city.getPopulation() << endl;
+                    break;
+                }
+            }
         } else {
             cout << "Id " << code.getNumber() << " not found for CodeType " << code.codeTypeToString() << endl;
         }
@@ -33,23 +55,53 @@ int main() {
 
     const DataContainer& dataContainer = parser.getDataContainer();
 
-    PrintInfo(dataContainer, Code("R_3"));
+    PrintInfo(dataContainer, Code("PS_3"));
 
     /*// Iterate over the data and output information
     for (const auto& [codeType, innerMap] : dataContainer.dataMap) {
-        if (codeType == CodeType::RESERVOIR) {
-            cout << "Reservoirs:" << endl;
-
-            for (const auto& [key, innerMapValue] : innerMap) {
-                cout << "  Key: " << key << endl;
-
-                // Check the type of innerMapValue using std::holds_alternative
-                if (std::holds_alternative<Reservoir>(innerMapValue)) {
-                    const Reservoir& reservoir = std::get<Reservoir>(innerMapValue);
-                    cout << "    Reservoir: " << reservoir.getName() << ", Municipality: " << reservoir.getMunicipality()
-                    << ", Id: " << reservoir.getId() << ", Code: " << reservoir.getCode().getCompleteCode() << ", MD: " << reservoir.getMaxDelivery() << endl;
+        switch(codeType) {
+            case CodeType::RESERVOIR:
+                cout << "Reservoirs: " << endl;
+                for (const auto& [key, innerMapValue] : innerMap) {
+                    if (std::holds_alternative<Reservoir>(innerMapValue)) {
+                        const Reservoir& reservoir = std::get<Reservoir>(innerMapValue);
+                        cout << "Key: " << key << endl;
+                        cout << "    Name: " << reservoir.getName() << endl;
+                        cout << "    Municipality: " << reservoir.getMunicipality() << endl;
+                        cout << "    ID: " << reservoir.getId() << endl;
+                        cout << "    Code: " << reservoir.getCode().getCompleteCode() << endl;
+                        cout << "    Max Delivery: " << reservoir.getMaxDelivery() << endl;
+                    }
                 }
-            }
+                break;
+            case CodeType::STATION:
+                cout << "Stations: " << endl;
+                for (const auto& [key, innerMapValue] : innerMap) {
+                    if (std::holds_alternative<Station>(innerMapValue)) {
+                        const Station& station = std::get<Station>(innerMapValue);
+                        cout << "Key: " << key << endl;
+                        cout << "    ID: " << station.getId() << endl;
+                        cout << "    Code: " << station.getCode().getCompleteCode() << endl;
+                    }
+                }
+                break;
+            case CodeType::CITY:
+                cout << "Cities: " << endl;
+                for (const auto& [key, innerMapValue] : innerMap) {
+                    if (std::holds_alternative<City>(innerMapValue)) {
+                        const City& city = std::get<City>(innerMapValue);
+                        cout << "Key: " << key << endl;
+                        cout << "    City: " << city.getName() << endl;
+                        cout << "    ID: " << city.getId() << endl;
+                        cout << "    Code: " << city.getCode().getCompleteCode() << endl;
+                        cout << fixed << setprecision(2) << "    Demand: " << city.getDemand() << endl;
+                        cout << "    Population: " << city.getPopulation() << endl;
+                    }
+                }
+                break;
+            default:
+                cerr << "ERROR" << endl;
+                break;
         }
     }*/
 
