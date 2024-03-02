@@ -46,18 +46,8 @@ void PrintInfo(const DataContainer& dataContainer, const Code& code) {
     }
 }
 
-int main() {
-    std::string reservoirCSV = "../small-dataSet/Reservoirs_Madeira.csv";
-    std::string stationsCSV = "../small-dataSet/Stations_Madeira.csv";
-    std::string citiesCSV = "../small-dataSet/Cities_Madeira.csv";
-    std::string pipesCSV = "../small-dataSet/Pipes_Madeira.csv";
-    ParseData parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV);
-
-    const DataContainer& dataContainer = parser.getDataContainer();
-
-    PrintInfo(dataContainer, Code("PS_3"));
-
-    /*// Iterate over the data and output information
+void PrintAllInfo(const DataContainer& dataContainer) {
+    // Iterate over the data and output information
     for (const auto& [codeType, innerMap] : dataContainer.dataMap) {
         switch(codeType) {
             case CodeType::RESERVOIR:
@@ -103,7 +93,21 @@ int main() {
                 cerr << "ERROR" << endl;
                 break;
         }
-    }*/
+    }
+}
+
+int main() {
+    std::string reservoirCSV = "../small-dataSet/Reservoirs_Madeira.csv";
+    std::string stationsCSV = "../small-dataSet/Stations_Madeira.csv";
+    std::string citiesCSV = "../small-dataSet/Cities_Madeira.csv";
+    std::string pipesCSV = "../small-dataSet/Pipes_Madeira.csv";
+    ParseData parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV);
+
+    const DataContainer& dataContainer = parser.getDataContainer();
+
+    PrintInfo(dataContainer, Code("PS_3"));
+
+    //PrintAllInfo(dataContainer);
 
     return 0;
 }
