@@ -47,6 +47,7 @@ void ParseData::parseReservoirs() {
         reservoir.setMaxDelivery(stoi(TrimString(nonTrimmed)));
 
         dataContainer.dataMap[code.getType()].emplace(code.getNumber(), std::move(reservoir));
+        codeGraph.addVertex(code);
     }
     file.close();
 }
@@ -76,6 +77,7 @@ void ParseData::parseStations() {
         station.setCode(code);
 
         dataContainer.dataMap[code.getType()].emplace(code.getNumber(), std::move(station));
+        codeGraph.addVertex(code);
     }
 }
 
@@ -116,9 +118,43 @@ void ParseData::parseCities() {
         city.setPopulation((stoi(populationStr)));
 
         dataContainer.dataMap[code.getType()].emplace(code.getNumber(), std::move(city));
+        codeGraph.addVertex(code);
     }
 }
 
 void ParseData::parsePipes() {
+    ifstream file(pipesCSV);
+    if (!file.is_open()) {
+        cerr << "ERROR: Unable to open file " << pipesCSV << endl;
+        return;
+    }
 
+    string line;
+    getline(file, line);
+
+    while(getline(file, line)) {
+        stringstream ss(line);
+
+        string nonTrimmed;
+
+        getline(ss, nonTrimmed, ',');
+        Code servicePointA = Code(TrimString(nonTrimmed));
+
+        getline(ss, nonTrimmed, ',');
+        Code servicePointB = Code(TrimString(nonTrimmed));
+
+        getline(ss, nonTrimmed, ',');
+        int capacity = stoi(TrimString(nonTrimmed));
+
+        getline(ss, nonTrimmed, ',');
+        bool direction = stoi(TrimString(nonTrimmed));
+
+        Vertex<Code>* pointA = codeGraph.findVertex(servicePointA);
+        Vertex<Code>* pointB = codeGraph.findVertex(servicePointB);
+
+        if (pointA && pointB) {
+            direction ? codeGraph.addEdge(servicePointA, servicePointB, capacity)
+                      : codeGraph.addBidirectionalEdge(servicePointA, servicePointB, capacity);
+        }
+    }
 }

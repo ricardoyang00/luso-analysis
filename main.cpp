@@ -109,5 +109,13 @@ int main() {
 
     //PrintAllInfo(dataContainer);
 
+    /*for (const auto& v : parser.getCodeGraph().getVertexSet()) {
+        for (const auto& e : v->getAdj()) {
+            cout << "Origin: " << e->getOrig()->getInfo().getCompleteCode() << endl;
+            cout << "Dest: " << e->getDest()->getInfo().getCompleteCode() << endl;
+            cout << "Capacity: " << e->getWeight() << endl;
+            cout << "Flow: " << e->getFlow() << endl;
+        }
+    }*/
     return 0;
 }

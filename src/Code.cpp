@@ -29,16 +29,16 @@ Code::Code(const std::string& code) {
     }
 }
 
+std::string Code::getCompleteCode() const {
+    return completeCode;
+}
+
 CodeType Code::getType() const {
     return type;
 }
 
 int Code::getNumber() const {
     return number;
-}
-
-std::string Code::getCompleteCode() const {
-    return completeCode;
 }
 
 std::string Code::codeTypeToString() const {
@@ -48,4 +48,8 @@ std::string Code::codeTypeToString() const {
         case CodeType::CITY: return "CITY";
         default: return "UNKNOWN";
     }
+}
+
+bool Code::operator==(const Code &other) const {
+    return completeCode == other.getCompleteCode();
 }

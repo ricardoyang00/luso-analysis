@@ -23,7 +23,7 @@ public:
 
 class ParseData {
 private:
-    Graph<Code> graph;
+    Graph<Code> codeGraph;
     DataContainer dataContainer;
     std::string reservoirCSV;
     std::string stationsCSV;
@@ -39,7 +39,7 @@ public:
     ParseData(const std::string& reservoirCSV, const std::string& stationsCSV,
               const std::string& citiesCSV, const std::string& pipesCSV);
 
-    const Graph<Code>& getGraph() const { return graph; }
+    const Graph<Code>& getCodeGraph() const { return codeGraph; }
     const DataContainer& getDataContainer() const { return dataContainer; }
 };
 

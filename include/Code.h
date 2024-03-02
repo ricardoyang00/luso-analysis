@@ -14,6 +14,7 @@ public:
     CodeType getType() const;
     int getNumber() const;
     std::string codeTypeToString() const;
+    bool operator==(const Code& other) const;
 
 private:
     std::string completeCode;
