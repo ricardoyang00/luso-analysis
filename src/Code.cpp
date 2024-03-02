@@ -5,6 +5,7 @@ Code::Code() {}
 Code::Code(const std::string& code) {
     std::string delimiter = "_";
     size_t pos = code.find(delimiter);
+    completeCode = code;
 
     if (pos != std::string::npos) {
         std::string typeStr = code.substr(0, pos);
@@ -24,6 +25,7 @@ Code::Code(const std::string& code) {
         // Set default values or handle error accordingly
         type = CodeType::CITY;
         number = 0;
+        completeCode = "C_0";
     }
 }
 
@@ -35,6 +37,15 @@ int Code::getNumber() const {
     return number;
 }
 
-std::string Code::getCode() const {
-    return code;
+std::string Code::getCompleteCode() const {
+    return completeCode;
+}
+
+std::string Code::codeTypeToString() const {
+    switch (type) {
+        case CodeType::RESERVOIR: return "RESERVOIR";
+        case CodeType::STATION: return "STATION";
+        case CodeType::CITY: return "CITY";
+        default: return "UNKNOWN";
+    }
 }

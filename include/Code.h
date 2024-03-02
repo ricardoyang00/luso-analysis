@@ -10,12 +10,13 @@ class Code {
 public:
     Code();
     Code(const std::string& code);
-    std::string getCode() const;
+    std::string getCompleteCode() const;
     CodeType getType() const;
     int getNumber() const;
+    std::string codeTypeToString() const;
 
 private:
-    std::string code;
+    std::string completeCode;
     CodeType type;
     int number;
 };
