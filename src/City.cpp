@@ -1,15 +1,17 @@
 #include "City.h"
 
+using namespace std;
+
 City::City() {}
 
-City::City(std::string name, int id, Code code, int demand, int population)
+City::City(string name, int id, Code code, int demand, int population)
         : name(name), id(id), code(code), demand(demand), population(population) {}
 
-const std::string City::getName() const {
+const string City::getName() const {
     return name;
 }
 
-void City::setName(const std::string &name) {
+void City::setName(const string &name) {
     this->name = name;
 }
 
