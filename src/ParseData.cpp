@@ -155,6 +155,8 @@ void ParseData::parsePipes() {
         if (pointA && pointB) {
             direction ? codeGraph.addEdge(servicePointA, servicePointB, capacity)
                       : codeGraph.addBidirectionalEdge(servicePointA, servicePointB, capacity);
+        } else {
+            cerr << "ERROR: Either point A or point B not found" << endl;
         }
     }
 }
