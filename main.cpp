@@ -103,10 +103,15 @@ void PrintAllInfo(const DataContainer& dataContainer) {
 }
 
 int main() {
+    /*
     std::string reservoirCSV = "../small-dataSet/Reservoirs_Madeira.csv";
     std::string stationsCSV = "../small-dataSet/Stations_Madeira.csv";
     std::string citiesCSV = "../small-dataSet/Cities_Madeira.csv";
-    std::string pipesCSV = "../small-dataSet/Pipes_Madeira.csv";
+    std::string pipesCSV = "../small-dataSet/Pipes_Madeira.csv";*/
+    std::string reservoirCSV = "../large-dataSet/Reservoir.csv";
+    std::string stationsCSV = "../large-dataSet/Stations.csv";
+    std::string citiesCSV = "../large-dataSet/Cities.csv";
+    std::string pipesCSV = "../large-dataSet/Pipes.csv";
     ParseData parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV);
 
     const DataContainer& dataContainer = parser.getDataContainer();
