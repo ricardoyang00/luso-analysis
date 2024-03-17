@@ -22,4 +22,6 @@ add_executable(feup_da_01
         include/Code.h          src/Code.cpp
         include/Utilities.h     src/Utilities.cpp
         include/ParseData.h     src/ParseData.cpp
+        include/BasicServiceMetrics.h
+        src/BasicServiceMetrics.cpp
 )

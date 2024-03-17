@@ -1,5 +1,5 @@
 #include <iostream>
-#include "ParseData.h"
+#include "BasicServiceMetrics.h"
 #include <iomanip>
 
 using namespace std;
@@ -103,22 +103,22 @@ void PrintAllInfo(const DataContainer& dataContainer) {
 }
 
 int main() {
-    /*
+
     std::string reservoirCSV = "../small-dataSet/Reservoirs_Madeira.csv";
     std::string stationsCSV = "../small-dataSet/Stations_Madeira.csv";
     std::string citiesCSV = "../small-dataSet/Cities_Madeira.csv";
-    std::string pipesCSV = "../small-dataSet/Pipes_Madeira.csv";*/
-    std::string reservoirCSV = "../large-dataSet/Reservoir.csv";
+    std::string pipesCSV = "../small-dataSet/Pipes_Madeira.csv";
+    /*std::string reservoirCSV = "../large-dataSet/Reservoir.csv";
     std::string stationsCSV = "../large-dataSet/Stations.csv";
     std::string citiesCSV = "../large-dataSet/Cities.csv";
-    std::string pipesCSV = "../large-dataSet/Pipes.csv";
+    std::string pipesCSV = "../large-dataSet/Pipes.csv";*/
     ParseData parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV);
 
     const DataContainer& dataContainer = parser.getDataContainer();
 
     //PrintInfo(dataContainer, Code("PS_3"));
 
-    PrintAllInfo(dataContainer);
+    //PrintAllInfo(dataContainer);
 
     /*
     for (const auto& v : parser.getCodeGraph().getVertexSet()) {
@@ -130,5 +130,23 @@ int main() {
             cout << "--------------------------------\n" << endl;
         }
     }*/
+
+    BasicServiceMetrics bsm(parser.getCodeGraph(), dataContainer);
+
+    bsm.edmondsKarp(Code("R_1"), Code("C_5"));
+
+    stringstream ss;
+    for(auto v : parser.getCodeGraph().getVertexSet()) {
+        ss.str("");
+        bool hasContent = false;
+        for (const auto e : v->getAdj())
+            if (e->getFlow() != 0) {
+                ss << (e->getDest())->getInfo().getCompleteCode() << "[Flow: " << e->getFlow() << "]";
+                hasContent = true;
+            } else continue;
+        ss << ")";
+        if (hasContent) cout << v->getInfo().getCompleteCode() << "->(" << ss.str() << endl;
+    }
+
     return 0;
 }
