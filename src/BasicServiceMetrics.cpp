@@ -71,7 +71,7 @@ void BasicServiceMetrics::augmentFlowAlongPath(Vertex<Code> *s, Vertex<Code> *t,
     }
 }
 
-void BasicServiceMetrics::edmondsKarp(const Code& source, const Code& target) {
+void BasicServiceMetrics::edmondsKarpSpecific(const Code& source, const Code& target) {
     if (source.getType() != CodeType::RESERVOIR) {
         throw std::logic_error("Invalid source, please set water reservoir as source, i.e. R_5");
     }
@@ -95,5 +95,32 @@ void BasicServiceMetrics::edmondsKarp(const Code& source, const Code& target) {
     while (findAugmentingPath(s, t)) {
         double bnValue = findBottleNeckValue(s, t);
         augmentFlowAlongPath(s, t, bnValue);
+    }
+}
+
+void BasicServiceMetrics::edmondsKarpAllCities(const Code &source) {
+    if (source.getType() != CodeType::RESERVOIR) {
+        throw std::logic_error("Invalid source, please set water reservoir as source, i.e. R_5");
+    }
+
+    Vertex<Code>* s = codeGraph.findVertex(source);
+
+    if (s == nullptr) {
+        throw std::logic_error("Invalid source vertex");
+    }
+
+    for (auto v : codeGraph.getVertexSet()) {
+        for (auto& e : v->getAdj()) {
+            e->setFlow(0);
+        }
+    }
+
+    for (auto t : codeGraph.getVertexSet()) {
+        if (t->getInfo().getType() == CodeType::CITY) {
+            while (findAugmentingPath(s, t)) {
+                double bnValue = findBottleNeckValue(s, t);
+                augmentFlowAlongPath(s, t, bnValue);
+            }
+        }
     }
 }

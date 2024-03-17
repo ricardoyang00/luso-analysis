@@ -13,7 +13,8 @@ private:
     void augmentFlowAlongPath(Vertex<Code>* s, Vertex<Code>* t, double bnValue);
 public:
     BasicServiceMetrics(const Graph<Code>& codeGraph, const DataContainer& dataContainer);
-    void edmondsKarp(const Code& source, const Code& target);
+    void edmondsKarpSpecific(const Code& source, const Code& target);
+    void edmondsKarpAllCities(const Code& source);
 };
 
 
