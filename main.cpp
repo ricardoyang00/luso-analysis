@@ -18,7 +18,7 @@ int main() {
 
     const DataContainer& dataContainer = parser.getDataContainer();
 
-    printHashInfo(dataContainer, Code("PS_3"));
+    printHashInfo(dataContainer, Code("R_3"));
     //printAllHashInfo(dataContainer);
 
     /*
