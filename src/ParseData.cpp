@@ -2,6 +2,31 @@
 
 using namespace std;
 
+DataContainer::DataContainer() {}
+
+unordered_map<int, Reservoir> DataContainer::getReservoirHashTable() {
+    return ReservoirHashTable;
+}
+
+unordered_map<int, Station> DataContainer::getStationHashTable() {
+    return StationHashTable;
+}
+
+unordered_map<int, City> DataContainer::getCityHashTable() {
+    return CityHashTable;
+}
+
+void DataContainer::addToReservoirHashTable(Code code, Reservoir reservoir) {
+    ReservoirHashTable[code.getNumber()] = reservoir;
+}
+
+void DataContainer::addToStationHashTable(Code code, Station station) {
+    StationHashTable[code.getNumber()] = station;
+}
+void DataContainer::addToCityHashTable(Code code, City city) {
+    CityHashTable[code.getNumber()] = city;
+}
+
 ParseData::ParseData(const std::string &reservoirCSV, const std::string &stationsCSV, const std::string &citiesCSV, const std::string &pipesCSV) {
     this->reservoirCSV = reservoirCSV;
     this->stationsCSV = stationsCSV;
@@ -40,13 +65,14 @@ void ParseData::parseReservoirs() {
         reservoir.setId(stoi(TrimString(nonTrimmed)));
 
         getline(ss, nonTrimmed, ',');
+
         Code code = Code(TrimString(nonTrimmed));
         reservoir.setCode(code);
 
         getline(ss, nonTrimmed);
         reservoir.setMaxDelivery(stoi(TrimString(nonTrimmed)));
 
-        dataContainer.dataMap[code.getType()].emplace(code.getNumber(), std::move(reservoir));
+        dataContainer.addToReservoirHashTable(code, reservoir);
         codeGraph.addVertex(code);
     }
     file.close();
@@ -76,7 +102,7 @@ void ParseData::parseStations() {
         Code code = Code(TrimString(nonTrimmed));
         station.setCode(code);
 
-        dataContainer.dataMap[code.getType()].emplace(code.getNumber(), std::move(station));
+        dataContainer.addToStationHashTable(code, station);
         codeGraph.addVertex(code);
     }
 }
@@ -117,7 +143,7 @@ void ParseData::parseCities() {
         populationStr.erase(remove(populationStr.begin(), populationStr.end(), ','), populationStr.end());
         city.setPopulation((stoi(populationStr)));
 
-        dataContainer.dataMap[code.getType()].emplace(code.getNumber(), std::move(city));
+        dataContainer.addToCityHashTable(code, city);
         codeGraph.addVertex(code);
     }
 }
