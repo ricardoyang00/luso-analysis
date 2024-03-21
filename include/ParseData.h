@@ -11,14 +11,23 @@
 #include <fstream>
 #include <sstream>
 #include <variant>
+#include <iostream>
 
 class DataContainer {
-public:
-    using InnerMapValue = std::variant<City, Reservoir, Station>;
-    using InnerMap = std::unordered_map<int, InnerMapValue>;
-    using OuterMap = std::unordered_map<CodeType, InnerMap>;
+private:
+    std::unordered_map<int, Reservoir> ReservoirHashTable;
+    std::unordered_map<int, Station> StationHashTable;
+    std::unordered_map<int, City> CityHashTable;
 
-    OuterMap dataMap;
+public:
+    DataContainer();
+    std::unordered_map<int, Reservoir> getReservoirHashTable();
+    std::unordered_map<int, Station> getStationHashTable();
+    std::unordered_map<int, City> getCityHashTable();
+
+    void addToReservoirHashTable(Code code, Reservoir reservoir);
+    void addToStationHashTable(Code code, Station station);
+    void addToCityHashTable(Code code, City city);
 };
 
 class ParseData {
