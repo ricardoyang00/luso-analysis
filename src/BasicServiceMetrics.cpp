@@ -1,6 +1,7 @@
 #include "BasicServiceMetrics.h"
+#include <sstream>
 
-BasicServiceMetrics::BasicServiceMetrics(const Graph<Code>& graph, const DataContainer &container) : codeGraph(graph), dataContainer(container) {}
+BasicServiceMetrics::BasicServiceMetrics(Graph<Code> graph, const DataContainer &container) : codeGraphCopy(graph), dataContainer(container) {}
 
 void BasicServiceMetrics::testAndVisit(std::queue<Vertex<Code> *> &q, Edge<Code> *e, Vertex<Code> *w, double residual) {
     if (!w->isVisited() && residual > 0) {
@@ -11,7 +12,7 @@ void BasicServiceMetrics::testAndVisit(std::queue<Vertex<Code> *> &q, Edge<Code>
 }
 
 bool BasicServiceMetrics::findAugmentingPath(Vertex<Code> *s, Vertex<Code> *t) {
-    for (auto v : codeGraph.getVertexSet()) {
+    for (auto v : codeGraphCopy.getVertexSet()) {
         v->setVisited(false);
         v->setPath(nullptr);
     }
@@ -71,6 +72,32 @@ void BasicServiceMetrics::augmentFlowAlongPath(Vertex<Code> *s, Vertex<Code> *t,
     }
 }
 
+void BasicServiceMetrics::addSuperSource() {
+    codeGraphCopy.addVertex(Code("R_0"));
+    auto superSource = codeGraphCopy.findVertex(Code("R_0"));
+    if (superSource == nullptr) {
+        throw std::logic_error("Super source R_0 not found in graph");
+    }
+    for (auto reservoir : codeGraphCopy.getVertexSet()) {
+        if (reservoir->getInfo().getType() == CodeType::RESERVOIR) {
+            codeGraphCopy.addEdge(superSource->getInfo(), reservoir->getInfo(), std::numeric_limits<int>::max());
+        }
+    }
+}
+
+void BasicServiceMetrics::addSuperSink() {
+    codeGraphCopy.addVertex(Code("C_0"));
+    auto superSink = codeGraphCopy.findVertex(Code("C_0"));
+    if (superSink == nullptr) {
+        throw std::logic_error("Super sink C_0 not found in graph");
+    }
+    for (auto city : codeGraphCopy.getVertexSet()) {
+        if (city->getInfo().getType() == CodeType::CITY) {
+            codeGraphCopy.addEdge(superSink->getInfo(), city->getInfo(), std::numeric_limits<int>::max());
+        }
+    }
+}
+
 void BasicServiceMetrics::edmondsKarpSpecific(const Code& source, const Code& target) {
     if (source.getType() != CodeType::RESERVOIR) {
         throw std::logic_error("Invalid source, please set water reservoir as source, i.e. R_5");
@@ -79,14 +106,17 @@ void BasicServiceMetrics::edmondsKarpSpecific(const Code& source, const Code& ta
         throw std::logic_error("Invalid source, please set city as target, i.e. C_5");
     }
 
-    Vertex<Code>* s = codeGraph.findVertex(source);
-    Vertex<Code>* t = codeGraph.findVertex(target);
+    addSuperSource();
+    addSuperSink();
+
+    Vertex<Code>* s = codeGraphCopy.findVertex(source);
+    Vertex<Code>* t = codeGraphCopy.findVertex(target);
 
     if (s == nullptr || t == nullptr || s == t) {
         throw std::logic_error("Invalid source and/or target vertex");
     }
 
-    for (auto v : codeGraph.getVertexSet()) {
+    for (auto v : codeGraphCopy.getVertexSet()) {
         for (auto& e : v->getAdj()) {
             e->setFlow(0);
         }
@@ -98,29 +128,72 @@ void BasicServiceMetrics::edmondsKarpSpecific(const Code& source, const Code& ta
     }
 }
 
-void BasicServiceMetrics::edmondsKarpAllCities(const Code &source) {
+
+/*void BasicServiceMetrics::edmondsKarpSpecific(const Code& source, const Code& target) {
     if (source.getType() != CodeType::RESERVOIR) {
         throw std::logic_error("Invalid source, please set water reservoir as source, i.e. R_5");
     }
-
-    Vertex<Code>* s = codeGraph.findVertex(source);
-
-    if (s == nullptr) {
-        throw std::logic_error("Invalid source vertex");
+    if (target.getType() != CodeType::CITY) {
+        throw std::logic_error("Invalid source, please set city as target, i.e. C_5");
     }
 
-    for (auto v : codeGraph.getVertexSet()) {
+    Vertex<Code>* s = codeGraphCopy.findVertex(source);
+    Vertex<Code>* t = codeGraphCopy.findVertex(target);
+
+    if (s == nullptr || t == nullptr || s == t) {
+        throw std::logic_error("Invalid source and/or target vertex");
+    }
+
+    for (auto v : codeGraphCopy.getVertexSet()) {
         for (auto& e : v->getAdj()) {
             e->setFlow(0);
         }
     }
 
-    for (auto t : codeGraph.getVertexSet()) {
+    while (findAugmentingPath(s, t)) {
+        double bnValue = findBottleNeckValue(s, t);
+        augmentFlowAlongPath(s, t, bnValue);
+    }
+}*/
+
+void BasicServiceMetrics::edmondsKarpAllCities(const Code &source) {
+    if (source.getType() != CodeType::RESERVOIR) {
+        throw std::logic_error("Invalid source, please set water reservoir as source, i.e. R_5");
+    }
+
+    Vertex<Code>* s = codeGraphCopy.findVertex(source);
+
+    if (s == nullptr) {
+        throw std::logic_error("Invalid source vertex");
+    }
+
+    for (auto v : codeGraphCopy.getVertexSet()) {
+        for (auto& e : v->getAdj()) {
+            e->setFlow(0);
+        }
+    }
+
+    for (auto t : codeGraphCopy.getVertexSet()) {
         if (t->getInfo().getType() == CodeType::CITY) {
             while (findAugmentingPath(s, t)) {
                 double bnValue = findBottleNeckValue(s, t);
                 augmentFlowAlongPath(s, t, bnValue);
             }
         }
+    }
+}
+
+void BasicServiceMetrics::printSpecific() {
+    std::stringstream ss;
+    for(auto v : codeGraphCopy.getVertexSet()) {
+        ss.str("");
+        bool hasContent = false;
+        for (const auto e : v->getAdj())
+            if (e->getFlow() != 0) {
+                ss << e->getDest()->getInfo().getCompleteCode() << "[Flow: " << e->getFlow() << "]";
+                hasContent = true;
+            } else continue;
+        ss << ")";
+        if (hasContent) std::cout << v->getInfo().getCompleteCode() << "->(" << ss.str() << std::endl;
     }
 }

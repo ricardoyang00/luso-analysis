@@ -133,32 +133,19 @@ int main() {
 
     BasicServiceMetrics bsm(parser.getCodeGraph(), dataContainer);
 
-    bsm.edmondsKarpSpecific(Code("R_1"), Code("C_5"));
-    bsm.edmondsKarpAllCities(Code("R_1"));
+    bsm.edmondsKarpSpecific(Code("R_0"), Code("C_0"));
+    //bsm.edmondsKarpAllCities(Code("R_1"));
 
-    stringstream ss;
-
-    // print info for specific
-    /*for(auto v : parser.getCodeGraph().getVertexSet()) {
-        ss.str("");
-        bool hasContent = false;
-        for (const auto e : v->getAdj())
-            if (e->getFlow() != 0) {
-                ss << e->getDest()->getInfo().getCompleteCode() << "[Flow: " << e->getFlow() << "]";
-                hasContent = true;
-            } else continue;
-        ss << ")";
-        if (hasContent) cout << v->getInfo().getCompleteCode() << "->(" << ss.str() << endl;
-    }*/
+    bsm.printSpecific();
 
     // print info for all cities
-    for (auto v : parser.getCodeGraph().getVertexSet()) {
+    /*for (auto v : parser.getCodeGraph().getVertexSet()) {
         if (v->getInfo().getType() == CodeType::CITY) {
             for (const auto e : v->getIncoming()) {
                 cout << e->getDest()->getInfo().getCompleteCode() << "[Flow: " << e->getFlow() << "]" << endl;
             }
         }
-    }
+    }*/
 
     return 0;
 }
