@@ -3,7 +3,7 @@
 
 #include "ParseData.h"
 
-void printHashInfo(DataContainer dataContainer, const Code& code);
+void printHashInfo(const DataContainer& dataContainer, const Code& code);
 void printAllHashInfo(const DataContainer& dataContainer);
 
 

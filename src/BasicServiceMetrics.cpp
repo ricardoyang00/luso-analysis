@@ -78,9 +78,11 @@ void BasicServiceMetrics::addSuperSource() {
     if (superSource == nullptr) {
         throw std::logic_error("Super source R_0 not found in graph");
     }
+    auto rTable = dataContainer.getReservoirHashTable();
     for (auto reservoir : codeGraphCopy.getVertexSet()) {
-        if (reservoir->getInfo().getType() == CodeType::RESERVOIR) {
-            codeGraphCopy.addEdge(superSource->getInfo(), reservoir->getInfo(), std::numeric_limits<int>::max());
+        if (reservoir->getInfo().getType() == CodeType::RESERVOIR && reservoir != superSource) {
+            auto r = rTable.find(reservoir->getInfo().getNumber())->second;
+            codeGraphCopy.addEdge(superSource->getInfo(), reservoir->getInfo(), r.getMaxDelivery());
         }
     }
 }
@@ -91,26 +93,21 @@ void BasicServiceMetrics::addSuperSink() {
     if (superSink == nullptr) {
         throw std::logic_error("Super sink C_0 not found in graph");
     }
+    auto cTable = dataContainer.getCityHashTable();
     for (auto city : codeGraphCopy.getVertexSet()) {
-        if (city->getInfo().getType() == CodeType::CITY) {
-            codeGraphCopy.addEdge(superSink->getInfo(), city->getInfo(), std::numeric_limits<int>::max());
+        if (city->getInfo().getType() == CodeType::CITY && city != superSink) {
+            auto c = cTable.find(city->getInfo().getNumber())->second;
+            codeGraphCopy.addEdge(city->getInfo(), superSink->getInfo(), c.getDemand());
         }
     }
 }
 
-void BasicServiceMetrics::edmondsKarpSpecific(const Code& source, const Code& target) {
-    if (source.getType() != CodeType::RESERVOIR) {
-        throw std::logic_error("Invalid source, please set water reservoir as source, i.e. R_5");
-    }
-    if (target.getType() != CodeType::CITY) {
-        throw std::logic_error("Invalid source, please set city as target, i.e. C_5");
-    }
-
+void BasicServiceMetrics::edmondsKarp() {
     addSuperSource();
     addSuperSink();
 
-    Vertex<Code>* s = codeGraphCopy.findVertex(source);
-    Vertex<Code>* t = codeGraphCopy.findVertex(target);
+    Vertex<Code>* s = codeGraphCopy.findVertex(Code("R_0"));
+    Vertex<Code>* t = codeGraphCopy.findVertex(Code("C_0"));
 
     if (s == nullptr || t == nullptr || s == t) {
         throw std::logic_error("Invalid source and/or target vertex");
@@ -196,4 +193,16 @@ void BasicServiceMetrics::printSpecific() {
         ss << ")";
         if (hasContent) std::cout << v->getInfo().getCompleteCode() << "->(" << ss.str() << std::endl;
     }
+}
+
+double BasicServiceMetrics::getMaxFlow() {
+    double flow = 0;
+    for (auto v : codeGraphCopy.getVertexSet()) {
+        for (const auto e : v->getAdj()) {
+            auto destCode = e->getDest()->getInfo();
+            if (destCode.getType() == CodeType::CITY)
+                flow += e->getFlow();
+        }
+    }
+    return flow / 2; // not considering super sink
 }

@@ -15,9 +15,10 @@ private:
     void addSuperSink();
 public:
     BasicServiceMetrics(Graph<Code> codeGraphCopy, const DataContainer& dataContainer);
-    void edmondsKarpSpecific(const Code& source, const Code& target);
+    void edmondsKarp();
     void edmondsKarpAllCities(const Code& source);
     void printSpecific();
+    double getMaxFlow();
 };
 
 

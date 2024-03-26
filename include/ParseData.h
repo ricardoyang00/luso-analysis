@@ -21,9 +21,9 @@ private:
 
 public:
     DataContainer();
-    std::unordered_map<int, Reservoir> getReservoirHashTable();
-    std::unordered_map<int, Station> getStationHashTable();
-    std::unordered_map<int, City> getCityHashTable();
+    std::unordered_map<int, Reservoir> getReservoirHashTable() const;
+    std::unordered_map<int, Station> getStationHashTable() const;
+    std::unordered_map<int, City> getCityHashTable() const;
 
     void addToReservoirHashTable(Code code, Reservoir reservoir);
     void addToStationHashTable(Code code, Station station);

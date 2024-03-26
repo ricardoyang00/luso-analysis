@@ -1,9 +1,10 @@
 #include "Printer.h"
+#include <iomanip>
 
 using namespace std;
 
 //prints the hash table
-void printHashInfo(DataContainer dataContainer, const Code& code) {
+void printHashInfo(const DataContainer& dataContainer, const Code& code) {
     if (code.getType() == CodeType::RESERVOIR) {
         auto ReservoirHashTable = dataContainer.getReservoirHashTable();
         auto reservoir_it = ReservoirHashTable.find(code.getNumber());

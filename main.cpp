@@ -6,19 +6,21 @@ using namespace std;
 
 int main() {
 
-    std::string reservoirCSV = "../small-dataSet/Reservoirs_Madeira.csv";
+    /*std::string reservoirCSV = "../small-dataSet/Reservoirs_Madeira.csv";
     std::string stationsCSV = "../small-dataSet/Stations_Madeira.csv";
     std::string citiesCSV = "../small-dataSet/Cities_Madeira.csv";
-    std::string pipesCSV = "../small-dataSet/Pipes_Madeira.csv";
-    /*std::string reservoirCSV = "../large-dataSet/Reservoir.csv";
+    std::string pipesCSV = "../small-dataSet/Pipes_Madeira.csv";*/
+
+    std::string reservoirCSV = "../large-dataSet/Reservoir.csv";
     std::string stationsCSV = "../large-dataSet/Stations.csv";
     std::string citiesCSV = "../large-dataSet/Cities.csv";
-    std::string pipesCSV = "../large-dataSet/Pipes.csv";*/
+    std::string pipesCSV = "../large-dataSet/Pipes.csv";
+
     ParseData parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV);
 
     const DataContainer& dataContainer = parser.getDataContainer();
 
-    printHashInfo(dataContainer, Code("R_3"));
+    //printHashInfo(dataContainer, Code("C_3"));
     //printAllHashInfo(dataContainer);
 
     /*
@@ -34,10 +36,11 @@ int main() {
 
     BasicServiceMetrics bsm(parser.getCodeGraph(), dataContainer);
 
-    bsm.edmondsKarpSpecific(Code("R_0"), Code("C_0"));
+    bsm.edmondsKarp();
     //bsm.edmondsKarpAllCities(Code("R_1"));
 
-    bsm.printSpecific();
+    cout << bsm.getMaxFlow() << endl;
+    //bsm.printSpecific();
 
     // print info for all cities
     /*for (auto v : parser.getCodeGraph().getVertexSet()) {

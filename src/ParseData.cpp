@@ -4,15 +4,15 @@ using namespace std;
 
 DataContainer::DataContainer() {}
 
-unordered_map<int, Reservoir> DataContainer::getReservoirHashTable() {
+unordered_map<int, Reservoir> DataContainer::getReservoirHashTable() const{
     return ReservoirHashTable;
 }
 
-unordered_map<int, Station> DataContainer::getStationHashTable() {
+unordered_map<int, Station> DataContainer::getStationHashTable() const {
     return StationHashTable;
 }
 
-unordered_map<int, City> DataContainer::getCityHashTable() {
+unordered_map<int, City> DataContainer::getCityHashTable() const {
     return CityHashTable;
 }
 
@@ -23,6 +23,7 @@ void DataContainer::addToReservoirHashTable(Code code, Reservoir reservoir) {
 void DataContainer::addToStationHashTable(Code code, Station station) {
     StationHashTable[code.getNumber()] = station;
 }
+
 void DataContainer::addToCityHashTable(Code code, City city) {
     CityHashTable[code.getNumber()] = city;
 }
