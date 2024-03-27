@@ -16,9 +16,8 @@ private:
 public:
     BasicServiceMetrics(Graph<Code> codeGraphCopy, const DataContainer& dataContainer);
     void edmondsKarp();
-    void edmondsKarpAllCities(const Code& source);
+    double getTotalMaxFlow();
     void printSpecific();
-    double getMaxFlow();
 };
 
 

@@ -37,19 +37,9 @@ int main() {
     BasicServiceMetrics bsm(parser.getCodeGraph(), dataContainer);
 
     bsm.edmondsKarp();
-    //bsm.edmondsKarpAllCities(Code("R_1"));
 
-    cout << bsm.getMaxFlow() << endl;
+    cout << bsm.getTotalMaxFlow() << endl;
     //bsm.printSpecific();
-
-    // print info for all cities
-    /*for (auto v : parser.getCodeGraph().getVertexSet()) {
-        if (v->getInfo().getType() == CodeType::CITY) {
-            for (const auto e : v->getIncoming()) {
-                cout << e->getDest()->getInfo().getCompleteCode() << "[Flow: " << e->getFlow() << "]" << endl;
-            }
-        }
-    }*/
 
     return 0;
 }

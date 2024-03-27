@@ -109,8 +109,8 @@ void BasicServiceMetrics::edmondsKarp() {
     Vertex<Code>* s = codeGraphCopy.findVertex(Code("R_0"));
     Vertex<Code>* t = codeGraphCopy.findVertex(Code("C_0"));
 
-    if (s == nullptr || t == nullptr || s == t) {
-        throw std::logic_error("Invalid source and/or target vertex");
+    if (s == nullptr || t == nullptr) {
+        throw std::logic_error("Couldn't find super source/sink");
     }
 
     for (auto v : codeGraphCopy.getVertexSet()) {
@@ -125,59 +125,16 @@ void BasicServiceMetrics::edmondsKarp() {
     }
 }
 
-
-/*void BasicServiceMetrics::edmondsKarpSpecific(const Code& source, const Code& target) {
-    if (source.getType() != CodeType::RESERVOIR) {
-        throw std::logic_error("Invalid source, please set water reservoir as source, i.e. R_5");
-    }
-    if (target.getType() != CodeType::CITY) {
-        throw std::logic_error("Invalid source, please set city as target, i.e. C_5");
-    }
-
-    Vertex<Code>* s = codeGraphCopy.findVertex(source);
-    Vertex<Code>* t = codeGraphCopy.findVertex(target);
-
-    if (s == nullptr || t == nullptr || s == t) {
-        throw std::logic_error("Invalid source and/or target vertex");
-    }
-
+double BasicServiceMetrics::getTotalMaxFlow() {
+    double flow = 0;
     for (auto v : codeGraphCopy.getVertexSet()) {
-        for (auto& e : v->getAdj()) {
-            e->setFlow(0);
+        for (const auto e : v->getAdj()) {
+            auto destCode = e->getDest()->getInfo();
+            if (destCode.getType() == CodeType::CITY)
+                flow += e->getFlow();
         }
     }
-
-    while (findAugmentingPath(s, t)) {
-        double bnValue = findBottleNeckValue(s, t);
-        augmentFlowAlongPath(s, t, bnValue);
-    }
-}*/
-
-void BasicServiceMetrics::edmondsKarpAllCities(const Code &source) {
-    if (source.getType() != CodeType::RESERVOIR) {
-        throw std::logic_error("Invalid source, please set water reservoir as source, i.e. R_5");
-    }
-
-    Vertex<Code>* s = codeGraphCopy.findVertex(source);
-
-    if (s == nullptr) {
-        throw std::logic_error("Invalid source vertex");
-    }
-
-    for (auto v : codeGraphCopy.getVertexSet()) {
-        for (auto& e : v->getAdj()) {
-            e->setFlow(0);
-        }
-    }
-
-    for (auto t : codeGraphCopy.getVertexSet()) {
-        if (t->getInfo().getType() == CodeType::CITY) {
-            while (findAugmentingPath(s, t)) {
-                double bnValue = findBottleNeckValue(s, t);
-                augmentFlowAlongPath(s, t, bnValue);
-            }
-        }
-    }
+    return flow / 2; // super sink not considered, only for algorithm
 }
 
 void BasicServiceMetrics::printSpecific() {
@@ -193,16 +150,4 @@ void BasicServiceMetrics::printSpecific() {
         ss << ")";
         if (hasContent) std::cout << v->getInfo().getCompleteCode() << "->(" << ss.str() << std::endl;
     }
-}
-
-double BasicServiceMetrics::getMaxFlow() {
-    double flow = 0;
-    for (auto v : codeGraphCopy.getVertexSet()) {
-        for (const auto e : v->getAdj()) {
-            auto destCode = e->getDest()->getInfo();
-            if (destCode.getType() == CodeType::CITY)
-                flow += e->getFlow();
-        }
-    }
-    return flow / 2; // not considering super sink
 }
