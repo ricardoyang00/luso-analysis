@@ -39,8 +39,8 @@ int main() {
     bsm.edmondsKarp();
 
     cout << "Total max flow: " << bsm.getTotalMaxFlow() << endl;
-    //bsm.printEachCityMaxFlow();
-    //bsm.printSpecificCityMaxFlow(Code("C_1"));
+    //printEachCityMaxFlow(bsm.getBSMGraph(), dataContainer);
+    //printSpecificCityMaxFlow(bsm.getBSMGraph(), dataContainer, Code("C_1"));
 
     // check if original graph is modified by BSM functions
     /*std::stringstream ss;
