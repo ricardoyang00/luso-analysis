@@ -41,6 +41,7 @@ int main() {
     cout << "Total max flow: " << bsm.getTotalMaxFlow() << endl;
     //printEachCityMaxFlow(bsm.getBSMGraph(), dataContainer);
     //printSpecificCityMaxFlow(bsm.getBSMGraph(), dataContainer, Code("C_1"));
+    //printCitiesWithWaterFlowDeficit(bsm.getBSMGraph(), dataContainer);
 
     // check if original graph is modified by BSM functions
     /*std::stringstream ss;

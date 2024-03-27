@@ -156,3 +156,37 @@ void printSpecificCityMaxFlow(const Graph<Code>& bsmGraph, const DataContainer& 
     }
     throw std::logic_error("Invalid city chosen");
 }
+
+void printCitiesWithWaterFlowDeficit(const Graph<Code>& bsmGraph, const DataContainer& dataContainer) {
+    Vertex<Code>* superSink = bsmGraph.findVertex(Code("C_0"));
+    if (superSink == nullptr) {
+        throw std::logic_error("Couldn't find super sink C_0");
+    }
+
+    auto cTable = dataContainer.getCityHashTable();
+    std::cout << std::left << std::setw(20) << "Name" << "|    ";
+    std::cout << std::setw(8) << "Code" << "|    ";
+    std::cout << std::setw(10) << "Deficit" << "|    ";
+    std::cout << std::setw(10) << "Max Flow" << "|    ";
+    std::cout << std::setw(10) << "Demand" << std::endl;
+
+    std::cout << std::setfill('-') << std::setw(20) << "" << "|";
+    std::cout << std::setw(12) << "" << "|";
+    std::cout << std::setw(14) << "" << "|";
+    std::cout << std::setw(14) << "" << "|";
+    std::cout << std::setw(14) << "" << std::setfill(' ') << std::endl;
+
+    for (const auto& edge : superSink->getIncoming()) {
+        auto cityVertex = edge->getOrig()->getInfo();
+        auto c = cTable.find(cityVertex.getNumber())->second;
+        if (edge->getFlow() < c.getDemand()) {
+            double dif = c.getDemand() - edge->getFlow();
+            int nameWidth = (c.getName().find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ") != std::string::npos) ? 21 : 20;
+            std::cout << std::setw(nameWidth) << c.getName() << "|    ";
+            std::cout << std::setw(8) << cityVertex.getCompleteCode() << "|    ";
+            std::cout << std::setw(10) << dif << "|    ";
+            std::cout << std::setw(10) << edge->getFlow() << "|    ";
+            std::cout << std::setw(10) << c.getDemand() << std::endl;
+        }
+    }
+}

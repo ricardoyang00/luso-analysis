@@ -9,5 +9,6 @@ static void printHeader();
 void printCityMaxFlow(const std::string& name, const std::string& code, const double& maxFlow);
 void printEachCityMaxFlow(const Graph<Code>& bsmGraph, const DataContainer& dataContainer);
 void printSpecificCityMaxFlow(const Graph<Code>& bsmGraph, const DataContainer& dataContainer, const Code& city);
+void printCitiesWithWaterFlowDeficit(const Graph<Code>& bsmGraph, const DataContainer& dataContainer);
 
 #endif //FEUP_DA_01_PRINTER_H
