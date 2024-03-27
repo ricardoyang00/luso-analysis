@@ -17,7 +17,10 @@ public:
     BasicServiceMetrics(const Graph<Code>& codeGraph, const DataContainer& dataContainer);
     void edmondsKarp();
     double getTotalMaxFlow();
+    static void printHeader();
+    static void printCityMaxFlow(const std::string& name, const std::string& code, const double& maxFlow);
     void printEachCityMaxFlow();
+    void printSpecificCityMaxFlow(const Code& city);
 };
 
 
