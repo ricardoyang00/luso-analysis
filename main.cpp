@@ -38,8 +38,22 @@ int main() {
 
     bsm.edmondsKarp();
 
-    cout << bsm.getTotalMaxFlow() << endl;
-    //bsm.printSpecific();
+    cout << "Total max flow: " << bsm.getTotalMaxFlow() << endl;
+    bsm.printEachCityMaxFlow();
+
+    // check if original graph is modified by BSM functions
+    /*std::stringstream ss;
+    for(auto v : parser.getCodeGraph().getVertexSet()) {
+        ss.str("");
+        bool hasContent = false;
+        for (const auto e : v->getAdj())
+            if (e->getFlow() != 0) {
+                ss << e->getDest()->getInfo().getCompleteCode() << "[Flow: " << e->getFlow() << "]";
+                hasContent = true;
+            } else continue;
+        ss << ")";
+        if (hasContent) std::cout << v->getInfo().getCompleteCode() << "->(" << ss.str() << std::endl;
+    }*/
 
     return 0;
 }

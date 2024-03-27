@@ -1,7 +1,21 @@
 #include "BasicServiceMetrics.h"
 #include <sstream>
+#include <iomanip>
 
-BasicServiceMetrics::BasicServiceMetrics(Graph<Code> graph, const DataContainer &container) : codeGraphCopy(graph), dataContainer(container) {}
+BasicServiceMetrics::BasicServiceMetrics(const Graph<Code>& graph, const DataContainer &container) : dataContainer(container) {
+    // create a deep copy of the graph
+    for (const auto& vertex : graph.getVertexSet()) {
+        codeGraphCopy.addVertex(vertex->getInfo());
+    }
+
+    for (const auto& vertex : graph.getVertexSet()) {
+        for (const auto& edge : vertex->getAdj()) {
+            auto orig = codeGraphCopy.findVertex(edge->getOrig()->getInfo());
+            auto dest = codeGraphCopy.findVertex(edge->getDest()->getInfo());
+            codeGraphCopy.addEdge(orig->getInfo(), dest->getInfo(), edge->getWeight());
+        }
+    }
+}
 
 void BasicServiceMetrics::testAndVisit(std::queue<Vertex<Code> *> &q, Edge<Code> *e, Vertex<Code> *w, double residual) {
     if (!w->isVisited() && residual > 0) {
@@ -137,17 +151,28 @@ double BasicServiceMetrics::getTotalMaxFlow() {
     return flow / 2; // super sink not considered, only for algorithm
 }
 
-void BasicServiceMetrics::printSpecific() {
-    std::stringstream ss;
-    for(auto v : codeGraphCopy.getVertexSet()) {
-        ss.str("");
-        bool hasContent = false;
-        for (const auto e : v->getAdj())
-            if (e->getFlow() != 0) {
-                ss << e->getDest()->getInfo().getCompleteCode() << "[Flow: " << e->getFlow() << "]";
-                hasContent = true;
-            } else continue;
-        ss << ")";
-        if (hasContent) std::cout << v->getInfo().getCompleteCode() << "->(" << ss.str() << std::endl;
+void BasicServiceMetrics::printEachCityMaxFlow() {
+    Vertex<Code>* superSink = codeGraphCopy.findVertex(Code("C_0"));
+    if (superSink == nullptr) {
+        throw std::logic_error("Couldn't find super sink C_0");
+    }
+
+    auto cTable = dataContainer.getCityHashTable();
+    std::cout << std::left << std::setw(20) << "Name" << "|    ";
+    std::cout << std::setw(8) << "Code" << "|    ";
+    std::cout << std::setw(10) << "Max Flow" << std::endl;
+
+    std::cout << std::setfill('-') << std::setw(20) << "" << "|";
+    std::cout << std::setw(12) << "" << "|";
+    std::cout << std::setw(14) << "" << std::setfill(' ') << std::endl;
+
+    for (const auto& edge : superSink->getIncoming()) {
+        auto cityVertex = edge->getOrig()->getInfo();
+        auto c = cTable.find(cityVertex.getNumber())->second;
+
+        int nameWidth = (c.getName().find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ") != std::string::npos) ? 21 : 20;
+        std::cout << std::setw(nameWidth) << c.getName() << "|    ";
+        std::cout << std::setw(8) << cityVertex.getCompleteCode() << "|    ";
+        std::cout << std::setw(10) << edge->getFlow() << std::endl;
     }
 }

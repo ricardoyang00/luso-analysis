@@ -14,10 +14,10 @@ private:
     void addSuperSource();
     void addSuperSink();
 public:
-    BasicServiceMetrics(Graph<Code> codeGraphCopy, const DataContainer& dataContainer);
+    BasicServiceMetrics(const Graph<Code>& codeGraph, const DataContainer& dataContainer);
     void edmondsKarp();
     double getTotalMaxFlow();
-    void printSpecific();
+    void printEachCityMaxFlow();
 };
 
 
