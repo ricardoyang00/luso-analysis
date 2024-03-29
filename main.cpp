@@ -20,8 +20,8 @@ int main() {
 
     const DataContainer& dataContainer = parser.getDataContainer();
 
-    //printHashInfo(dataContainer, Code("C_3"));
-    //printAllHashInfo(dataContainer);
+    printHashInfo(dataContainer, Code("C_3"));
+    printAllHashInfo(dataContainer);
 
     /*
     for (const auto& v : parser.getCodeGraph().getVertexSet()) {
