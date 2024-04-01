@@ -20,6 +20,13 @@ void Menu::clearScreen() {
     system("clear || cls");
 }
 
+void Menu::waitPress() {
+    cout << "\n";
+    cin.get();
+    cout << "Press ENTER to continue...";
+    cin.get();
+}
+
 int Menu::intputParser(int& choice, string text) {
     cout << "\n" + text;
     if (!(cin >> choice)) {
@@ -58,7 +65,7 @@ int Menu::run() {
         clearScreen();
         switch (choice) {
             case 0:
-                if (printAllDataContainer()) return 1;
+                printAllDataContainer();
                 break;
             case 1:
                 if (printSpecificDataContainer()) return 1;
@@ -67,6 +74,7 @@ int Menu::run() {
                 clearScreen();
                 return 0;
         }
+        waitPress();
     }
     return 0;
 
@@ -113,9 +121,10 @@ int Menu::run() {
     return 0;
 }
 
-int Menu::printAllDataContainer() {
+void Menu::printAllDataContainer() {
     printAllHashInfo(parser.getDataContainer());
 }
+
 int Menu::printSpecificDataContainer() {
     vector<string> codeType{
         "[0] Reservoir",
@@ -132,12 +141,13 @@ int Menu::printSpecificDataContainer() {
     int codeNumber;
     if (intputParser(codeNumber, "Enter the ID number (eg. C_9, enter 9): ")) return 1;
 
+    cout << endl;
     switch (choice) {
         case 0:
             printHashInfo(parser.getDataContainer(), Code("R_" + to_string(codeNumber)));
             break;
         case 1:
-            printHashInfo(parser.getDataContainer(), Code("S_" + to_string(codeNumber)));
+            printHashInfo(parser.getDataContainer(), Code("PS_" + to_string(codeNumber)));
             break;
         case 2:
             printHashInfo(parser.getDataContainer(), Code("C_" + to_string(codeNumber)));

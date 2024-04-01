@@ -13,9 +13,10 @@ private:
 
     void printMenu();
     static void clearScreen();
+    static void waitPress();
     int intputParser(int& choice, std::string text);
 
-    int printAllDataContainer();
+    void printAllDataContainer();
     int printSpecificDataContainer();
 
 public:
