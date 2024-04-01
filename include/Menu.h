@@ -8,8 +8,12 @@
 
 class Menu {
 private:
+    ParseData parser;
+    DataContainer dataContainer;
     std::vector<std::string> menuIndex;
+
     void printMenu();
+    static void clearScreen();
 
 public:
     Menu();

@@ -1,13 +1,22 @@
 #include "Menu.h"
 
 using namespace std;
+string reservoirCSV = "../large-dataSet/Reservoir.csv";
+string stationsCSV = "../large-dataSet/Stations.csv";
+string citiesCSV = "../large-dataSet/Cities.csv";
+string pipesCSV = "../large-dataSet/Pipes.csv";
 
-Menu::Menu() {
+Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV){
     menuIndex = {
-            "(0) Print all Hash Tables",
-            "(1) Print Specific Hash Table",
-            "(2) Total Max Flow"
+            makeBold("[0] Print all Hash Tables"),
+            makeBold("[1] Print Specific Hash Table"),
+            makeBold("[2] Total Max Flow"),
+            makeBold("[3] EXIT")
     };
+}
+
+void Menu::clearScreen() {
+    system("clear || cls");
 }
 
 void Menu::printMenu() {
@@ -19,27 +28,41 @@ void Menu::printMenu() {
     cout << "│   ███████╗╚██████╔╝███████║╚██████╔╝    ██║  ██║██║ ╚████║██║  ██║███████╗   ██║      ██║   ██║╚██████╗███████║   │" << endl;
     cout << "│   ╚══════╝ ╚═════╝ ╚══════╝ ╚═════╝     ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝   ╚═╝      ╚═╝   ╚═╝ ╚═════╝╚══════╝   │" << endl;
     cout << "│                                       Portuguese Water Management Tool                                            │" << endl;
-    cout << "└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘" << endl;
+    cout << "└──┬────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘" << endl;
+    cout << "   │" << endl;
+    for (auto e : menuIndex) {
+        cout << "   │  " << e << endl;
+    }
+    cout << "   │" << endl;
 }
 int Menu::run() {
-
-    printMenu();
     while (true) {
+        clearScreen();
+        printMenu();
 
+        int choice;
+        cout << "\nEnter your choice: ";
+        if (!(cin >> choice)) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;  // Invalid choice (not an integer)
+        }
+
+        switch (choice) {
+            case 3:
+                clearScreen();
+                return 0;
+        }
     }
+    return 0;
     /*std::string reservoirCSV = "../small-dataSet/Reservoirs_Madeira.csv";
    std::string stationsCSV = "../small-dataSet/Stations_Madeira.csv";
    std::string citiesCSV = "../small-dataSet/Cities_Madeira.csv";
    std::string pipesCSV = "../small-dataSet/Pipes_Madeira.csv";*/
 
-    std::string reservoirCSV = "../large-dataSet/Reservoir.csv";
-    std::string stationsCSV = "../large-dataSet/Stations.csv";
-    std::string citiesCSV = "../large-dataSet/Cities.csv";
-    std::string pipesCSV = "../large-dataSet/Pipes.csv";
 
-    ParseData parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV);
 
-    const DataContainer& dataContainer = parser.getDataContainer();
+
 
     printHashInfo(dataContainer, Code("C_3"));
     printAllHashInfo(dataContainer);
