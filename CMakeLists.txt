@@ -24,6 +24,8 @@ add_executable(feup_da_01
         include/ParseData.h             src/ParseData.cpp
         include/BasicServiceMetrics.h   src/BasicServiceMetrics.cpp
         include/Printer.h               src/Printer.cpp
+        src/Menu.cpp
+        include/Menu.h
 )
 
 # Add a target to generate Doxygen documentation
