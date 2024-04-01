@@ -10,6 +10,7 @@ class Menu {
 private:
     ParseData parser;
     std::vector<std::string> menuIndex;
+    BasicServiceMetrics bsm;
 
     void printMenu();
     static void clearScreen();
@@ -19,6 +20,7 @@ private:
     void printAllDataContainer();
     int printSpecificDataContainer();
     void getTotalMaxFlow();
+    void getCityFlow();
 
 public:
     Menu();

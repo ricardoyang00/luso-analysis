@@ -154,3 +154,15 @@ double BasicServiceMetrics::getTotalMaxFlow() {
     //return flow / 2; // super sink not considered, only for algorithm
     return flow;
 }
+
+double BasicServiceMetrics::getFlowToCity(Code cityCode) {
+    double flow = 0;
+    auto v = codeGraphCopy.findVertex(cityCode);
+    for (auto e : v->getIncoming()) {
+        auto destCode = e->getDest()->getInfo();
+        if (destCode.getType() == cityCode.getType() && destCode.getNumber() == cityCode.getNumber()) {
+            flow += e->getFlow();
+        }
+    }
+    return flow;
+}

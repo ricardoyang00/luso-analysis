@@ -7,13 +7,15 @@ string stationsCSV = "../large-dataSet/Stations.csv";
 string citiesCSV = "../large-dataSet/Cities.csv";
 string pipesCSV = "../large-dataSet/Pipes.csv";
 
-Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV){
+Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV), bsm(parser.getCodeGraph(), parser.getDataContainer()){
     menuIndex = {
             makeBold("[0] Print all Data Container"),
             makeBold("[1] Print Specific Data Container"),
             makeBold("[2] Total Max Flow"),
-            makeBold("[3] EXIT")
+            makeBold("[3] City Flow"),
+            makeBold("[4] EXIT")
     };
+    bsm.edmondsKarp();
 }
 
 void Menu::clearScreen() {
@@ -74,6 +76,9 @@ int Menu::run() {
                 getTotalMaxFlow();
                 break;
             case 3:
+                getCityFlow();
+                break;
+            case 4:
                 clearScreen();
                 return 0;
         }
@@ -159,9 +164,17 @@ int Menu::printSpecificDataContainer() {
 }
 
 void Menu::getTotalMaxFlow() {
-    BasicServiceMetrics bsm(parser.getCodeGraph(), parser.getDataContainer());
-    bsm.edmondsKarp();
-
     cout << endl;
     cout << makeBold("Total max flow: ") << bsm.getTotalMaxFlow() << endl;
 }
+
+void Menu::getCityFlow() {
+    int codeNumber;
+    if (intputParser(codeNumber, "Enter the City ID number (eg. C_9, enter 9): ")) {
+        cout << "ERROR: Couldn't find City" << endl;
+    };
+
+    Code cityCode("C_" + to_string(codeNumber));
+    cout << makeBold("Flow to City [" + cityCode.getCompleteCode() +"]: ") << bsm.getFlowToCity(cityCode) << endl;
+    cout << makeBold("City demand: ") << parser.getDataContainer().getCityHashTable().find(codeNumber)->second.getDemand() << endl;
+};
