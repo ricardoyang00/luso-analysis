@@ -70,6 +70,9 @@ int Menu::run() {
             case 1:
                 if (printSpecificDataContainer()) return 1;
                 break;
+            case 2:
+                getTotalMaxFlow();
+                break;
             case 3:
                 clearScreen();
                 return 0;
@@ -93,11 +96,7 @@ int Menu::run() {
         }
     }
 
-    BasicServiceMetrics bsm(parser.getCodeGraph(), dataContainer);
 
-    bsm.edmondsKarp();
-
-    cout << "Total max flow: " << bsm.getTotalMaxFlow() << endl;
 
     */
     //printEachCityMaxFlow(bsm.getBSMGraph(), dataContainer);
@@ -157,5 +156,12 @@ int Menu::printSpecificDataContainer() {
     }
 
     return 0;
+}
 
+void Menu::getTotalMaxFlow() {
+    BasicServiceMetrics bsm(parser.getCodeGraph(), parser.getDataContainer());
+    bsm.edmondsKarp();
+
+    cout << endl;
+    cout << makeBold("Total max flow: ") << bsm.getTotalMaxFlow() << endl;
 }

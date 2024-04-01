@@ -18,6 +18,7 @@ private:
 
     void printAllDataContainer();
     int printSpecificDataContainer();
+    void getTotalMaxFlow();
 
 public:
     Menu();
