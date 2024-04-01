@@ -1,6 +1,7 @@
 #include "Menu.h"
 
 using namespace std;
+
 string reservoirCSV = "../large-dataSet/Reservoir.csv";
 string stationsCSV = "../large-dataSet/Stations.csv";
 string citiesCSV = "../large-dataSet/Cities.csv";
@@ -8,8 +9,8 @@ string pipesCSV = "../large-dataSet/Pipes.csv";
 
 Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV){
     menuIndex = {
-            makeBold("[0] Print all Hash Tables"),
-            makeBold("[1] Print Specific Hash Table"),
+            makeBold("[0] Print all Data Container"),
+            makeBold("[1] Print Specific Data Container"),
             makeBold("[2] Total Max Flow"),
             makeBold("[3] EXIT")
     };
@@ -17,6 +18,16 @@ Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV){
 
 void Menu::clearScreen() {
     system("clear || cls");
+}
+
+int Menu::intputParser(int& choice, string text) {
+    cout << "\n" + text;
+    if (!(cin >> choice)) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        return 1;
+    }
+    return 0;
 }
 
 void Menu::printMenu() {
@@ -35,39 +46,35 @@ void Menu::printMenu() {
     }
     cout << "   │" << endl;
 }
+
 int Menu::run() {
     while (true) {
         clearScreen();
         printMenu();
 
         int choice;
-        cout << "\nEnter your choice: ";
-        if (!(cin >> choice)) {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            continue;  // Invalid choice (not an integer)
-        }
+        if (intputParser(choice, "Enter your choice: ")) return 1;
 
+        clearScreen();
         switch (choice) {
+            case 0:
+                if (printAllDataContainer()) return 1;
+                break;
+            case 1:
+                if (printSpecificDataContainer()) return 1;
+                break;
             case 3:
                 clearScreen();
                 return 0;
         }
     }
     return 0;
-    /*std::string reservoirCSV = "../small-dataSet/Reservoirs_Madeira.csv";
-   std::string stationsCSV = "../small-dataSet/Stations_Madeira.csv";
-   std::string citiesCSV = "../small-dataSet/Cities_Madeira.csv";
-   std::string pipesCSV = "../small-dataSet/Pipes_Madeira.csv";*/
 
-
-
-
-
+/*
     printHashInfo(dataContainer, Code("C_3"));
     printAllHashInfo(dataContainer);
 
-    /*
+
     for (const auto& v : parser.getCodeGraph().getVertexSet()) {
         for (const auto& e : v->getAdj()) {
             cout << "Origin: " << e->getOrig()->getInfo().getCompleteCode() << endl;
@@ -76,13 +83,15 @@ int Menu::run() {
             cout << "Flow: " << e->getFlow() << endl;
             cout << "--------------------------------\n" << endl;
         }
-    }*/
+    }
 
     BasicServiceMetrics bsm(parser.getCodeGraph(), dataContainer);
 
     bsm.edmondsKarp();
 
     cout << "Total max flow: " << bsm.getTotalMaxFlow() << endl;
+
+    */
     //printEachCityMaxFlow(bsm.getBSMGraph(), dataContainer);
     //printSpecificCityMaxFlow(bsm.getBSMGraph(), dataContainer, Code("C_1"));
     //printCitiesWithWaterFlowDeficit(bsm.getBSMGraph(), dataContainer);
@@ -102,4 +111,41 @@ int Menu::run() {
     }*/
 
     return 0;
+}
+
+int Menu::printAllDataContainer() {
+    printAllHashInfo(parser.getDataContainer());
+}
+int Menu::printSpecificDataContainer() {
+    vector<string> codeType{
+        "[0] Reservoir",
+        "[1] Station",
+        "[2] City"
+    };
+    for (auto e : codeType) {
+        cout << e << endl;
+    }
+
+    int choice;
+    if (intputParser(choice, "Enter your choice: ")) return 1;
+
+    int codeNumber;
+    if (intputParser(codeNumber, "Enter the ID number (eg. C_9, enter 9): ")) return 1;
+
+    switch (choice) {
+        case 0:
+            printHashInfo(parser.getDataContainer(), Code("R_" + to_string(codeNumber)));
+            break;
+        case 1:
+            printHashInfo(parser.getDataContainer(), Code("S_" + to_string(codeNumber)));
+            break;
+        case 2:
+            printHashInfo(parser.getDataContainer(), Code("C_" + to_string(codeNumber)));
+            break;
+        default:
+            return 1;
+    }
+
+    return 0;
+
 }
