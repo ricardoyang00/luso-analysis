@@ -9,11 +9,13 @@ string pipesCSV = "../large-dataSet/Pipes.csv";
 
 Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV), bsm(parser.getCodeGraph(), parser.getDataContainer()){
     menuIndex = {
-            makeBold("[0] Print all Data Container"),
+            makeBold("[0] Print All Data Container"),
             makeBold("[1] Print Specific Data Container"),
             makeBold("[2] Total Max Flow"),
             makeBold("[3] City Flow"),
-            makeBold("[4] EXIT")
+            makeBold("[4] Print All Cities Flow"),
+            makeBold("[5] Print All Cities With Water Deficit"),
+            makeBold("[6] EXIT")
     };
     bsm.edmondsKarp();
 }
@@ -29,7 +31,7 @@ void Menu::waitPress() {
     cin.get();
 }
 
-int Menu::intputParser(int& choice, string text) {
+int Menu::inputParser(int& choice, string text) {
     cout << "\n" + text;
     if (!(cin >> choice)) {
         cin.clear();
@@ -62,7 +64,7 @@ int Menu::run() {
         printMenu();
 
         int choice;
-        if (intputParser(choice, "Enter your choice: ")) return 1;
+        if (inputParser(choice, "Enter your choice: ")) return 1;
 
         clearScreen();
         switch (choice) {
@@ -79,6 +81,12 @@ int Menu::run() {
                 getCityFlow();
                 break;
             case 4:
+                printEachCityMaxFlow(bsm.getBSMGraph(), parser.getDataContainer());
+                break;
+            case 5:
+                printCitiesWithWaterFlowDeficit(bsm.getBSMGraph(), parser.getDataContainer());
+                break;
+            case 6:
                 clearScreen();
                 return 0;
         }
@@ -140,10 +148,10 @@ int Menu::printSpecificDataContainer() {
     }
 
     int choice;
-    if (intputParser(choice, "Enter your choice: ")) return 1;
+    if (inputParser(choice, "Enter your choice: ")) return 1;
 
     int codeNumber;
-    if (intputParser(codeNumber, "Enter the ID number (eg. C_9, enter 9): ")) return 1;
+    if (inputParser(codeNumber, "Enter the ID number (eg. C_9, enter 9): ")) return 1;
 
     cout << endl;
     switch (choice) {
@@ -170,7 +178,7 @@ void Menu::getTotalMaxFlow() {
 
 void Menu::getCityFlow() {
     int codeNumber;
-    if (intputParser(codeNumber, "Enter the City ID number (eg. C_9, enter 9): ")) {
+    if (inputParser(codeNumber, "Enter the City ID number (eg. C_9, enter 9): ")) {
         cout << "ERROR: Couldn't find City" << endl;
     };
 
