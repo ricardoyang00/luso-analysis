@@ -186,15 +186,10 @@ map<int,double> BasicServiceMetrics::getCitiesFlow() {
     map<int,double> citiesFlow; //first city code number , second city's flow
 
     for (auto pair : dataContainer.getCityHashTable()) {
-        auto city = pair.second;
-        auto cityVertex = codeGraphCopy.findVertex(city.getCode());
+        auto cityCode = pair.second.getCode();
+        double cityFlow = getFlowToCity(cityCode);
 
-        double flow = 0;
-        for (auto e : cityVertex->getIncoming()) {
-            flow += e->getFlow();
-        }
-
-        citiesFlow[city.getCode().getNumber()] = flow;
+        citiesFlow[cityCode.getNumber()] = cityFlow;
     }
 
     return citiesFlow;
