@@ -21,6 +21,7 @@ private:
     int printSpecificDataContainer();
     void getTotalMaxFlow();
     void getCityFlow();
+    void removeReservoir();
 
 public:
     Menu();

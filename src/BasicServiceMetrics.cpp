@@ -166,3 +166,33 @@ double BasicServiceMetrics::getFlowToCity(Code cityCode) {
     }
     return flow;
 }
+
+void BasicServiceMetrics::removeReservoir(Code reservoirCode) {
+    auto reservoir = codeGraphCopy.findVertex(reservoirCode);
+
+    codeGraphCopy.removeEdge(Code("R_0"), reservoir->getInfo());
+
+    auto superSink = codeGraphCopy.findVertex(Code("C_0"));
+    for (auto e : superSink->getAdj()) {
+        e->setFlow(e->getFlow() - getFlowToCity(reservoir->getInfo()));
+    }
+
+    Vertex<Code>* s = codeGraphCopy.findVertex(Code("R_0"));
+    Vertex<Code>* t = codeGraphCopy.findVertex(Code("C_0"));
+
+    if (s == nullptr || t == nullptr) {
+        throw std::logic_error("Couldn't find super source/sink");
+    }
+
+    for (auto v : codeGraphCopy.getVertexSet()) {
+        for (auto& e : v->getAdj()) {
+            e->setFlow(0);
+        }
+    }
+
+    while (findAugmentingPath(s, t)) {
+        double bnValue = findBottleNeckValue(s, t);
+        augmentFlowAlongPath(s, t, bnValue);
+    }
+}
+

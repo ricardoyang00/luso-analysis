@@ -19,6 +19,8 @@ public:
     void edmondsKarp();
     double getTotalMaxFlow();
     double getFlowToCity(Code cityCode);
+
+    void removeReservoir(Code reservoirCode);
 };
 
 

@@ -13,7 +13,8 @@ Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV), bsm(parse
             makeBold("[1] Print Specific Data Container"),
             makeBold("[2] Total Max Flow"),
             makeBold("[3] City Flow"),
-            makeBold("[4] EXIT")
+            makeBold("[4] EXIT"),
+            makeBold("[9] test")
     };
     bsm.edmondsKarp();
 }
@@ -77,6 +78,9 @@ int Menu::run() {
                 break;
             case 3:
                 getCityFlow();
+                break;
+            case 9:
+                removeReservoir();
                 break;
             case 4:
                 clearScreen();
@@ -178,3 +182,13 @@ void Menu::getCityFlow() {
     cout << makeBold("Flow to City [" + cityCode.getCompleteCode() +"]: ") << bsm.getFlowToCity(cityCode) << endl;
     cout << makeBold("City demand: ") << parser.getDataContainer().getCityHashTable().find(codeNumber)->second.getDemand() << endl;
 };
+
+void Menu::removeReservoir() {
+    int codeNumber;
+    if (intputParser(codeNumber, "Enter the Reservoid ID number (eg. R_9, enter 9): ")) {
+        cout << "ERROR: Couldn't find Reservoid" << endl;
+    }
+    Code reservoirCode("R_" + to_string(codeNumber));
+    bsm.removeReservoir(reservoirCode);
+    cout << bsm.getTotalMaxFlow() << endl;
+}
