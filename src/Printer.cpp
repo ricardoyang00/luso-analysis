@@ -4,94 +4,70 @@
 
 using namespace std;
 
-// Function to print hash table information to three different text files
-void printHashInfoToFiles(const DataContainer& dataContainer, const Code& code,
-                          const std::string& reservoirFilename, const std::string& stationFilename,
-                          const std::string& cityFilename) {
-    // Open the files for writing
-    std::ofstream reservoirFile(reservoirFilename);
-    std::ofstream stationFile(stationFilename);
-    std::ofstream cityFile(cityFilename);
-
-    // Check if the files are successfully opened
-    if (!reservoirFile.is_open() || !stationFile.is_open() || !cityFile.is_open()) {
-        std::cerr << "Error: Unable to open one or more files for writing!" << std::endl;
+// Function to export reservoir data to a text file
+void exportReservoirData(const std::string& filename, const DataContainer& dataContainer) {
+    std::ofstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Error: Unable to open file " << filename << " for writing!" << std::endl;
         return;
     }
 
-    // Redirect output to the files
-    std::ostream& reservoirOut = reservoirFile;
-    std::ostream& stationOut = stationFile;
-    std::ostream& cityOut = cityFile;
-
-    if (code.getType() == CodeType::RESERVOIR) {
-        auto ReservoirHashTable = dataContainer.getReservoirHashTable();
-        auto reservoir_it = ReservoirHashTable.find(code.getNumber());
-
-        if (reservoir_it != ReservoirHashTable.end()) {
-            auto reservoir = reservoir_it->second;
-            reservoirOut << "RESERVOIR INFORMATION: " << std::endl;
-            reservoirOut << "          Name: " << reservoir.getName() << std::endl;
-            reservoirOut << "  Municipality: " << reservoir.getMunicipality() << std::endl;
-            reservoirOut << "            ID: " << reservoir.getId() << std::endl;
-            reservoirOut << "          Code: " << reservoir.getCode().getCompleteCode() << std::endl;
-            reservoirOut << "  Max Delivery: " << reservoir.getMaxDelivery() << std::endl;
-        }
-    } else if (code.getType() == CodeType::STATION) {
-        auto StationHashTable = dataContainer.getStationHashTable();
-        auto station_it = StationHashTable.find(code.getNumber());
-
-        if (station_it != StationHashTable.end()) {
-            auto station = station_it->second;
-            stationOut << "PIPE STATION INFORMATION: " << std::endl;
-            stationOut << "      ID: " << station.getId() << std::endl;
-            stationOut << "    Code: " << station.getCode().getCompleteCode() << std::endl;
-        }
-    } else if (code.getType() == CodeType::CITY) {
-        auto CityHashTable = dataContainer.getCityHashTable();
-        auto city_it = CityHashTable.find(code.getNumber());
-
-        if (city_it != CityHashTable.end()) {
-            auto city = city_it->second;
-            cityOut << "CITY INFORMATION: " << std::endl;
-            cityOut << "          City: " << city.getName() << std::endl;
-            cityOut << "            ID: " << city.getId() << std::endl;
-            cityOut << "          Code: " << city.getCode().getCompleteCode() << std::endl;
-            cityOut << std::fixed << std::setprecision(2) << "        Demand: " << city.getDemand() << std::endl;
-            cityOut << "    Population: " << city.getPopulation() << std::endl;
-        }
-    } else {
-        std::cerr << "ERROR: INVALID CODE TYPE" << std::endl;
+    for (const auto& entry : dataContainer.getReservoirHashTable()) {
+        const Reservoir& reservoir = entry.second;
+        file << ">> RESERVOIR INFORMATION" << std::endl;
+        file << "           Name: " << reservoir.getName() << std::endl;
+        file << "   Municipality: " << reservoir.getMunicipality() << std::endl;
+        file << "             ID: " << reservoir.getId() << std::endl;
+        file << "           Code: " << reservoir.getCode().getCompleteCode() << std::endl;
+        file << "   Max Delivery: " << reservoir.getMaxDelivery() << std::endl;
+        file << std::endl;
     }
 
-    // Close the files
-    reservoirFile.close();
-    stationFile.close();
-    cityFile.close();
+    cout << "Successful: Exported to " + filename << endl;
+    file.close();
 }
 
-
-void printAllHashInfo(const DataContainer& dataContainer) {
-    cout << "RESERVOIR HASH TABLE:" << endl;
-    auto reservoirHashTable = dataContainer.getReservoirHashTable();
-    for (const auto& pair : reservoirHashTable) {
-        const auto& reservoir_code = pair.second.getCode();
-        printHashInfo(dataContainer, reservoir_code);
+// Function to export station data to a text file
+void exportStationData(const std::string& filename, const DataContainer& dataContainer) {
+    std::ofstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Error: Unable to open file " << filename << " for writing!" << std::endl;
+        return;
     }
 
-    cout << "STATION HASH TABLE:" << endl;
-    auto stationHashTable = dataContainer.getStationHashTable();
-    for (const auto& pair : stationHashTable) {
-        const auto& station_code = pair.second.getCode();
-        printHashInfo(dataContainer, station_code);
+    for (const auto& entry : dataContainer.getStationHashTable()) {
+        const Station& station = entry.second;
+        file << ">> STATION INFORMATION" << std::endl;
+        file << "         ID: " << station.getId() << std::endl;
+        file << "       Code: " << station.getCode().getCompleteCode() << std::endl;
+        file << std::endl;
     }
 
-    cout << "CITY HASH TABLE:" << endl;
-    auto cityHashTable = dataContainer.getCityHashTable();
-    for (const auto& pair : cityHashTable) {
-        const auto& city_code = pair.second.getCode();
-        printHashInfo(dataContainer, city_code);
+    cout << "Successful: Exported to " + filename << endl;
+    file.close();
+}
+
+// Function to export city data to a text file
+void exportCityData(const std::string& filename, const DataContainer& dataContainer) {
+    std::ofstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Error: Unable to open file " << filename << " for writing!" << std::endl;
+        return;
     }
+
+    for (const auto& entry : dataContainer.getCityHashTable()) {
+        const City& city = entry.second;
+        file << ">> CITY INFORMATION" << std::endl;
+        file << "         City: " << city.getName() << std::endl;
+        file << "           ID: " << city.getId() << std::endl;
+        file << "         Code: " << city.getCode().getCompleteCode() << std::endl;
+        file << "       Demand: " << city.getDemand() << std::endl;
+        file << "   Population: " << city.getPopulation() << std::endl;
+        file << std::endl;
+    }
+
+    cout << "Successful: Exported to " + filename << endl;
+    file.close();
 }
 
 void printHeader() {
