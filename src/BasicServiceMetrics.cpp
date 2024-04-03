@@ -2,6 +2,8 @@
 #include <sstream>
 #include <iomanip>
 
+using namespace std;
+
 BasicServiceMetrics::BasicServiceMetrics(const Graph<Code>& graph, const DataContainer &container) : originalCodeGraph(graph), dataContainer(container) {
     resetBSMGraph();
 }
@@ -180,3 +182,20 @@ int BasicServiceMetrics::removeReservoir(Code reservoirCode) {
     return 0;
 }
 
+map<int,double> BasicServiceMetrics::getCitiesFlow() {
+    map<int,double> citiesFlow; //first city code number , second city's flow
+
+    for (auto pair : dataContainer.getCityHashTable()) {
+        auto city = pair.second;
+        auto cityVertex = codeGraphCopy.findVertex(city.getCode());
+
+        double flow = 0;
+        for (auto e : cityVertex->getIncoming()) {
+            flow += e->getFlow();
+        }
+
+        citiesFlow[city.getCode().getNumber()] = flow;
+    }
+
+    return citiesFlow;
+}

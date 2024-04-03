@@ -2,6 +2,7 @@
 #define FEUP_DA_01_BASICSERVICEMETRICS_H
 
 #include "ParseData.h"
+#include <map>
 
 class BasicServiceMetrics {
 private:
@@ -15,7 +16,7 @@ private:
     void addSuperSource();
     void addSuperSink();
 
-    std::vector<Code,double> getCitiesFlow();
+    std::map<int,double> getCitiesFlow();
 public:
     BasicServiceMetrics(const Graph<Code>& codeGraph, const DataContainer& dataContainer);
     Graph<Code>& getBSMGraph();
