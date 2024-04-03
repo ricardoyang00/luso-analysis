@@ -187,6 +187,16 @@ int BasicServiceMetrics::removeReservoir(Code reservoirCode) {
     return 0;
 }
 
+int BasicServiceMetrics::removePumpingStation(Code stationCode) {
+    auto reservoir = codeGraphCopy.findVertex(stationCode);
+    if (reservoir == nullptr) return 1;
+
+    codeGraphCopy.removeVertex(stationCode);
+
+    edmondsKarp();
+    return 0;
+}
+
 map<int,double> BasicServiceMetrics::getCitiesFlow() {
     map<int,double> citiesFlow; //first city code number , second city's flow
 

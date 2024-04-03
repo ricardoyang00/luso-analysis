@@ -27,6 +27,7 @@ public:
     std::map<int,double> getCitiesFlow();
 
     int removeReservoir(Code reservoirCode);
+    int removePumpingStation(Code stationCode);
 
 };
 

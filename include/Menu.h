@@ -22,6 +22,7 @@ private:
     void getTotalMaxFlow();
     void getCityFlow();
     void removeReservoir();
+    void removePumpingStation();
 
 public:
     Menu();
