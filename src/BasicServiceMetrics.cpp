@@ -2,19 +2,31 @@
 #include <sstream>
 #include <iomanip>
 
-BasicServiceMetrics::BasicServiceMetrics(const Graph<Code>& graph, const DataContainer &container) : dataContainer(container) {
-    // create a deep copy of the graph
-    for (const auto& vertex : graph.getVertexSet()) {
-        codeGraphCopy.addVertex(vertex->getInfo());
-    }
+using namespace std;
 
-    for (const auto& vertex : graph.getVertexSet()) {
-        for (const auto& edge : vertex->getAdj()) {
-            auto orig = codeGraphCopy.findVertex(edge->getOrig()->getInfo());
-            auto dest = codeGraphCopy.findVertex(edge->getDest()->getInfo());
-            codeGraphCopy.addEdge(orig->getInfo(), dest->getInfo(), edge->getWeight());
+BasicServiceMetrics::BasicServiceMetrics(const Graph<Code>& graph, const DataContainer &container) : originalCodeGraph(graph), dataContainer(container) {
+    resetBSMGraph();
+}
+
+void BasicServiceMetrics::resetBSMGraph() {
+    Graph<Code> codeGraphCopy_;
+    // create a deep copy of the graph
+    for (const auto& vertex : originalCodeGraph.getVertexSet()) {
+        codeGraphCopy_.addVertex(vertex->getInfo());
+    }
+    for (const auto& vertex : originalCodeGraph.getVertexSet()) {
+        for (const auto &edge: vertex->getAdj()) {
+            auto orig = codeGraphCopy_.findVertex(edge->getOrig()->getInfo());
+            auto dest = codeGraphCopy_.findVertex(edge->getDest()->getInfo());
+            codeGraphCopy_.addEdge(orig->getInfo(), dest->getInfo(), edge->getWeight());
         }
     }
+
+    this->codeGraphCopy = codeGraphCopy_;
+
+    addSuperSource();
+    addSuperSink();
+    edmondsKarp();
 }
 
 Graph<Code>& BasicServiceMetrics::getBSMGraph() { return codeGraphCopy; }
@@ -119,9 +131,6 @@ void BasicServiceMetrics::addSuperSink() {
 }
 
 void BasicServiceMetrics::edmondsKarp() {
-    addSuperSource();
-    addSuperSink();
-
     Vertex<Code>* s = codeGraphCopy.findVertex(Code("R_0"));
     Vertex<Code>* t = codeGraphCopy.findVertex(Code("C_0"));
 
@@ -165,4 +174,28 @@ double BasicServiceMetrics::getFlowToCity(Code cityCode) {
         }
     }
     return flow;
+}
+
+int BasicServiceMetrics::removeReservoir(Code reservoirCode) {
+    auto reservoir = codeGraphCopy.findVertex(reservoirCode);
+    if (reservoir == nullptr) return 1;
+
+    codeGraphCopy.removeVertex(reservoirCode);
+    codeGraphCopy.removeEdge(Code("R_0"), reservoirCode);
+
+    edmondsKarp();
+    return 0;
+}
+
+map<int,double> BasicServiceMetrics::getCitiesFlow() {
+    map<int,double> citiesFlow; //first city code number , second city's flow
+
+    for (auto pair : dataContainer.getCityHashTable()) {
+        auto cityCode = pair.second.getCode();
+        double cityFlow = getFlowToCity(cityCode);
+
+        citiesFlow[cityCode.getNumber()] = cityFlow;
+    }
+
+    return citiesFlow;
 }
