@@ -9,15 +9,13 @@ string pipesCSV = "../small-dataSet/Pipes_Madeira.csv";
 
 Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV), bsm(parser.getCodeGraph(), parser.getDataContainer()){
     menuIndex = {
-            makeBold("[0] Print All Data Container"),
-            makeBold("[1] Print Specific Data Container"),
-            makeBold("[2] Total Max Flow"),
-            makeBold("[3] City Flow"),
-            makeBold("[4] Print All Cities Flow"),
-            makeBold("[5] Print All Cities With Water Deficit"),
-            makeBold("[6] Remove Reservoir"),
+            makeBold("[1] Print All Data Container"),
+            makeBold("[2] Print Specific Data Container"),
+            makeBold("[3] Total Maximum Flow"),
+            makeBold("[4] Cities With Water Deficit"),
+            makeBold("[5] Remove Reservoir"),
             makeBold("[9] ⚠\uFE0F RESET GRAPH ⚠\uFE0F"),
-            makeBold("[10] EXIT")
+            makeBold("[0] EXIT")
     };
 }
 
@@ -69,36 +67,33 @@ int Menu::run() {
 
         clearScreen();
         switch (choice) {
-            case 0:
+            case 0:     // exit
+                clearScreen();
+                return 0;
+            case 1:     // all data containers
                 printAllDataContainer();
                 break;
-            case 1:
+            case 2:     // specific data container
                 if (printSpecificDataContainer()) return 1;
                 break;
-            case 2:
+            case 3:     // maximum flow all cities (total)
                 getTotalMaxFlow();
-                break;
-            case 3:
-                getCityFlow();
-                break;
-            case 4:
                 printEachCityMaxFlow(bsm.getBSMGraph(), parser.getDataContainer());
                 break;
-            case 5:
+            case 4:     // cities with water deficit
                 printCitiesWithWaterFlowDeficit(bsm.getBSMGraph(), parser.getDataContainer());
                 break;
-            case 6:
+            case 5:     // remove reservoir
                 clearScreen();
                 removeReservoir();
                 break;
-            case 9:
+            case 9:     // reset graph
                 clearScreen();
                 bsm.resetBSMGraph();
                 cout << "Graph reset was successful!" << endl;
                 break;
-            case 10:
-                clearScreen();
-                return 0;
+            default:
+                continue;
         }
         waitPress();
     }
@@ -184,13 +179,6 @@ int Menu::printSpecificDataContainer() {
 void Menu::getTotalMaxFlow() {
     cout << endl;
     cout << makeBold("Total max flow: ") << bsm.getTotalMaxFlow() << endl;
-
-    int i = 1;
-    for (auto city : parser.getDataContainer().getCityHashTable()) {
-        cout << i++ << ".[" << city.second.getCode().getCompleteCode() << "] "
-        << city.second.getName() << " - "<<  bsm.getFlowToCity(city.second.getCode())
-        << endl;
-    }
 }
 
 void Menu::getCityFlow() {
