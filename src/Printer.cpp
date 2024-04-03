@@ -1,22 +1,41 @@
 #include "Printer.h"
 #include <iomanip>
+#include <fstream>
 
 using namespace std;
 
-//prints the hash table
-void printHashInfo(const DataContainer& dataContainer, const Code& code) {
+// Function to print hash table information to three different text files
+void printHashInfoToFiles(const DataContainer& dataContainer, const Code& code,
+                          const std::string& reservoirFilename, const std::string& stationFilename,
+                          const std::string& cityFilename) {
+    // Open the files for writing
+    std::ofstream reservoirFile(reservoirFilename);
+    std::ofstream stationFile(stationFilename);
+    std::ofstream cityFile(cityFilename);
+
+    // Check if the files are successfully opened
+    if (!reservoirFile.is_open() || !stationFile.is_open() || !cityFile.is_open()) {
+        std::cerr << "Error: Unable to open one or more files for writing!" << std::endl;
+        return;
+    }
+
+    // Redirect output to the files
+    std::ostream& reservoirOut = reservoirFile;
+    std::ostream& stationOut = stationFile;
+    std::ostream& cityOut = cityFile;
+
     if (code.getType() == CodeType::RESERVOIR) {
         auto ReservoirHashTable = dataContainer.getReservoirHashTable();
         auto reservoir_it = ReservoirHashTable.find(code.getNumber());
 
         if (reservoir_it != ReservoirHashTable.end()) {
             auto reservoir = reservoir_it->second;
-            cout << "RESERVOIR INFORMATION: " << endl;
-            cout << "          Name: " << reservoir.getName() << endl;
-            cout << "  Municipality: " << reservoir.getMunicipality() << endl;
-            cout << "            ID: " << reservoir.getId() << endl;
-            cout << "          Code: " << reservoir.getCode().getCompleteCode() << endl;
-            cout << "  Max Delivery: " << reservoir.getMaxDelivery() << endl;
+            reservoirOut << "RESERVOIR INFORMATION: " << std::endl;
+            reservoirOut << "          Name: " << reservoir.getName() << std::endl;
+            reservoirOut << "  Municipality: " << reservoir.getMunicipality() << std::endl;
+            reservoirOut << "            ID: " << reservoir.getId() << std::endl;
+            reservoirOut << "          Code: " << reservoir.getCode().getCompleteCode() << std::endl;
+            reservoirOut << "  Max Delivery: " << reservoir.getMaxDelivery() << std::endl;
         }
     } else if (code.getType() == CodeType::STATION) {
         auto StationHashTable = dataContainer.getStationHashTable();
@@ -24,9 +43,9 @@ void printHashInfo(const DataContainer& dataContainer, const Code& code) {
 
         if (station_it != StationHashTable.end()) {
             auto station = station_it->second;
-            cout << "PIPE STATION INFORMATION: " << endl;
-            cout << "      ID: " << station.getId() << endl;
-            cout << "    Code: " << station.getCode().getCompleteCode() << endl;
+            stationOut << "PIPE STATION INFORMATION: " << std::endl;
+            stationOut << "      ID: " << station.getId() << std::endl;
+            stationOut << "    Code: " << station.getCode().getCompleteCode() << std::endl;
         }
     } else if (code.getType() == CodeType::CITY) {
         auto CityHashTable = dataContainer.getCityHashTable();
@@ -34,18 +53,23 @@ void printHashInfo(const DataContainer& dataContainer, const Code& code) {
 
         if (city_it != CityHashTable.end()) {
             auto city = city_it->second;
-            cout << "CITY INFORMATION: " << endl;
-            cout << "          City: " << city.getName() << endl;
-            cout << "            ID: " << city.getId() << endl;
-            cout << "          Code: " << city.getCode().getCompleteCode() << endl;
-            cout << fixed << setprecision(2) << "        Demand: " << city.getDemand() << endl;
-            cout << "    Population: " << city.getPopulation() << endl;
+            cityOut << "CITY INFORMATION: " << std::endl;
+            cityOut << "          City: " << city.getName() << std::endl;
+            cityOut << "            ID: " << city.getId() << std::endl;
+            cityOut << "          Code: " << city.getCode().getCompleteCode() << std::endl;
+            cityOut << std::fixed << std::setprecision(2) << "        Demand: " << city.getDemand() << std::endl;
+            cityOut << "    Population: " << city.getPopulation() << std::endl;
         }
     } else {
-        cout << "ERROR: INVALID CODE TYPE" << endl;
+        std::cerr << "ERROR: INVALID CODE TYPE" << std::endl;
     }
-    cout << endl;
+
+    // Close the files
+    reservoirFile.close();
+    stationFile.close();
+    cityFile.close();
 }
+
 
 void printAllHashInfo(const DataContainer& dataContainer) {
     cout << "RESERVOIR HASH TABLE:" << endl;
