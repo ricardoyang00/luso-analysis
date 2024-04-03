@@ -12,7 +12,21 @@ BasicServiceMetrics::BasicServiceMetrics(const Graph<Code>& graph, const DataCon
         for (const auto& edge : vertex->getAdj()) {
             auto orig = codeGraphCopy.findVertex(edge->getOrig()->getInfo());
             auto dest = codeGraphCopy.findVertex(edge->getDest()->getInfo());
+
             codeGraphCopy.addEdge(orig->getInfo(), dest->getInfo(), edge->getWeight());
+        }
+    }
+
+    for (const auto& vertex : graph.getVertexSet()) {
+        for (const auto& edge : vertex->getAdj()) {
+            if (edge->getReverse() != nullptr) {
+                auto orig = codeGraphCopy.findVertex(edge->getOrig()->getInfo());
+                auto dest = codeGraphCopy.findVertex(edge->getDest()->getInfo());
+
+                codeGraphCopy.removeEdge(orig->getInfo(), dest->getInfo());
+                codeGraphCopy.removeEdge(dest->getInfo(), orig->getInfo());
+                codeGraphCopy.addBidirectionalEdge(orig->getInfo(), dest->getInfo(), edge->getWeight());
+            }
         }
     }
 }

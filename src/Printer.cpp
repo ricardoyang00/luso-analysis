@@ -161,6 +161,7 @@ void printCitiesWithWaterFlowDeficit(const Graph<Code>& bsmGraph, const DataCont
 
 void printEachPipeDifference(const Graph<Code>& bsmGraph) {
     double totalDifference = 0;
+    double numberOfPipes = 0;
     std::cout << std::left << std::setw(5) << "Orig";
     std::cout << std::setw(5) << " -> ";
     std::cout << std::setw(5) << "Dest ";
@@ -176,23 +177,25 @@ void printEachPipeDifference(const Graph<Code>& bsmGraph) {
                 std::cout << std::setw(5) << e->getDest()->getInfo().getCompleteCode() << "    ";
                 std::cout << std::setw(10) << e->getWeight() - e->getFlow() << std::endl;
                 totalDifference += e->getWeight() - e->getFlow();
+                if (e->getReverse() == nullptr) numberOfPipes++;
+                else numberOfPipes += 0.5;
             }
         }
     }
-
+    std::cout << numberOfPipes << std::endl;
     std::cout << "\n";
     std::cout << makeBold("Total difference: ") << totalDifference << std::endl;
-    double avgDif = totalDifference / 42.0;
+    double avgDif = totalDifference / numberOfPipes;
     std::cout << makeBold("Average difference: ") << totalDifference << " / 42 (number of pipes) ≈ " << avgDif << std::endl;
 
-    double total = 0;
+    double totalSquaredDif = 0;
     for (auto v : bsmGraph.getVertexSet()) {
         for (auto e : v->getAdj()) {
             if (e->getOrig()->getInfo().getNumber() != 0 && e->getDest()->getInfo().getNumber() != 0) {
-                total += pow((e->getWeight() - e->getFlow() - avgDif), 2);
+                totalSquaredDif += pow((e->getWeight() - e->getFlow() - avgDif), 2);
             }
         }
     }
 
-    std::cout << makeBold("Variance: ") << total / 42.0 << std::endl;
+    std::cout << makeBold("Variance: ") << totalSquaredDif / numberOfPipes << std::endl;
 }
