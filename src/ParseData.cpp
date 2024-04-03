@@ -37,6 +37,8 @@ ParseData::ParseData(const std::string &reservoirCSV, const std::string &station
     parseStations();
     parseCities();
     parsePipes();
+
+    makeSuperSourceSinkGraph();
 }
 
 void ParseData::parseReservoirs() {
@@ -184,6 +186,36 @@ void ParseData::parsePipes() {
                       : codeGraph.addBidirectionalEdge(servicePointA, servicePointB, capacity);
         } else {
             cerr << "ERROR: Either point A or point B not found" << endl;
+        }
+    }
+}
+
+void ParseData::makeSuperSourceSinkGraph() {
+    // add super source
+    codeGraph.addVertex(Code("R_0"));
+    auto superSource = codeGraph.findVertex(Code("R_0"));
+    if (superSource == nullptr) {
+        throw std::logic_error("Super source R_0 not found in graph");
+    }
+    auto rTable = dataContainer.getReservoirHashTable();
+    for (auto reservoir : codeGraph.getVertexSet()) {
+        if (reservoir->getInfo().getType() == CodeType::RESERVOIR && reservoir != superSource) {
+            auto r = rTable.find(reservoir->getInfo().getNumber())->second;
+            codeGraph.addEdge(superSource->getInfo(), reservoir->getInfo(), r.getMaxDelivery());
+        }
+    }
+
+    // add super sink
+    codeGraph.addVertex(Code("C_0"));
+    auto superSink = codeGraph.findVertex(Code("C_0"));
+    if (superSink == nullptr) {
+        throw std::logic_error("Super sink C_0 not found in graph");
+    }
+    auto cTable = dataContainer.getCityHashTable();
+    for (auto city : codeGraph.getVertexSet()) {
+        if (city->getInfo().getType() == CodeType::CITY && city != superSink) {
+            auto c = cTable.find(city->getInfo().getNumber())->second;
+            codeGraph.addEdge(city->getInfo(), superSink->getInfo(), c.getDemand());
         }
     }
 }

@@ -1,10 +1,10 @@
 #ifndef FEUP_DA_01_MENU_H
 #define FEUP_DA_01_MENU_H
 
-#include <vector>
-#include <iostream>
 #include "BasicServiceMetrics.h"
 #include "Printer.h"
+#include <vector>
+#include <iostream>
 
 class Menu {
 private:
@@ -18,9 +18,7 @@ private:
     int inputParser(int& choice, std::string text);
 
     void printAllDataContainer();
-    int printSpecificDataContainer();
     void getTotalMaxFlow();
-    void getCityFlow();
     void removeReservoir();
     void removePumpingStation();
 

@@ -44,6 +44,8 @@ private:
     void parseCities();
     void parsePipes();
 
+    void makeSuperSourceSinkGraph();
+
 public:
     ParseData(const std::string& reservoirCSV, const std::string& stationsCSV,
               const std::string& citiesCSV, const std::string& pipesCSV);

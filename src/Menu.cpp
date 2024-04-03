@@ -13,7 +13,6 @@ Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV), bsm(parse
             makeBold("[2] Cities With Water Deficit"),
             makeBold("[3] Remove Reservoir"),
             makeBold("[4] Remove Pumping Station"),
-            makeBold("[8] ⚠\uFE0F RESET GRAPH ⚠\uFE0F"),
             makeBold("[9] Export Data Container"),
             makeBold("[0] EXIT")
     };
@@ -85,11 +84,6 @@ int Menu::run() {
                 clearScreen();
                 removePumpingStation();
                 break;
-            case 8:     // reset graph
-                clearScreen();
-                bsm.resetBSMGraph();
-                cout << "Graph reset was successful!" << endl;
-                break;
             case 9:     // export data container
                 printAllDataContainer();
                 break;
@@ -98,44 +92,6 @@ int Menu::run() {
         }
         waitPress();
     }
-    return 0;
-
-/*
-    printHashInfo(dataContainer, Code("C_3"));
-    printAllHashInfo(dataContainer);
-
-
-    for (const auto& v : parser.getCodeGraph().getVertexSet()) {
-        for (const auto& e : v->getAdj()) {
-            cout << "Origin: " << e->getOrig()->getInfo().getCompleteCode() << endl;
-            cout << "Dest: " << e->getDest()->getInfo().getCompleteCode() << endl;
-            cout << "Capacity: " << e->getWeight() << endl;
-            cout << "Flow: " << e->getFlow() << endl;
-            cout << "--------------------------------\n" << endl;
-        }
-    }
-
-
-
-    */
-    //printEachCityMaxFlow(bsm.getBSMGraph(), dataContainer);
-    //printSpecificCityMaxFlow(bsm.getBSMGraph(), dataContainer, Code("C_1"));
-    //printCitiesWithWaterFlowDeficit(bsm.getBSMGraph(), dataContainer);
-
-    // check if original graph is modified by BSM functions
-    /*std::stringstream ss;
-    for(auto v : parser.getCodeGraph().getVertexSet()) {
-        ss.str("");
-        bool hasContent = false;
-        for (const auto e : v->getAdj())
-            if (e->getFlow() != 0) {
-                ss << e->getDest()->getInfo().getCompleteCode() << "[Flow: " << e->getFlow() << "]";
-                hasContent = true;
-            } else continue;
-        ss << ")";
-        if (hasContent) std::cout << v->getInfo().getCompleteCode() << "->(" << ss.str() << std::endl;
-    }*/
-
     return 0;
 }
 
@@ -149,17 +105,6 @@ void Menu::getTotalMaxFlow() {
     cout << endl;
     cout << makeBold("Total max flow: ") << bsm.getTotalMaxFlow() << endl;
 }
-
-void Menu::getCityFlow() {
-    int codeNumber;
-    if (inputParser(codeNumber, "Enter the City ID number (eg. C_9, enter 9): ")) {
-        cout << "ERROR: Couldn't find City" << endl;
-    };
-
-    Code cityCode("C_" + to_string(codeNumber));
-    cout << makeBold("Flow to City [" + cityCode.getCompleteCode() +"]: ") << bsm.getFlowToCity(cityCode) << endl;
-    cout << makeBold("City demand: ") << parser.getDataContainer().getCityHashTable().find(codeNumber)->second.getDemand() << endl;
-};
 
 void Menu::removeReservoir() {
     int codeNumber;
@@ -205,6 +150,8 @@ void Menu::removeReservoir() {
         << city.getName() << " (" << bsm.getFlowToCity(city.getCode())
         << "/" << city.getDemand() << "), " << oldFlow << endl;
     }
+
+    bsm.resetBSMGraph();
 }
 
 void Menu::removePumpingStation() {

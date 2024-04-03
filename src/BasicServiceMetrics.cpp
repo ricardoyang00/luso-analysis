@@ -1,6 +1,5 @@
 #include "BasicServiceMetrics.h"
 #include <sstream>
-#include <iomanip>
 
 using namespace std;
 
@@ -9,23 +8,7 @@ BasicServiceMetrics::BasicServiceMetrics(const Graph<Code>& graph, const DataCon
 }
 
 void BasicServiceMetrics::resetBSMGraph() {
-    Graph<Code> codeGraphCopy_;
-    // create a deep copy of the graph
-    for (const auto& vertex : originalCodeGraph.getVertexSet()) {
-        codeGraphCopy_.addVertex(vertex->getInfo());
-    }
-    for (const auto& vertex : originalCodeGraph.getVertexSet()) {
-        for (const auto &edge: vertex->getAdj()) {
-            auto orig = codeGraphCopy_.findVertex(edge->getOrig()->getInfo());
-            auto dest = codeGraphCopy_.findVertex(edge->getDest()->getInfo());
-            codeGraphCopy_.addEdge(orig->getInfo(), dest->getInfo(), edge->getWeight());
-        }
-    }
-
-    this->codeGraphCopy = codeGraphCopy_;
-
-    addSuperSource();
-    addSuperSink();
+    this->codeGraphCopy = deepGraphCopy(originalCodeGraph);
     edmondsKarp();
 }
 
@@ -100,36 +83,6 @@ void BasicServiceMetrics::augmentFlowAlongPath(Vertex<Code> *s, Vertex<Code> *t,
     }
 }
 
-void BasicServiceMetrics::addSuperSource() {
-    codeGraphCopy.addVertex(Code("R_0"));
-    auto superSource = codeGraphCopy.findVertex(Code("R_0"));
-    if (superSource == nullptr) {
-        throw std::logic_error("Super source R_0 not found in graph");
-    }
-    auto rTable = dataContainer.getReservoirHashTable();
-    for (auto reservoir : codeGraphCopy.getVertexSet()) {
-        if (reservoir->getInfo().getType() == CodeType::RESERVOIR && reservoir != superSource) {
-            auto r = rTable.find(reservoir->getInfo().getNumber())->second;
-            codeGraphCopy.addEdge(superSource->getInfo(), reservoir->getInfo(), r.getMaxDelivery());
-        }
-    }
-}
-
-void BasicServiceMetrics::addSuperSink() {
-    codeGraphCopy.addVertex(Code("C_0"));
-    auto superSink = codeGraphCopy.findVertex(Code("C_0"));
-    if (superSink == nullptr) {
-        throw std::logic_error("Super sink C_0 not found in graph");
-    }
-    auto cTable = dataContainer.getCityHashTable();
-    for (auto city : codeGraphCopy.getVertexSet()) {
-        if (city->getInfo().getType() == CodeType::CITY && city != superSink) {
-            auto c = cTable.find(city->getInfo().getNumber())->second;
-            codeGraphCopy.addEdge(city->getInfo(), superSink->getInfo(), c.getDemand());
-        }
-    }
-}
-
 void BasicServiceMetrics::edmondsKarp() {
     Vertex<Code>* s = codeGraphCopy.findVertex(Code("R_0"));
     Vertex<Code>* t = codeGraphCopy.findVertex(Code("C_0"));
@@ -181,7 +134,6 @@ int BasicServiceMetrics::removeReservoir(Code reservoirCode) {
     if (reservoir == nullptr) return 1;
 
     codeGraphCopy.removeVertex(reservoirCode);
-    codeGraphCopy.removeEdge(Code("R_0"), reservoirCode);
 
     edmondsKarp();
     return 0;

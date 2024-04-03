@@ -664,4 +664,21 @@ Graph<T>::~Graph() {
     deleteMatrix(pathMatrix, vertexSet.size());
 }
 
+// make a deep copy of a graph
+template <class T>
+Graph<T> deepGraphCopy (Graph<T> originalGraph){
+    Graph<T> GraphCopy;
+    for (const auto& v : originalGraph.getVertexSet()) {
+        GraphCopy.addVertex(v->getInfo());
+    }
+    for (const auto& v : originalGraph.getVertexSet()) {
+        for (const auto &e: v->getAdj()) {
+            //auto s = GraphCopy.findVertex(e->getOrig()->getInfo());
+            //auto t = GraphCopy.findVertex(e->getDest()->getInfo());
+            GraphCopy.addEdge(e->getOrig()->getInfo(), e->getDest()->getInfo(), e->getWeight());
+        }
+    }
+    return GraphCopy;
+}
+
 #endif /* PROJ_DA_01_GRAPH */
