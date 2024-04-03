@@ -2,10 +2,10 @@
 
 using namespace std;
 
-string reservoirCSV = "../large-dataSet/Reservoir.csv";
-string stationsCSV = "../large-dataSet/Stations.csv";
-string citiesCSV = "../large-dataSet/Cities.csv";
-string pipesCSV = "../large-dataSet/Pipes.csv";
+string reservoirCSV = "../small-dataSet/Reservoirs_Madeira.csv";
+string stationsCSV = "../small-dataSet/Stations_Madeira.csv";
+string citiesCSV = "../small-dataSet/Cities_Madeira.csv";
+string pipesCSV = "../small-dataSet/Pipes_Madeira.csv";
 
 Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV), bsm(parser.getCodeGraph(), parser.getDataContainer()){
     menuIndex = {
@@ -189,6 +189,9 @@ void Menu::removeReservoir() {
         cout << "ERROR: Couldn't find Reservoid" << endl;
     }
     Code reservoirCode("R_" + to_string(codeNumber));
-    bsm.removeReservoir(reservoirCode);
-    cout << bsm.getTotalMaxFlow() << endl;
+    if (bsm.removeReservoir(reservoirCode)) {
+        cerr << "Error: Couldn't run removeReservoir of BSM" << endl;
+    } else {
+        cout << bsm.getTotalMaxFlow() << endl;
+    }
 }

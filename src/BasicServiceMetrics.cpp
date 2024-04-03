@@ -167,8 +167,9 @@ double BasicServiceMetrics::getFlowToCity(Code cityCode) {
     return flow;
 }
 
-void BasicServiceMetrics::removeReservoir(Code reservoirCode) {
+int BasicServiceMetrics::removeReservoir(Code reservoirCode) {
     auto reservoir = codeGraphCopy.findVertex(reservoirCode);
+    if (reservoir == nullptr) return 1;
 
     codeGraphCopy.removeEdge(Code("R_0"), reservoir->getInfo());
 
@@ -194,5 +195,7 @@ void BasicServiceMetrics::removeReservoir(Code reservoirCode) {
         double bnValue = findBottleNeckValue(s, t);
         augmentFlowAlongPath(s, t, bnValue);
     }
+
+    return 0;
 }
 

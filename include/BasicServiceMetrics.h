@@ -13,6 +13,8 @@ private:
     void augmentFlowAlongPath(Vertex<Code>* s, Vertex<Code>* t, double bnValue);
     void addSuperSource();
     void addSuperSink();
+
+    std::vector<Code,double> getCitiesFlow();
 public:
     BasicServiceMetrics(const Graph<Code>& codeGraph, const DataContainer& dataContainer);
     Graph<Code>& getBSMGraph();
@@ -20,7 +22,8 @@ public:
     double getTotalMaxFlow();
     double getFlowToCity(Code cityCode);
 
-    void removeReservoir(Code reservoirCode);
+    int removeReservoir(Code reservoirCode);
+
 };
 
 
