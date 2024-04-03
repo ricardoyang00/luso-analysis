@@ -184,6 +184,13 @@ int Menu::printSpecificDataContainer() {
 void Menu::getTotalMaxFlow() {
     cout << endl;
     cout << makeBold("Total max flow: ") << bsm.getTotalMaxFlow() << endl;
+
+    int i = 1;
+    for (auto city : parser.getDataContainer().getCityHashTable()) {
+        cout << i++ << ".[" << city.second.getCode().getCompleteCode() << "] "
+        << city.second.getName() << " - "<<  bsm.getFlowToCity(city.second.getCode())
+        << endl;
+    }
 }
 
 void Menu::getCityFlow() {
