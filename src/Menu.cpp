@@ -88,7 +88,7 @@ int Menu::run() {
                 printCitiesWithWaterFlowDeficit(bsm.getBSMGraph(), parser.getDataContainer());
                 break;
             case 6:
-                printEachPipeDifference(bsm.getBSMGraph());
+                printEachPipeInitialMetrics(bsm.getBSMGraph());
                 break;
             case 7:
                 clearScreen();

@@ -169,7 +169,7 @@ double BasicServiceMetrics::getTotalMaxFlow() {
     return flow;
 }
 
-double BasicServiceMetrics::getFlowToCity(Code cityCode) {
+double BasicServiceMetrics::getFlowToCity(const Code& cityCode) {
     double flow = 0;
     auto v = codeGraphCopy.findVertex(cityCode);
     for (auto e : v->getIncoming()) {

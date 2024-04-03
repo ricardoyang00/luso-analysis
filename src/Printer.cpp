@@ -159,7 +159,7 @@ void printCitiesWithWaterFlowDeficit(const Graph<Code>& bsmGraph, const DataCont
     }
 }
 
-void printEachPipeDifference(const Graph<Code>& bsmGraph) {
+void printEachPipeInitialMetrics(const Graph<Code>& bsmGraph) {
     double totalDifference = 0;
     double numberOfPipes = 0;
     std::cout << std::left << std::setw(5) << "Orig";

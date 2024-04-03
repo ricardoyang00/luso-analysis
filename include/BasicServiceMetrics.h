@@ -18,7 +18,7 @@ public:
     Graph<Code>& getBSMGraph();
     void edmondsKarp();
     double getTotalMaxFlow();
-    double getFlowToCity(Code cityCode);
+    double getFlowToCity(const Code& cityCode);
 };
 
 
