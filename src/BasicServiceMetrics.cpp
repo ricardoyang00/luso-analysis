@@ -177,6 +177,7 @@ int BasicServiceMetrics::removeReservoir(Code reservoirCode) {
     if (reservoir == nullptr) return 1;
 
     codeGraphCopy.removeVertex(reservoirCode);
+    codeGraphCopy.removeEdge(Code("R_0"), reservoirCode);
 
     edmondsKarp();
     return 0;

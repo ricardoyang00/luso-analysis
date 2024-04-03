@@ -16,7 +16,7 @@ private:
     void addSuperSource();
     void addSuperSink();
 
-    std::map<int,double> getCitiesFlow();
+
 public:
     BasicServiceMetrics(const Graph<Code>& codeGraph, const DataContainer& dataContainer);
     Graph<Code>& getBSMGraph();
@@ -24,6 +24,7 @@ public:
     void edmondsKarp();
     double getTotalMaxFlow();
     double getFlowToCity(Code cityCode);
+    std::map<int,double> getCitiesFlow();
 
     int removeReservoir(Code reservoirCode);
 
