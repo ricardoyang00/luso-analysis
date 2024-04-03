@@ -1,5 +1,6 @@
 #include "Printer.h"
 #include <iomanip>
+#include <cmath>
 
 using namespace std;
 
@@ -156,4 +157,42 @@ void printCitiesWithWaterFlowDeficit(const Graph<Code>& bsmGraph, const DataCont
             std::cout << std::setw(10) << c.getDemand() << std::endl;
         }
     }
+}
+
+void printEachPipeDifference(const Graph<Code>& bsmGraph) {
+    double totalDifference = 0;
+    std::cout << std::left << std::setw(5) << "Orig";
+    std::cout << std::setw(5) << " -> ";
+    std::cout << std::setw(5) << "Dest ";
+    std::cout << std::setw(10) << " Difference" << std::endl;
+
+    std::cout << "---------------------------" << std::endl;
+
+    for (auto v : bsmGraph.getVertexSet()) {
+        for (auto e : v->getAdj()) {
+            if (e->getOrig()->getInfo().getNumber() != 0 && e->getDest()->getInfo().getNumber() != 0) {
+                std::cout << std::setw(5) << e->getOrig()->getInfo().getCompleteCode();
+                std::cout << std::setw(5) << " -> ";
+                std::cout << std::setw(5) << e->getDest()->getInfo().getCompleteCode() << "    ";
+                std::cout << std::setw(10) << e->getWeight() - e->getFlow() << std::endl;
+                totalDifference += e->getWeight() - e->getFlow();
+            }
+        }
+    }
+
+    std::cout << "\n";
+    std::cout << makeBold("Total difference: ") << totalDifference << std::endl;
+    double avgDif = totalDifference / 42.0;
+    std::cout << makeBold("Average difference: ") << totalDifference << " / 42 (number of pipes) ≈ " << avgDif << std::endl;
+
+    double total = 0;
+    for (auto v : bsmGraph.getVertexSet()) {
+        for (auto e : v->getAdj()) {
+            if (e->getOrig()->getInfo().getNumber() != 0 && e->getDest()->getInfo().getNumber() != 0) {
+                total += pow((e->getWeight() - e->getFlow() - avgDif), 2);
+            }
+        }
+    }
+
+    std::cout << makeBold("Variance: ") << total / 42.0 << std::endl;
 }

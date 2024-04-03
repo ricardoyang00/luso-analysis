@@ -2,10 +2,10 @@
 
 using namespace std;
 
-string reservoirCSV = "../large-dataSet/Reservoir.csv";
-string stationsCSV = "../large-dataSet/Stations.csv";
-string citiesCSV = "../large-dataSet/Cities.csv";
-string pipesCSV = "../large-dataSet/Pipes.csv";
+string reservoirCSV = "../small-dataSet/Reservoirs_Madeira.csv";
+string stationsCSV = "../small-dataSet/Stations_Madeira.csv";
+string citiesCSV = "../small-dataSet/Cities_Madeira.csv";
+string pipesCSV = "../small-dataSet/Pipes_Madeira.csv";
 
 Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV), bsm(parser.getCodeGraph(), parser.getDataContainer()){
     menuIndex = {
@@ -15,7 +15,8 @@ Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV), bsm(parse
             makeBold("[3] City Flow"),
             makeBold("[4] Print All Cities Flow"),
             makeBold("[5] Print All Cities With Water Deficit"),
-            makeBold("[6] EXIT")
+            makeBold("[6] Print Each Pipe Flow Difference"),
+            makeBold("[7] EXIT")
     };
     bsm.edmondsKarp();
 }
@@ -87,6 +88,9 @@ int Menu::run() {
                 printCitiesWithWaterFlowDeficit(bsm.getBSMGraph(), parser.getDataContainer());
                 break;
             case 6:
+                printEachPipeDifference(bsm.getBSMGraph());
+                break;
+            case 7:
                 clearScreen();
                 return 0;
         }
@@ -185,4 +189,4 @@ void Menu::getCityFlow() {
     Code cityCode("C_" + to_string(codeNumber));
     cout << makeBold("Flow to City [" + cityCode.getCompleteCode() +"]: ") << bsm.getFlowToCity(cityCode) << endl;
     cout << makeBold("City demand: ") << parser.getDataContainer().getCityHashTable().find(codeNumber)->second.getDemand() << endl;
-};
+}
