@@ -2,19 +2,25 @@
 #include <sstream>
 #include <iomanip>
 
-BasicServiceMetrics::BasicServiceMetrics(const Graph<Code>& graph, const DataContainer &container) : dataContainer(container) {
+BasicServiceMetrics::BasicServiceMetrics(const Graph<Code>& graph, const DataContainer &container) : originalCodeGraph(graph), dataContainer(container) {
+    resetBSMGraph();
+}
+
+void BasicServiceMetrics::resetBSMGraph() {
     // create a deep copy of the graph
-    for (const auto& vertex : graph.getVertexSet()) {
+    for (const auto& vertex : originalCodeGraph.getVertexSet()) {
         codeGraphCopy.addVertex(vertex->getInfo());
     }
-
-    for (const auto& vertex : graph.getVertexSet()) {
+    for (const auto& vertex : originalCodeGraph.getVertexSet()) {
         for (const auto& edge : vertex->getAdj()) {
             auto orig = codeGraphCopy.findVertex(edge->getOrig()->getInfo());
             auto dest = codeGraphCopy.findVertex(edge->getDest()->getInfo());
             codeGraphCopy.addEdge(orig->getInfo(), dest->getInfo(), edge->getWeight());
         }
     }
+
+    addSuperSource();
+    addSuperSink();
 }
 
 Graph<Code>& BasicServiceMetrics::getBSMGraph() { return codeGraphCopy; }
@@ -119,9 +125,6 @@ void BasicServiceMetrics::addSuperSink() {
 }
 
 void BasicServiceMetrics::edmondsKarp() {
-    addSuperSource();
-    addSuperSink();
-
     Vertex<Code>* s = codeGraphCopy.findVertex(Code("R_0"));
     Vertex<Code>* t = codeGraphCopy.findVertex(Code("C_0"));
 
@@ -171,31 +174,9 @@ int BasicServiceMetrics::removeReservoir(Code reservoirCode) {
     auto reservoir = codeGraphCopy.findVertex(reservoirCode);
     if (reservoir == nullptr) return 1;
 
-    codeGraphCopy.removeEdge(Code("R_0"), reservoir->getInfo());
+    codeGraphCopy.removeVertex(reservoirCode);
 
-    auto superSink = codeGraphCopy.findVertex(Code("C_0"));
-    for (auto e : superSink->getAdj()) {
-        e->setFlow(e->getFlow() - getFlowToCity(reservoir->getInfo()));
-    }
-
-    Vertex<Code>* s = codeGraphCopy.findVertex(Code("R_0"));
-    Vertex<Code>* t = codeGraphCopy.findVertex(Code("C_0"));
-
-    if (s == nullptr || t == nullptr) {
-        throw std::logic_error("Couldn't find super source/sink");
-    }
-
-    for (auto v : codeGraphCopy.getVertexSet()) {
-        for (auto& e : v->getAdj()) {
-            e->setFlow(0);
-        }
-    }
-
-    while (findAugmentingPath(s, t)) {
-        double bnValue = findBottleNeckValue(s, t);
-        augmentFlowAlongPath(s, t, bnValue);
-    }
-
+    edmondsKarp();
     return 0;
 }
 

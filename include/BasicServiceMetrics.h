@@ -5,6 +5,7 @@
 
 class BasicServiceMetrics {
 private:
+    Graph<Code> originalCodeGraph;
     Graph<Code> codeGraphCopy;
     const DataContainer& dataContainer;
     void testAndVisit(std::queue<Vertex<Code>*>& q, Edge<Code>* e, Vertex<Code>* w, double residual);
@@ -18,6 +19,7 @@ private:
 public:
     BasicServiceMetrics(const Graph<Code>& codeGraph, const DataContainer& dataContainer);
     Graph<Code>& getBSMGraph();
+    void resetBSMGraph();
     void edmondsKarp();
     double getTotalMaxFlow();
     double getFlowToCity(Code cityCode);
