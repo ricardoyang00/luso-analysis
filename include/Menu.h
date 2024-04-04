@@ -15,7 +15,7 @@ private:
     void printMenu();
     static void clearScreen();
     static void waitPress();
-    int inputParser(int& choice, std::string text);
+    static int inputParser(int& choice, const std::string& text);
 
     void printAllDataContainer();
     void getTotalMaxFlow();

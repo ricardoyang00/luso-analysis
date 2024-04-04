@@ -88,7 +88,7 @@ void BasicServiceMetrics::edmondsKarp() {
     Vertex<Code>* t = codeGraphCopy.findVertex(Code("C_0"));
 
     if (s == nullptr || t == nullptr) {
-        throw std::logic_error("Couldn't find super source/sink");
+        throw logic_error("Couldn't find super source/sink (function edmondsKarp)");
     }
 
     for (auto v : codeGraphCopy.getVertexSet()) {
@@ -129,9 +129,12 @@ double BasicServiceMetrics::getFlowToCity(const Code& cityCode) {
     return flow;
 }
 
-int BasicServiceMetrics::removeReservoir(Code reservoirCode) {
+int BasicServiceMetrics::removeReservoir(const Code& reservoirCode) {
     auto reservoir = codeGraphCopy.findVertex(reservoirCode);
-    if (reservoir == nullptr) return 1;
+    if (reservoir == nullptr) {
+        cout << reservoirCode.getCompleteCode() << endl;
+        throw logic_error("Couldn't find reservoir (function removeReservoir)");
+    }
 
     codeGraphCopy.removeVertex(reservoirCode);
 
@@ -139,9 +142,12 @@ int BasicServiceMetrics::removeReservoir(Code reservoirCode) {
     return 0;
 }
 
-int BasicServiceMetrics::removePumpingStation(Code stationCode) {
+int BasicServiceMetrics::removePumpingStation(const Code& stationCode) {
     auto reservoir = codeGraphCopy.findVertex(stationCode);
-    if (reservoir == nullptr) return 1;
+    if (reservoir == nullptr) {
+        cout << stationCode.getCompleteCode() << endl;
+        throw logic_error("Couldn't find pumping station (function removePumpingStation)");
+    }
 
     codeGraphCopy.removeVertex(stationCode);
 
@@ -152,7 +158,7 @@ int BasicServiceMetrics::removePumpingStation(Code stationCode) {
 map<int,double> BasicServiceMetrics::getCitiesFlow() {
     map<int,double> citiesFlow; //first city code number , second city's flow
 
-    for (auto pair : dataContainer.getCityHashTable()) {
+    for (const auto& pair : dataContainer.getCityHashTable()) {
         auto cityCode = pair.second.getCode();
         double cityFlow = getFlowToCity(cityCode);
 

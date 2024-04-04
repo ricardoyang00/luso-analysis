@@ -30,7 +30,7 @@ void Menu::waitPress() {
     cin.get();
 }
 
-int Menu::inputParser(int& choice, string text) {
+int Menu::inputParser(int& choice, const string& text) {
     cout << "\n" + text;
     if (!(cin >> choice)) {
         cin.clear();
@@ -51,7 +51,7 @@ void Menu::printMenu() {
     cout << "│                                       Portuguese Water Management Tool                                            │" << endl;
     cout << "└──┬────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘" << endl;
     cout << "   │" << endl;
-    for (auto e : menuIndex) {
+    for (const auto& e : menuIndex) {
         cout << "   │  " << e << endl;
     }
     cout << "   │" << endl;
@@ -96,7 +96,6 @@ int Menu::run() {
         }
         waitPress();
     }
-    return 0;
 }
 
 void Menu::printAllDataContainer() {
@@ -112,8 +111,8 @@ void Menu::getTotalMaxFlow() {
 
 void Menu::removeReservoir() {
     int codeNumber;
-    if (inputParser(codeNumber, "Enter the Reservoid ID number (eg. R_9, enter 9): ")) {
-        cout << "ERROR: Couldn't find Reservoid" << endl;
+    if (inputParser(codeNumber, "Enter the Reservoir ID number (eg. R_9, enter 9): ")) {
+        cout << "ERROR: Couldn't find Reservoir" << endl;
     }
 
     Code reservoirCode("R_" + to_string(codeNumber));
@@ -147,7 +146,7 @@ void Menu::removeReservoir() {
         return;
     }
     int i = 1;
-    for (auto pair : affectedCities) {
+    for (const auto& pair : affectedCities) {
         auto city = pair.first;
         auto oldFlow = pair.second;
         cout << "    " << i++ << ". [" << city.getCode().getCompleteCode() << "] "
@@ -195,7 +194,7 @@ void Menu::removePumpingStation() {
         return;
     }
     int i = 1;
-    for (auto pair : affectedCities) {
+    for (const auto& pair : affectedCities) {
         auto city = pair.first;
         auto oldFlow = pair.second;
         cout << "    " << i++ << ". [" << city.getCode().getCompleteCode() << "] "
