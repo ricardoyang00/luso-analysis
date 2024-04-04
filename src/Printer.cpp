@@ -4,7 +4,7 @@
 #include <cmath>
 #include <limits>
 
-#define ALPHABET "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+#define ALPHABET "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ " // space character used on purpose
 
 using namespace std;
 
@@ -207,9 +207,9 @@ void printEachPipeInitialMetrics(const Graph<Code>& bsmGraph) {
 
     cout << "\n";
     cout << makeBold("Max difference: ") << maxDif << endl;
-    cout << makeBold("Total difference: ") << totalDifference << endl;
+    cout << makeBold("Sum of differences: ") << totalDifference << endl;
     double avgDif = totalDifference / numberOfPipes;
-    cout << makeBold("Average difference: ") << totalDifference << " / " << numberOfPipes << " (number of pipes) ≈ " << avgDif << endl;
+    cout << makeBold("Average difference: ") << totalDifference << " / " << numberOfPipes << " (#pipes) ≈ " << avgDif << endl;
 
     double totalSquaredDif = 0;
 
