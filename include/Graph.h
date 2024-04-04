@@ -668,6 +668,9 @@ Graph<T>::~Graph() {
 template <class T>
 Graph<T> deepGraphCopy (Graph<T> originalGraph){
     Graph<T> graphCopy;
+    for (const auto& v : originalGraph.getVertexSet()) {
+        graphCopy.addVertex(v->getInfo());
+    }
 
     for (const auto& vertex : originalGraph.getVertexSet()) {
         for (const auto& edge : vertex->getAdj()) {

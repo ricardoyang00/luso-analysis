@@ -13,9 +13,6 @@ private:
     bool findAugmentingPath(Vertex<Code>* s, Vertex<Code>* t);
     double findBottleNeckValue(Vertex<Code>* s, Vertex<Code>* t);
     void augmentFlowAlongPath(Vertex<Code>* s, Vertex<Code>* t, double bnValue);
-    void addSuperSource();
-    void addSuperSink();
-
 
 public:
     BasicServiceMetrics(const Graph<Code>& codeGraph, const DataContainer& dataContainer);
