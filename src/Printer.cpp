@@ -167,25 +167,40 @@ void printEachPipeInitialMetrics(const Graph<Code>& bsmGraph) {
     double numberOfPipes = 0;
     double maxDif = numeric_limits<double>::min();
 
-    cout << left << setw(5) << "Orig";
-    cout << setw(5) << " -> ";
-    cout << setw(5) << "Dest ";
-    cout << setw(10) << " Difference" << endl;
+    cout << "\n";
+    cout << makeBold("Note: ") << "* represents the pipes that are bidirectional" << endl;
+    cout << "\n";
 
-    cout << "---------------------------" << endl;
+    cout << left << setw(8) << "Orig" << "|    ";
+    cout << setw(8) << "Dest" << "|    ";
+    cout << setw(16) << "Flow/Capacity" << "|    ";
+    cout << setw(10) << "Difference" << endl;
+
+    cout << setfill('-') << setw(8) << "" << "|";
+    cout << setw(12) << "" << "|";
+    cout << setw(20) << "" << "|";
+    cout << setw(16) << "" << setfill(' ') << endl;
 
     for (auto v : bsmGraph.getVertexSet()) {
         for (auto e : v->getAdj()) {
             if (e->getOrig()->getInfo().getNumber() != 0 && e->getDest()->getInfo().getNumber() != 0) {
                 double dif = e->getWeight() - e->getFlow();
-                cout << setw(5) << e->getOrig()->getInfo().getCompleteCode();
-                cout << setw(5) << " -> ";
-                cout << setw(5) << e->getDest()->getInfo().getCompleteCode() << "    ";
-                cout << setw(10) << dif << endl;
+
+                if (e->getReverse() == nullptr) {
+                    cout << setw(8) << e->getOrig()->getInfo().getCompleteCode() << "|    ";
+                    cout << setw(8) << e->getDest()->getInfo().getCompleteCode() << "|    ";
+                } else {
+                    cout << "*" << setw(7) << e->getOrig()->getInfo().getCompleteCode() << "|    ";
+                    cout << "*" << setw(7) << e->getDest()->getInfo().getCompleteCode() << "|    ";
+                }
+                cout << right << setw(3) << e->getFlow() << "/";
+                cout << left << setw(12) << e->getWeight() << "|    ";
+                cout << setw(16) << dif << endl;
+
+                numberOfPipes += (e->getReverse() == nullptr) ? 1 : 0.5; // add 0.5 because pipe is bidirectional (summed twice)
+
                 totalDifference += dif;
                 if (dif > maxDif) maxDif = dif;
-                if (e->getReverse() == nullptr) numberOfPipes++;
-                else numberOfPipes += 0.5;
             }
         }
     }
