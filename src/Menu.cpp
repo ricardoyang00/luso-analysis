@@ -11,8 +11,9 @@ Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV), bsm(parse
     menuIndex = {
             makeBold("[1] Total Maximum Flow"),
             makeBold("[2] Cities With Water Deficit"),
-            makeBold("[3] Remove Reservoir"),
-            makeBold("[4] Remove Pumping Station"),
+            makeBold("[3] Print Each Pipe Flow Difference"),
+            makeBold("[4] Remove Reservoir"),
+            makeBold("[5] Remove Pumping Station"),
             makeBold("[9] Export Data Container"),
             makeBold("[0] EXIT")
     };
@@ -76,11 +77,14 @@ int Menu::run() {
             case 2:     // cities with water deficit
                 printCitiesWithWaterFlowDeficit(bsm.getBSMGraph(), parser.getDataContainer());
                 break;
-            case 3:     // remove reservoir
+            case 3:     // initial metrics
+                printEachPipeInitialMetrics(bsm.getBSMGraph());
+                break;
+            case 4:     // remove reservoir
                 clearScreen();
                 removeReservoir();
                 break;
-            case 4:
+            case 5:
                 clearScreen();
                 removePumpingStation();
                 break;

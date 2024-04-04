@@ -1,6 +1,8 @@
 #include "Printer.h"
 #include <iomanip>
 #include <fstream>
+#include <cmath>
+#include <limits>
 
 using namespace std;
 
@@ -156,4 +158,52 @@ void printCitiesWithWaterFlowDeficit(const Graph<Code>& bsmGraph, const DataCont
             std::cout << std::setw(10) << c.getDemand() << std::endl;
         }
     }
+}
+
+void printEachPipeInitialMetrics(const Graph<Code>& bsmGraph) {
+    double totalDifference = 0;
+    double numberOfPipes = 0;
+    double maxDif = std::numeric_limits<double>::min();
+
+    std::cout << std::left << std::setw(5) << "Orig";
+    std::cout << std::setw(5) << " -> ";
+    std::cout << std::setw(5) << "Dest ";
+    std::cout << std::setw(10) << " Difference" << std::endl;
+
+    std::cout << "---------------------------" << std::endl;
+
+    for (auto v : bsmGraph.getVertexSet()) {
+        for (auto e : v->getAdj()) {
+            if (e->getOrig()->getInfo().getNumber() != 0 && e->getDest()->getInfo().getNumber() != 0) {
+                double dif = e->getWeight() - e->getFlow();
+                std::cout << std::setw(5) << e->getOrig()->getInfo().getCompleteCode();
+                std::cout << std::setw(5) << " -> ";
+                std::cout << std::setw(5) << e->getDest()->getInfo().getCompleteCode() << "    ";
+                std::cout << std::setw(10) << dif << std::endl;
+                totalDifference += dif;
+                if (dif > maxDif) maxDif = dif;
+                if (e->getReverse() == nullptr) numberOfPipes++;
+                else numberOfPipes += 0.5;
+            }
+        }
+    }
+
+    std::cout << "\n";
+    std::cout << makeBold("Max difference: ") << maxDif << std::endl;
+    std::cout << makeBold("Total difference: ") << totalDifference << std::endl;
+    double avgDif = totalDifference / numberOfPipes;
+    std::cout << makeBold("Average difference: ") << totalDifference << " / 42 (number of pipes) ≈ " << avgDif << std::endl;
+
+    double totalSquaredDif = 0;
+
+    for (auto v : bsmGraph.getVertexSet()) {
+        for (auto e : v->getAdj()) {
+            if (e->getOrig()->getInfo().getNumber() != 0 && e->getDest()->getInfo().getNumber() != 0) {
+                double squaredDif = pow((e->getWeight() - e->getFlow() - avgDif), 2);
+                totalSquaredDif += squaredDif;
+            }
+        }
+    }
+
+    std::cout << makeBold("Variance: ") << totalSquaredDif / numberOfPipes << std::endl;
 }

@@ -23,12 +23,12 @@ public:
     void resetBSMGraph();
     void edmondsKarp();
     double getTotalMaxFlow();
-    double getFlowToCity(Code cityCode);
+
+    double getFlowToCity(const Code& cityCode);
     std::map<int,double> getCitiesFlow();
 
     int removeReservoir(Code reservoirCode);
     int removePumpingStation(Code stationCode);
-
 };
 
 
