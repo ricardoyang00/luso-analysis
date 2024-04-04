@@ -124,36 +124,10 @@ void Menu::removeReservoir() {
         cerr << "Error: Couldn't run removeReservoir of BSM" << endl;
         return;
     }
-
     newCitiesFlow = bsm.getCitiesFlow(); //after compile the removeReservoir
 
-    vector<pair<City,double>> affectedCities;
-    for (auto cityOld : oldCitiesFlow) {
-        int cityCodeNumber = cityOld.first;
-        double oldFlow = cityOld.second;
-        double newFlow = newCitiesFlow[cityCodeNumber];
-
-        if (oldFlow > newFlow) {
-            auto cityObj = parser.getDataContainer().getCityHashTable().find(cityCodeNumber)->second;
-            affectedCities.emplace_back(cityObj,oldFlow);
-        }
-    }
-
     cout << "New Total Max Flow: " << bsm.getTotalMaxFlow() << endl;
-    cout << "CITIES AFFECTED: \"< [code] name (new-flow/demand), old-flow >\"" << endl;
-    if (affectedCities.empty()) {
-        cout << "     --" << endl;
-        return;
-    }
-    int i = 1;
-    for (const auto& pair : affectedCities) {
-        auto city = pair.first;
-        auto oldFlow = pair.second;
-        cout << "    " << i++ << ". [" << city.getCode().getCompleteCode() << "] "
-        << city.getName() << " (" << bsm.getFlowToCity(city.getCode())
-        << "/" << city.getDemand() << "), " << oldFlow << endl;
-    }
-
+    printAffectedCities(oldCitiesFlow, newCitiesFlow);
     bsm.resetBSMGraph();
 }
 
@@ -172,9 +146,14 @@ void Menu::removePumpingStation() {
         cerr << "Error: Couldn't run removePumpingStation of BSM" << endl;
         return;
     }
-
     newCitiesFlow = bsm.getCitiesFlow();
 
+    cout << "New Total Max Flow: " << bsm.getTotalMaxFlow() << endl;
+    printAffectedCities(oldCitiesFlow, newCitiesFlow);
+    bsm.resetBSMGraph();
+}
+
+void Menu::printAffectedCities(map<int,double> oldCitiesFlow, map<int,double> newCitiesFlow) {
     vector<pair<City,double>> affectedCities;
     for (auto cityOld : oldCitiesFlow) {
         int cityCodeNumber = cityOld.first;
@@ -187,7 +166,7 @@ void Menu::removePumpingStation() {
         }
     }
 
-    cout << "New Total Max Flow: " << bsm.getTotalMaxFlow() << endl;
+
     cout << "CITIES AFFECTED: \"< [code] name (new-flow/demand), old-flow >\"" << endl;
     if (affectedCities.empty()) {
         cout << "     --" << endl;
@@ -201,6 +180,4 @@ void Menu::removePumpingStation() {
              << city.getName() << " (" << bsm.getFlowToCity(city.getCode())
              << "/" << city.getDemand() << "), " << oldFlow << endl;
     }
-
-    bsm.resetBSMGraph();
 }
