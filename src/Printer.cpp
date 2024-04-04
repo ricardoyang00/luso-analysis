@@ -194,7 +194,7 @@ void printEachPipeInitialMetrics(const Graph<Code>& bsmGraph) {
     cout << makeBold("Max difference: ") << maxDif << endl;
     cout << makeBold("Total difference: ") << totalDifference << endl;
     double avgDif = totalDifference / numberOfPipes;
-    cout << makeBold("Average difference: ") << totalDifference << " / 42 (number of pipes) ≈ " << avgDif << endl;
+    cout << makeBold("Average difference: ") << totalDifference << " / " << numberOfPipes << " (number of pipes) ≈ " << avgDif << endl;
 
     double totalSquaredDif = 0;
 
