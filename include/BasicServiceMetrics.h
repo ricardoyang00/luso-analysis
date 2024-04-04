@@ -14,6 +14,9 @@ private:
     static double findBottleNeckValue(Vertex<Code>* s, Vertex<Code>* t);
     static void augmentFlowAlongPath(Vertex<Code>* s, Vertex<Code>* t, double bnValue);
 
+    bool findDecreasingPath(Vertex<Code>* s, Vertex<Code>* t);
+    static void decreasingFlowAlongPath(Vertex<Code>* s, Vertex<Code>* t, double bnValue);
+
 public:
     BasicServiceMetrics(const Graph<Code>& codeGraph, const DataContainer& dataContainer);
     Graph<Code>& getBSMGraph();
@@ -27,6 +30,8 @@ public:
     void removeReservoir(const Code& reservoirCode);
     void removePumpingStation(const Code& stationCode);
     void removePipes(std::vector<std::pair<Code,Code>> pipeCodes);
+
+    void dfsVisit(Vertex<Code>* node, Code reservoirCode);
 };
 
 

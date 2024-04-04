@@ -136,9 +136,16 @@ void BasicServiceMetrics::removeReservoir(const Code& reservoirCode) {
         return;
     }
 
+    dfsVisit(reservoir, reservoirCode);
+
+    auto t = codeGraphCopy.findVertex(Code("C_0"));
+    while (findAugmentingPath(reservoir, t)) {
+        double bnValue = findBottleNeckValue(reservoir, t);
+        augmentFlowAlongPath(reservoir, t, bnValue);
+    }
+
     codeGraphCopy.removeVertex(reservoirCode);
 
-    edmondsKarp();
 }
 
 void BasicServiceMetrics::removePumpingStation(const Code& stationCode) {
@@ -184,4 +191,41 @@ map<int,double> BasicServiceMetrics::getCitiesFlow() {
     }
 
     return citiesFlow;
+}
+
+double flow = INF;
+bool stillRemains = false;
+
+void BasicServiceMetrics::dfsVisit(Vertex<Code> *v, Code reservoirCode) {
+    if (!stillRemains && flow == 0) {
+        flow = INF;
+        return;
+    }
+
+    v->setVisited(true);
+
+    for (auto & e : v->getAdj()) {
+        if (v->getInfo() == reservoirCode) {
+            flow = e->getFlow();
+            stillRemains = true;
+        } else {
+            double newFlow = e->getFlow() - flow;
+            if (newFlow <= 0) {
+                stillRemains = true;
+                flow = flow - e->getFlow();
+                newFlow = 0;
+                e->setFlow(0);
+            } else {
+                e->setFlow(newFlow);
+                flow = 0;
+                stillRemains = false;
+                return;
+            }
+
+        }
+        auto w = e->getDest();
+        if (!w->isVisited()) {
+            dfsVisit(w,reservoirCode);
+        }
+    }
 }
