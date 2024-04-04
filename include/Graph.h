@@ -43,6 +43,8 @@ public:
     bool removeEdge(T in);
     void removeOutgoingEdges();
 
+    Vertex* getPrevious() const;
+
     friend class MutablePriorityQueue<Vertex>;
 protected:
     T info;                // info node
@@ -695,6 +697,11 @@ Graph<T> deepGraphCopy (Graph<T> originalGraph){
     }
 
     return graphCopy;
+}
+
+template <class T>
+Vertex<T> *Vertex<T>::getPrevious() const {
+    return (path->getDest() == this) ? path->getOrig() : path->getDest();
 }
 
 #endif /* PROJ_DA_01_GRAPH */

@@ -17,6 +17,8 @@ private:
     bool findDecreasingPath(Vertex<Code>* s, Vertex<Code>* t);
     static void decreasingFlowAlongPath(Vertex<Code>* s, Vertex<Code>* t, double bnValue);
 
+    void reduceFlow(Vertex<Code> *src, Vertex<Code> *dst, double limit);
+
 public:
     BasicServiceMetrics(const Graph<Code>& codeGraph, const DataContainer& dataContainer);
     Graph<Code>& getBSMGraph();

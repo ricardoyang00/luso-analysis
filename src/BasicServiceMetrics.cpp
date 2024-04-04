@@ -135,14 +135,18 @@ void BasicServiceMetrics::removeReservoir(const Code& reservoirCode) {
         cout << "Error: Couldn't find " << reservoirCode.getCompleteCode() << endl;
         return;
     }
-
+/*
     dfsVisit(reservoir, reservoirCode);
 
     auto t = codeGraphCopy.findVertex(Code("C_0"));
     while (findAugmentingPath(reservoir, t)) {
         double bnValue = findBottleNeckValue(reservoir, t);
         augmentFlowAlongPath(reservoir, t, bnValue);
-    }
+    }*/
+    auto s = codeGraphCopy.findVertex(Code("R_0"));
+    auto t = codeGraphCopy.findVertex(Code("C_0"));
+    reduceFlow(s, reservoir, INF);
+    reduceFlow(reservoir, t, INF);
 
     codeGraphCopy.removeVertex(reservoirCode);
 
@@ -228,4 +232,39 @@ void BasicServiceMetrics::dfsVisit(Vertex<Code> *v, Code reservoirCode) {
             dfsVisit(w,reservoirCode);
         }
     }
+}
+
+void BasicServiceMetrics::reduceFlow(Vertex<Code> *src, Vertex<Code> *dst, double limit) {
+    reduceFlowLoop:
+    for (auto v : codeGraphCopy.getVertexSet()) {
+        v->setVisited(false);
+    }
+    src->setVisited(true);
+
+    std::queue<Vertex<Code> *> q;
+    q.push(src);
+
+    while (!q.empty()) { // BFS
+        Vertex<Code> *v = q.front();
+        q.pop();
+
+        for (Edge<Code> *e: v->getAdj()) {
+            Vertex<Code> *d = e->getDest();
+            if (!d->isVisited() && e->getFlow() > 0) {
+                d->setPath(e);
+                if (d != dst) {
+                    d->setVisited(true);
+                    q.push(d);
+                } else {
+                    double min = limit;
+                    for (Vertex<Code> *aux = dst; aux != src; aux = aux->getPrevious())
+                        min = std::min(min, aux->getPath()->getFlow());
+                    for (Vertex<Code> *aux = dst; aux != src; aux = aux->getPrevious())
+                        aux->getPath()->setFlow(aux->getPath()->getFlow() - min);
+                    limit -= min;
+                    goto reduceFlowLoop;
+                }
+            }
+        }
+    } // BFS
 }
