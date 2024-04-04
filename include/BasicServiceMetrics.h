@@ -24,8 +24,9 @@ public:
     double getFlowToCity(const Code& cityCode);
     std::map<int,double> getCitiesFlow();
 
-    int removeReservoir(const Code& reservoirCode);
-    int removePumpingStation(const Code& stationCode);
+    void removeReservoir(const Code& reservoirCode);
+    void removePumpingStation(const Code& stationCode);
+    void removePipes(std::vector<std::pair<Code,Code>> pipeCodes);
 };
 
 

@@ -129,30 +129,48 @@ double BasicServiceMetrics::getFlowToCity(const Code& cityCode) {
     return flow;
 }
 
-int BasicServiceMetrics::removeReservoir(const Code& reservoirCode) {
+void BasicServiceMetrics::removeReservoir(const Code& reservoirCode) {
     auto reservoir = codeGraphCopy.findVertex(reservoirCode);
     if (reservoir == nullptr) {
-        cout << reservoirCode.getCompleteCode() << endl;
-        throw logic_error("Couldn't find reservoir (function removeReservoir)");
+        cout << "Error: Couldn't find " << reservoirCode.getCompleteCode() << endl;
+        return;
     }
 
     codeGraphCopy.removeVertex(reservoirCode);
 
     edmondsKarp();
-    return 0;
 }
 
-int BasicServiceMetrics::removePumpingStation(const Code& stationCode) {
+void BasicServiceMetrics::removePumpingStation(const Code& stationCode) {
     auto reservoir = codeGraphCopy.findVertex(stationCode);
     if (reservoir == nullptr) {
-        cout << stationCode.getCompleteCode() << endl;
-        throw logic_error("Couldn't find pumping station (function removePumpingStation)");
+        cout << "Error: Couldn't find " << stationCode.getCompleteCode() << endl;
+        return;
     }
 
     codeGraphCopy.removeVertex(stationCode);
 
     edmondsKarp();
-    return 0;
+}
+
+void BasicServiceMetrics::removePipes(vector<pair<Code,Code>> pipeCodes) {
+    for (auto pair : pipeCodes) {
+        auto sourcePipe = codeGraphCopy.findVertex(pair.first);
+        auto targetPipe = codeGraphCopy.findVertex(pair.second);
+        if (sourcePipe == nullptr) {
+            cout << "Error: Couldn't find " << pair.first.getCompleteCode() << endl;
+            continue;
+        }
+        if (targetPipe == nullptr) {
+            cout << "Error: Coudln't find " << pair.second.getCompleteCode() << endl;
+            continue;
+        }
+
+        codeGraphCopy.removeEdge(pair.first,pair.second);
+        codeGraphCopy.removeEdge(pair.second,pair.first);
+    }
+
+    edmondsKarp();
 }
 
 map<int,double> BasicServiceMetrics::getCitiesFlow() {

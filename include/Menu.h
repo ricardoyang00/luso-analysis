@@ -23,6 +23,7 @@ private:
     void printAffectedCities(std::map<int,double> oldCitiesFlow, std::map<int,double> newCitiesFlow);
     void removeReservoir();
     void removePumpingStation();
+    void removePipes();
 
 public:
     Menu();

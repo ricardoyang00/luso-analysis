@@ -14,6 +14,7 @@ Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV), bsm(parse
             makeBold("[3] Print Each Pipe Flow Difference"),
             makeBold("[4] Remove Reservoir"),
             makeBold("[5] Remove Pumping Station"),
+            makeBold("[6] Remove Pipes"),
             makeBold("[9] Export Data Container"),
             makeBold("[0] EXIT")
     };
@@ -88,6 +89,10 @@ int Menu::run() {
                 clearScreen();
                 removePumpingStation();
                 break;
+            case 6:
+                clearScreen();
+                removePipes();
+                break;
             case 9:     // export data container
                 printAllDataContainer();
                 break;
@@ -113,6 +118,7 @@ void Menu::removeReservoir() {
     int codeNumber;
     if (inputParser(codeNumber, "Enter the Reservoir ID number (eg. R_9, enter 9): ")) {
         cout << "ERROR: Couldn't find Reservoir" << endl;
+        return;
     }
 
     Code reservoirCode("R_" + to_string(codeNumber));
@@ -120,10 +126,7 @@ void Menu::removeReservoir() {
     map<int,double> oldCitiesFlow = bsm.getCitiesFlow();
     map<int,double> newCitiesFlow;
 
-    if (bsm.removeReservoir(reservoirCode)) {
-        cerr << "Error: Couldn't run removeReservoir of BSM" << endl;
-        return;
-    }
+    bsm.removeReservoir(reservoirCode);
     newCitiesFlow = bsm.getCitiesFlow(); //after compile the removeReservoir
 
     cout << "New Total Max Flow: " << bsm.getTotalMaxFlow() << endl;
@@ -135,6 +138,7 @@ void Menu::removePumpingStation() {
     int codeNumber;
     if (inputParser(codeNumber, "Enter the Pumping Station ID number (eg. PS_9, enter 9): ")) {
         cout << "ERROR: Couldn't find Pumping Station" << endl;
+        return;
     }
 
     Code stationCode("PS_" + to_string(codeNumber));
@@ -142,15 +146,86 @@ void Menu::removePumpingStation() {
     map<int,double> oldCitiesFlow = bsm.getCitiesFlow();
     map<int,double> newCitiesFlow;
 
-    if (bsm.removePumpingStation(stationCode)) {
-        cerr << "Error: Couldn't run removePumpingStation of BSM" << endl;
-        return;
-    }
+    bsm.removePumpingStation(stationCode);
     newCitiesFlow = bsm.getCitiesFlow();
 
     cout << "New Total Max Flow: " << bsm.getTotalMaxFlow() << endl;
     printAffectedCities(oldCitiesFlow, newCitiesFlow);
     bsm.resetBSMGraph();
+}
+
+void Menu::removePipes() {
+    vector<pair<Code,Code>> codePipes; // pair of pipe (can be any direction)
+
+    while (true) {
+        clearScreen();
+
+        int codeNumber;
+        int typeChoice;
+
+        string type;
+
+        cout << "Pipe from: " << makeBold("⚠\uFE0F[Enter 0 to finish the input]⚠\uFE0F") << endl;
+        cout << "  1. [R] Reservoir \n  2. [PS] Pumping Station \n  3. [C] City \n" << endl;
+        if (inputParser(typeChoice, "Your choice type: ")) {
+            cout << "Error: Invalid choice" << endl;
+            continue;
+        }
+
+        if (typeChoice == 0) break;
+
+        if (typeChoice == 1) type = "R_";
+        else if (typeChoice == 2) type = "PS_";
+        else if (typeChoice == 3) type = "C_";
+        else {
+            cout << "Error: Invalid choice" << endl;
+            continue;
+        }
+
+        if (inputParser(codeNumber, "Enter the ID number (eg. PS_9, enter 9): ")) {
+            cout << "ERROR: Couldn't find this ID number" << endl;
+            continue;
+        }
+
+        Code fromCode(type + to_string(codeNumber));
+
+        cout << "Pipe To: " << endl;
+        cout << "  1. [R] Reservoir \n  2. [PS] Pumping Station \n  3. [C] City \n" << endl;
+        if (inputParser(typeChoice, "Your choice type: ")) {
+            cout << "Error: Invalid choice" << endl;
+            continue;
+        }
+
+        if (typeChoice == 1) type = "R_";
+        else if (typeChoice == 2) type = "PS_";
+        else if (typeChoice == 3) type = "C_";
+        else {
+            cout << "Error: Invalid choice" << endl;
+            continue;
+        }
+
+        if (inputParser(codeNumber, "Enter the ID number (eg. PS_9, enter 9): ")) {
+            cout << "ERROR: Couldn't find this ID number" << endl;
+            continue;
+        }
+
+        Code toCode(type + to_string(codeNumber));
+
+        codePipes.emplace_back(fromCode, toCode);
+    }
+
+    if (!codePipes.empty()) {
+        map<int,double> oldCitiesFlow = bsm.getCitiesFlow();
+        map<int,double> newCitiesFlow;
+
+        bsm.removePipes(codePipes);
+        newCitiesFlow = bsm.getCitiesFlow();
+
+        cout << "New Total Max Flow: " << bsm.getTotalMaxFlow() << endl;
+        printAffectedCities(oldCitiesFlow, newCitiesFlow);
+
+        bsm.resetBSMGraph();
+    }
 }
 
 void Menu::printAffectedCities(map<int,double> oldCitiesFlow, map<int,double> newCitiesFlow) {
@@ -169,7 +244,7 @@ void Menu::printAffectedCities(map<int,double> oldCitiesFlow, map<int,double> ne
 
     cout << "CITIES AFFECTED: \"< [code] name (new-flow/demand), old-flow >\"" << endl;
     if (affectedCities.empty()) {
-        cout << "     --" << endl;
+        cout << "     ---" << endl;
         return;
     }
     int i = 1;
