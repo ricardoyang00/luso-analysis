@@ -62,7 +62,7 @@ int Menu::run() {
         printMenu();
 
         int choice;
-        if (inputParser(choice, "Enter your choice: ")) return 1;
+        if (inputParser(choice, "Enter your choice: ")) continue;
 
         clearScreen();
         switch (choice) {
