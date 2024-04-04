@@ -222,5 +222,7 @@ void printEachPipeInitialMetrics(const Graph<Code>& bsmGraph) {
         }
     }
 
-    cout << makeBold("Variance: ") << totalSquaredDif / numberOfPipes << endl;
+    auto variance = static_cast<long long>(totalSquaredDif / numberOfPipes);
+
+    cout << makeBold("Variance: ") << variance << endl;
 }
