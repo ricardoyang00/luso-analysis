@@ -4,25 +4,27 @@
 #include <cmath>
 #include <limits>
 
+#define ALPHABET "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+
 using namespace std;
 
 // Function to export reservoir data to a text file
-void exportReservoirData(const std::string& filename, const DataContainer& dataContainer) {
-    std::ofstream file(filename);
+void exportReservoirData(const string& filename, const DataContainer& dataContainer) {
+    ofstream file(filename);
     if (!file.is_open()) {
-        std::cerr << "Error: Unable to open file " << filename << " for writing!" << std::endl;
+        cerr << "Error: Unable to open file " << filename << " for writing!" << endl;
         return;
     }
 
     for (const auto& entry : dataContainer.getReservoirHashTable()) {
         const Reservoir& reservoir = entry.second;
-        file << ">> RESERVOIR INFORMATION" << std::endl;
-        file << "           Name: " << reservoir.getName() << std::endl;
-        file << "   Municipality: " << reservoir.getMunicipality() << std::endl;
-        file << "             ID: " << reservoir.getId() << std::endl;
-        file << "           Code: " << reservoir.getCode().getCompleteCode() << std::endl;
-        file << "   Max Delivery: " << reservoir.getMaxDelivery() << std::endl;
-        file << std::endl;
+        file << ">> RESERVOIR INFORMATION" << endl;
+        file << "           Name: " << reservoir.getName() << endl;
+        file << "   Municipality: " << reservoir.getMunicipality() << endl;
+        file << "             ID: " << reservoir.getId() << endl;
+        file << "           Code: " << reservoir.getCode().getCompleteCode() << endl;
+        file << "   Max Delivery: " << reservoir.getMaxDelivery() << endl;
+        file << endl;
     }
 
     cout << "Successful: Exported to " + filename << endl;
@@ -30,19 +32,19 @@ void exportReservoirData(const std::string& filename, const DataContainer& dataC
 }
 
 // Function to export station data to a text file
-void exportStationData(const std::string& filename, const DataContainer& dataContainer) {
-    std::ofstream file(filename);
+void exportStationData(const string& filename, const DataContainer& dataContainer) {
+    ofstream file(filename);
     if (!file.is_open()) {
-        std::cerr << "Error: Unable to open file " << filename << " for writing!" << std::endl;
+        cerr << "Error: Unable to open file " << filename << " for writing!" << endl;
         return;
     }
 
     for (const auto& entry : dataContainer.getStationHashTable()) {
         const Station& station = entry.second;
-        file << ">> STATION INFORMATION" << std::endl;
-        file << "         ID: " << station.getId() << std::endl;
-        file << "       Code: " << station.getCode().getCompleteCode() << std::endl;
-        file << std::endl;
+        file << ">> STATION INFORMATION" << endl;
+        file << "         ID: " << station.getId() << endl;
+        file << "       Code: " << station.getCode().getCompleteCode() << endl;
+        file << endl;
     }
 
     cout << "Successful: Exported to " + filename << endl;
@@ -50,22 +52,22 @@ void exportStationData(const std::string& filename, const DataContainer& dataCon
 }
 
 // Function to export city data to a text file
-void exportCityData(const std::string& filename, const DataContainer& dataContainer) {
-    std::ofstream file(filename);
+void exportCityData(const string& filename, const DataContainer& dataContainer) {
+    ofstream file(filename);
     if (!file.is_open()) {
-        std::cerr << "Error: Unable to open file " << filename << " for writing!" << std::endl;
+        cerr << "Error: Unable to open file " << filename << " for writing!" << endl;
         return;
     }
 
     for (const auto& entry : dataContainer.getCityHashTable()) {
         const City& city = entry.second;
-        file << ">> CITY INFORMATION" << std::endl;
-        file << "         City: " << city.getName() << std::endl;
-        file << "           ID: " << city.getId() << std::endl;
-        file << "         Code: " << city.getCode().getCompleteCode() << std::endl;
-        file << "       Demand: " << city.getDemand() << std::endl;
-        file << "   Population: " << city.getPopulation() << std::endl;
-        file << std::endl;
+        file << ">> CITY INFORMATION" << endl;
+        file << "         City: " << city.getName() << endl;
+        file << "           ID: " << city.getId() << endl;
+        file << "         Code: " << city.getCode().getCompleteCode() << endl;
+        file << "       Demand: " << city.getDemand() << endl;
+        file << "   Population: " << city.getPopulation() << endl;
+        file << endl;
     }
 
     cout << "Successful: Exported to " + filename << endl;
@@ -73,26 +75,26 @@ void exportCityData(const std::string& filename, const DataContainer& dataContai
 }
 
 void printHeader() {
-    std::cout << std::left << std::setw(20) << "Name" << "|    ";
-    std::cout << std::setw(8) << "Code" << "|    ";
-    std::cout << std::setw(10) << "Max Flow" << std::endl;
+    cout << left << setw(20) << "Name" << "|    ";
+    cout << setw(8) << "Code" << "|    ";
+    cout << setw(10) << "Max Flow" << endl;
 
-    std::cout << std::setfill('-') << std::setw(20) << "" << "|";
-    std::cout << std::setw(12) << "" << "|";
-    std::cout << std::setw(14) << "" << std::setfill(' ') << std::endl;
+    cout << setfill('-') << setw(20) << "" << "|";
+    cout << setw(12) << "" << "|";
+    cout << setw(14) << "" << setfill(' ') << endl;
 }
 
-void printCityMaxFlow(const std::string& name, const std::string& code, const double& maxFlow) {
-    int nameWidth = (name.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ") != std::string::npos) ? 21 : 20;
-    std::cout << std::setw(nameWidth) << name << "|    ";
-    std::cout << std::setw(8) << code << "|    ";
-    std::cout << std::setw(10) << maxFlow << std::endl;
+void printCityMaxFlow(const string& name, const string& code, const double& maxFlow) {
+    int nameWidth = (name.find_first_not_of(ALPHABET) != string::npos) ? 21 : 20;
+    cout << setw(nameWidth) << name << "|    ";
+    cout << setw(8) << code << "|    ";
+    cout << setw(10) << maxFlow << endl;
 }
 
 void printEachCityMaxFlow(const Graph<Code>& bsmGraph, const DataContainer& dataContainer) {
     Vertex<Code>* superSink = bsmGraph.findVertex(Code("C_0"));
     if (superSink == nullptr) {
-        throw std::logic_error("Couldn't find super sink C_0");
+        throw logic_error("Couldn't find super sink C_0");
     }
 
     auto cTable = dataContainer.getCityHashTable();
@@ -109,7 +111,7 @@ void printEachCityMaxFlow(const Graph<Code>& bsmGraph, const DataContainer& data
 void printSpecificCityMaxFlow(const Graph<Code>& bsmGraph, const DataContainer& dataContainer, const Code& city) {
     Vertex<Code>* superSink = bsmGraph.findVertex(Code("C_0"));
     if (superSink == nullptr) {
-        throw std::logic_error("Couldn't find super sink C_0");
+        throw logic_error("Couldn't find super sink C_0");
     }
 
     auto cTable = dataContainer.getCityHashTable();
@@ -123,39 +125,39 @@ void printSpecificCityMaxFlow(const Graph<Code>& bsmGraph, const DataContainer& 
             return;
         }
     }
-    throw std::logic_error("Invalid city chosen");
+    throw logic_error("Invalid city chosen");
 }
 
 void printCitiesWithWaterFlowDeficit(const Graph<Code>& bsmGraph, const DataContainer& dataContainer) {
     Vertex<Code>* superSink = bsmGraph.findVertex(Code("C_0"));
     if (superSink == nullptr) {
-        throw std::logic_error("Couldn't find super sink C_0");
+        throw logic_error("Couldn't find super sink C_0");
     }
 
     auto cTable = dataContainer.getCityHashTable();
-    std::cout << std::left << std::setw(20) << "Name" << "|    ";
-    std::cout << std::setw(8) << "Code" << "|    ";
-    std::cout << std::setw(10) << "Deficit" << "|    ";
-    std::cout << std::setw(10) << "Max Flow" << "|    ";
-    std::cout << std::setw(10) << "Demand" << std::endl;
+    cout << left << setw(20) << "Name" << "|    ";
+    cout << setw(8) << "Code" << "|    ";
+    cout << setw(10) << "Deficit" << "|    ";
+    cout << setw(10) << "Max Flow" << "|    ";
+    cout << setw(10) << "Demand" << endl;
 
-    std::cout << std::setfill('-') << std::setw(20) << "" << "|";
-    std::cout << std::setw(12) << "" << "|";
-    std::cout << std::setw(14) << "" << "|";
-    std::cout << std::setw(14) << "" << "|";
-    std::cout << std::setw(14) << "" << std::setfill(' ') << std::endl;
+    cout << setfill('-') << setw(20) << "" << "|";
+    cout << setw(12) << "" << "|";
+    cout << setw(14) << "" << "|";
+    cout << setw(14) << "" << "|";
+    cout << setw(14) << "" << setfill(' ') << endl;
 
     for (const auto& edge : superSink->getIncoming()) {
         auto cityVertex = edge->getOrig()->getInfo();
         auto c = cTable.find(cityVertex.getNumber())->second;
         if (edge->getFlow() < c.getDemand()) {
             double dif = c.getDemand() - edge->getFlow();
-            int nameWidth = (c.getName().find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ") != std::string::npos) ? 21 : 20;
-            std::cout << std::setw(nameWidth) << c.getName() << "|    ";
-            std::cout << std::setw(8) << cityVertex.getCompleteCode() << "|    ";
-            std::cout << std::setw(10) << dif << "|    ";
-            std::cout << std::setw(10) << edge->getFlow() << "|    ";
-            std::cout << std::setw(10) << c.getDemand() << std::endl;
+            int nameWidth = (c.getName().find_first_not_of(ALPHABET) != string::npos) ? 21 : 20;
+            cout << setw(nameWidth) << c.getName() << "|    ";
+            cout << setw(8) << cityVertex.getCompleteCode() << "|    ";
+            cout << setw(10) << dif << "|    ";
+            cout << setw(10) << edge->getFlow() << "|    ";
+            cout << setw(10) << c.getDemand() << endl;
         }
     }
 }
@@ -163,23 +165,23 @@ void printCitiesWithWaterFlowDeficit(const Graph<Code>& bsmGraph, const DataCont
 void printEachPipeInitialMetrics(const Graph<Code>& bsmGraph) {
     double totalDifference = 0;
     double numberOfPipes = 0;
-    double maxDif = std::numeric_limits<double>::min();
+    double maxDif = numeric_limits<double>::min();
 
-    std::cout << std::left << std::setw(5) << "Orig";
-    std::cout << std::setw(5) << " -> ";
-    std::cout << std::setw(5) << "Dest ";
-    std::cout << std::setw(10) << " Difference" << std::endl;
+    cout << left << setw(5) << "Orig";
+    cout << setw(5) << " -> ";
+    cout << setw(5) << "Dest ";
+    cout << setw(10) << " Difference" << endl;
 
-    std::cout << "---------------------------" << std::endl;
+    cout << "---------------------------" << endl;
 
     for (auto v : bsmGraph.getVertexSet()) {
         for (auto e : v->getAdj()) {
             if (e->getOrig()->getInfo().getNumber() != 0 && e->getDest()->getInfo().getNumber() != 0) {
                 double dif = e->getWeight() - e->getFlow();
-                std::cout << std::setw(5) << e->getOrig()->getInfo().getCompleteCode();
-                std::cout << std::setw(5) << " -> ";
-                std::cout << std::setw(5) << e->getDest()->getInfo().getCompleteCode() << "    ";
-                std::cout << std::setw(10) << dif << std::endl;
+                cout << setw(5) << e->getOrig()->getInfo().getCompleteCode();
+                cout << setw(5) << " -> ";
+                cout << setw(5) << e->getDest()->getInfo().getCompleteCode() << "    ";
+                cout << setw(10) << dif << endl;
                 totalDifference += dif;
                 if (dif > maxDif) maxDif = dif;
                 if (e->getReverse() == nullptr) numberOfPipes++;
@@ -188,11 +190,11 @@ void printEachPipeInitialMetrics(const Graph<Code>& bsmGraph) {
         }
     }
 
-    std::cout << "\n";
-    std::cout << makeBold("Max difference: ") << maxDif << std::endl;
-    std::cout << makeBold("Total difference: ") << totalDifference << std::endl;
+    cout << "\n";
+    cout << makeBold("Max difference: ") << maxDif << endl;
+    cout << makeBold("Total difference: ") << totalDifference << endl;
     double avgDif = totalDifference / numberOfPipes;
-    std::cout << makeBold("Average difference: ") << totalDifference << " / 42 (number of pipes) ≈ " << avgDif << std::endl;
+    cout << makeBold("Average difference: ") << totalDifference << " / 42 (number of pipes) ≈ " << avgDif << endl;
 
     double totalSquaredDif = 0;
 
@@ -205,5 +207,5 @@ void printEachPipeInitialMetrics(const Graph<Code>& bsmGraph) {
         }
     }
 
-    std::cout << makeBold("Variance: ") << totalSquaredDif / numberOfPipes << std::endl;
+    cout << makeBold("Variance: ") << totalSquaredDif / numberOfPipes << endl;
 }
