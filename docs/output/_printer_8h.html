@@ -187,8 +187,8 @@ Functions</h2></td></tr>
 <tr class="memitem:ae2d98a95c78646c81796a1436dd38f72" id="r_ae2d98a95c78646c81796a1436dd38f72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2d98a95c78646c81796a1436dd38f72">printEachPipeInitialMetrics</a> (<a class="el" href="class_edge.html">const</a> <a class="el" href="class_graph.html">Graph</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; &amp;<a class="el" href="class_edge.html">bsmGraph</a>)</td></tr>
 <tr class="memdesc:ae2d98a95c78646c81796a1436dd38f72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print initial metrics for each pipe in the water distribution system.  <br /></td></tr>
 <tr class="separator:ae2d98a95c78646c81796a1436dd38f72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6026554ab70ea6e717459f24890390d8" id="r_a6026554ab70ea6e717459f24890390d8"><td class="memItemLeft" align="right" valign="top"><a id="a6026554ab70ea6e717459f24890390d8" name="a6026554ab70ea6e717459f24890390d8"></a>
-<a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>exportCriticalPipesForEachCity</b> (<a class="el" href="class_edge.html">const</a> std::string &amp;<a class="el" href="class_edge.html">pathName</a>, <a class="el" href="class_edge.html">const</a> std::map&lt; <a class="el" href="class_edge.html">int</a>, std::vector&lt; std::pair&lt; <a class="el" href="class_code.html">Code</a>, <a class="el" href="class_code.html">Code</a> &gt; &gt; &gt; &amp;criticalPipes, <a class="el" href="class_edge.html">const</a> <a class="el" href="class_data_container.html">DataContainer</a> &amp;dataContainer)</td></tr>
+<tr class="memitem:a6026554ab70ea6e717459f24890390d8" id="r_a6026554ab70ea6e717459f24890390d8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6026554ab70ea6e717459f24890390d8">exportCriticalPipesForEachCity</a> (<a class="el" href="class_edge.html">const</a> std::string &amp;<a class="el" href="class_edge.html">pathName</a>, <a class="el" href="class_edge.html">const</a> std::map&lt; <a class="el" href="class_edge.html">int</a>, std::vector&lt; std::pair&lt; <a class="el" href="class_code.html">Code</a>, <a class="el" href="class_code.html">Code</a> &gt; &gt; &gt; &amp;criticalPipes, <a class="el" href="class_edge.html">const</a> <a class="el" href="class_data_container.html">DataContainer</a> &amp;dataContainer)</td></tr>
+<tr class="memdesc:a6026554ab70ea6e717459f24890390d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Export critical pipes for each city in the water distribution system to a text file.  <br /></td></tr>
 <tr class="separator:a6026554ab70ea6e717459f24890390d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -256,6 +256,42 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">filename</td><td>The name of the file to export data to. </td></tr>
     <tr><td class="paramname">dataContainer</td><td>The container holding the graph data. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6026554ab70ea6e717459f24890390d8" name="a6026554ab70ea6e717459f24890390d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6026554ab70ea6e717459f24890390d8">&#9670;&#160;</a></span>exportCriticalPipesForEachCity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">void</a> exportCriticalPipesForEachCity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_edge.html">const</a> std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>pathName</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_edge.html">const</a> std::map&lt; <a class="el" href="class_edge.html">int</a>, std::vector&lt; std::pair&lt; <a class="el" href="class_code.html">Code</a>, <a class="el" href="class_code.html">Code</a> &gt; &gt; &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>criticalPipes</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_edge.html">const</a> <a class="el" href="class_data_container.html">DataContainer</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>dataContainer</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Export critical pipes for each city in the water distribution system to a text file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pathName</td><td>The name of the file to export the data to. </td></tr>
+    <tr><td class="paramname">criticalPipes</td><td>The data of the critical pipes per city. </td></tr>
+    <tr><td class="paramname">dataContainer</td><td>The container holding the cities data. </td></tr>
   </table>
   </dd>
 </dl>

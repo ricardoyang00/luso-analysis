@@ -13,5 +13,6 @@ var searchData=
   ['codegraphcopy_10',['codeGraphCopy',['../class_basic_service_metrics.html#a8c4c5e218d14cd129d2172a78a47215a',1,'BasicServiceMetrics']]],
   ['codetype_11',['CodeType',['../_code_8h.html#ab44acd306b978d3d1849bf6e5e0ab7d6',1,'Code.h']]],
   ['completecode_12',['completeCode',['../class_code.html#aca6928c774d097f3872264a4a430838a',1,'Code']]],
-  ['contributors_13',['🤝 Contributors',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md8',1,'']]]
+  ['contributors_13',['🤝 Contributors',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md8',1,'']]],
+  ['criticalpipes_14',['criticalPipes',['../class_menu.html#ac3abb46061d41558c11d573b33eb7a75',1,'Menu']]]
 ];

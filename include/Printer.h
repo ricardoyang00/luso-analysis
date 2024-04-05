@@ -99,6 +99,13 @@ void printCitiesWithWaterFlowDeficit(const Graph<Code>& bsmGraph, const DataCont
  */
 void printEachPipeInitialMetrics(const Graph<Code>& bsmGraph);
 
+/**
+ * @brief Export critical pipes for each city in the water distribution system to a text file.
+ *
+ * @param pathName The name of the file to export the data to.
+ * @param criticalPipes The data of the critical pipes per city.
+ * @param dataContainer The container holding the cities data.
+ */
 void exportCriticalPipesForEachCity(const std::string& pathName, const std::map<int,std::vector<std::pair<Code,Code>>>& criticalPipes, const DataContainer& dataContainer);
 
 #endif //FEUP_DA_01_PRINTER_H

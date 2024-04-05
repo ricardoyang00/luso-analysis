@@ -85,6 +85,10 @@ private:
      */
     void removePipes();
 
+    /**
+     * @brief For each city, determine which pipelines, if ruptured would make it impossible
+     * to deliver the desired amount of water to a given city.
+     */
     void criticalPipes();
 
 public:
