@@ -18,7 +18,6 @@ add_executable(feup_da_01
         include/Station.h               src/Station.cpp
         include/Reservoir.h             src/Reservoir.cpp
         include/City.h                  src/City.cpp
-        include/Pipe.h                  src/Pipe.cpp
         include/Code.h                  src/Code.cpp
         include/Utilities.h             src/Utilities.cpp
         include/ParseData.h             src/ParseData.cpp
