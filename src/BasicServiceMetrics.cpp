@@ -159,7 +159,7 @@ void BasicServiceMetrics::removePipes(vector<pair<Code,Code>> pipeCodes) {
             continue;
         }
         if (targetPipe == nullptr) {
-            cout << "Error: Coudln't find " << pair.second.getCompleteCode() << endl;
+            cout << "Error: Couldn't find " << pair.second.getCompleteCode() << endl;
             continue;
         }
 
@@ -224,36 +224,7 @@ void BasicServiceMetrics::pumpRemainingWaterFromReservoirs() {
 }
 
 void BasicServiceMetrics::balanceFlow() {
-    map<int, double> citiesFlow = getCitiesFlow();
+    map<int, double> initialCitiesFlow = getCitiesFlow();
 
-    priority_queue<pair<double, Edge<Code>*>, vector<pair<double, Edge<Code>*>>, greater<>> pq;
 
-    removeExtraBidirectionalPipes();
-    pumpRemainingWaterFromReservoirs();
-
-    for (const auto& v : codeGraphCopy.getVertexSet()) {
-        if (v->getInfo().getNumber() != 0) {
-            for (const auto& e : v->getAdj()) {
-                double remainingCap = e->getWeight() - e->getFlow();
-                pq.emplace(remainingCap, e);
-            }
-        }
-    }
-
-    while (!pq.empty()) {
-        auto [remainingCap, edge] = pq.top();
-        pq.pop();
-
-        auto orig = edge->getOrig();
-        auto dest = edge->getDest();
-
-        for (auto adjEdge : orig->getAdj()) {
-            double adjRemCap = adjEdge->getWeight() - adjEdge->getFlow();
-            if (adjRemCap == 0) continue;
-
-            double transfer = min(remainingCap, adjRemCap);
-            edge->setFlow(edge->getFlow() + transfer);
-            adjEdge->setFlow(adjEdge->getFlow() - transfer);
-        }
-    }
 }
