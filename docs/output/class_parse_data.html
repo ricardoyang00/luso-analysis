@@ -75,6 +75,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_parse_data-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">ParseData Class Reference</div></div>
 </div><!--header-->
@@ -84,10 +86,22 @@ $(function() {
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_parse_data_8h_source.html">ParseData.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for ParseData:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_parse_data__coll__graph.png" border="0" usemap="#a_parse_data_coll__map" alt="Collaboration graph"/></div>
+<map name="a_parse_data_coll__map" id="a_parse_data_coll__map">
+<area shape="rect" title="Parses input data files and populates data structures." alt="" coords="85,94,168,120"/>
+<area shape="rect" href="class_graph.html" title=" " alt="" coords="5,5,117,31"/>
+<area shape="poly" title=" " alt="" coords="80,42,99,68,118,92,114,96,95,72,75,45"/>
+<area shape="rect" href="class_data_container.html" title="Represents a container for storing data entities." alt="" coords="140,5,246,31"/>
+<area shape="poly" title=" " alt="" coords="183,46,166,72,143,95,139,92,162,68,178,43"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a26a083fc2dc51fd18320913330b9746a" id="r_a26a083fc2dc51fd18320913330b9746a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26a083fc2dc51fd18320913330b9746a">ParseData</a> (<a class="el" href="class_edge.html">const</a> std::string &amp;reservoirCSV, <a class="el" href="class_edge.html">const</a> std::string &amp;stationsCSV, <a class="el" href="class_edge.html">const</a> std::string &amp;citiesCSV, <a class="el" href="class_edge.html">const</a> std::string &amp;pipesCSV)</td></tr>
+<tr class="memitem:a26a083fc2dc51fd18320913330b9746a" id="r_a26a083fc2dc51fd18320913330b9746a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26a083fc2dc51fd18320913330b9746a">ParseData</a> (<a class="el" href="class_edge.html">const</a> std::string &amp;<a class="el" href="#a683373519c65627bf4e61db76aaea1cd">reservoirCSV</a>, <a class="el" href="class_edge.html">const</a> std::string &amp;<a class="el" href="#a3656fa162e0e29233b27b15ddfd71065">stationsCSV</a>, <a class="el" href="class_edge.html">const</a> std::string &amp;<a class="el" href="#af05e9ad3c1dd7c816b5c2ac9dfd7e72a">citiesCSV</a>, <a class="el" href="class_edge.html">const</a> std::string &amp;<a class="el" href="#a91e91658fdd76b12f320f78ee7d85a11">pipesCSV</a>)</td></tr>
 <tr class="memdesc:a26a083fc2dc51fd18320913330b9746a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_parse_data.html" title="Parses input data files and populates data structures.">ParseData</a> object with the given input file paths.  <br /></td></tr>
 <tr class="separator:a26a083fc2dc51fd18320913330b9746a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc138eb0acc2d754c55080846836fb3b" id="r_adc138eb0acc2d754c55080846836fb3b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">const</a> <a class="el" href="class_graph.html">Graph</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc138eb0acc2d754c55080846836fb3b">getCodeGraph</a> () <a class="el" href="class_edge.html">const</a></td></tr>
@@ -96,6 +110,56 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aac397f7f3fa3d48e66dd98fa21628345" id="r_aac397f7f3fa3d48e66dd98fa21628345"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">const</a> <a class="el" href="class_data_container.html">DataContainer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac397f7f3fa3d48e66dd98fa21628345">getDataContainer</a> () <a class="el" href="class_edge.html">const</a></td></tr>
 <tr class="memdesc:aac397f7f3fa3d48e66dd98fa21628345"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the data container storing parsed data.  <br /></td></tr>
 <tr class="separator:aac397f7f3fa3d48e66dd98fa21628345"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a9fd2e5099da5e66a9fd563cce91a8cf9" id="r_a9fd2e5099da5e66a9fd563cce91a8cf9"><td class="memItemLeft" align="right" valign="top"><a id="a9fd2e5099da5e66a9fd563cce91a8cf9" name="a9fd2e5099da5e66a9fd563cce91a8cf9"></a>
+<a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>parseReservoirs</b> ()</td></tr>
+<tr class="memdesc:a9fd2e5099da5e66a9fd563cce91a8cf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses reservoir data from the reservoirs CSV file. <br /></td></tr>
+<tr class="separator:a9fd2e5099da5e66a9fd563cce91a8cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a345ab93c7ff56b1e56274216e03d5575" id="r_a345ab93c7ff56b1e56274216e03d5575"><td class="memItemLeft" align="right" valign="top"><a id="a345ab93c7ff56b1e56274216e03d5575" name="a345ab93c7ff56b1e56274216e03d5575"></a>
+<a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>parseStations</b> ()</td></tr>
+<tr class="memdesc:a345ab93c7ff56b1e56274216e03d5575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses station data from the stations CSV file. <br /></td></tr>
+<tr class="separator:a345ab93c7ff56b1e56274216e03d5575"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac50ed427a7091735ae1a5331f39c3a70" id="r_ac50ed427a7091735ae1a5331f39c3a70"><td class="memItemLeft" align="right" valign="top"><a id="ac50ed427a7091735ae1a5331f39c3a70" name="ac50ed427a7091735ae1a5331f39c3a70"></a>
+<a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>parseCities</b> ()</td></tr>
+<tr class="memdesc:ac50ed427a7091735ae1a5331f39c3a70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses city data from the cities CSV file. <br /></td></tr>
+<tr class="separator:ac50ed427a7091735ae1a5331f39c3a70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a417e21e60f37bb0ac65b20283af45bc9" id="r_a417e21e60f37bb0ac65b20283af45bc9"><td class="memItemLeft" align="right" valign="top"><a id="a417e21e60f37bb0ac65b20283af45bc9" name="a417e21e60f37bb0ac65b20283af45bc9"></a>
+<a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>parsePipes</b> ()</td></tr>
+<tr class="memdesc:a417e21e60f37bb0ac65b20283af45bc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses pipe data from the pipes CSV file. <br /></td></tr>
+<tr class="separator:a417e21e60f37bb0ac65b20283af45bc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c6966311776c41fc1247300d258cca3" id="r_a2c6966311776c41fc1247300d258cca3"><td class="memItemLeft" align="right" valign="top"><a id="a2c6966311776c41fc1247300d258cca3" name="a2c6966311776c41fc1247300d258cca3"></a>
+<a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>makeSuperSourceSinkGraph</b> ()</td></tr>
+<tr class="memdesc:a2c6966311776c41fc1247300d258cca3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a super source-sink graph representing connections between entities. <br /></td></tr>
+<tr class="separator:a2c6966311776c41fc1247300d258cca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a9101b5303d7dec94d58fd8479716311b" id="r_a9101b5303d7dec94d58fd8479716311b"><td class="memItemLeft" align="right" valign="top"><a id="a9101b5303d7dec94d58fd8479716311b" name="a9101b5303d7dec94d58fd8479716311b"></a>
+<a class="el" href="class_graph.html">Graph</a>&lt; <a class="el" href="class_code.html">Code</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>codeGraph</b></td></tr>
+<tr class="memdesc:a9101b5303d7dec94d58fd8479716311b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_graph.html" title="Represents water supply network.">Graph</a> representing connections between entities. <br /></td></tr>
+<tr class="separator:a9101b5303d7dec94d58fd8479716311b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5de353747f15ce4a32c9977e5353ae62" id="r_a5de353747f15ce4a32c9977e5353ae62"><td class="memItemLeft" align="right" valign="top"><a id="a5de353747f15ce4a32c9977e5353ae62" name="a5de353747f15ce4a32c9977e5353ae62"></a>
+<a class="el" href="class_data_container.html">DataContainer</a>&#160;</td><td class="memItemRight" valign="bottom"><b>dataContainer</b></td></tr>
+<tr class="memdesc:a5de353747f15ce4a32c9977e5353ae62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container for storing parsed data. <br /></td></tr>
+<tr class="separator:a5de353747f15ce4a32c9977e5353ae62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a683373519c65627bf4e61db76aaea1cd" id="r_a683373519c65627bf4e61db76aaea1cd"><td class="memItemLeft" align="right" valign="top"><a id="a683373519c65627bf4e61db76aaea1cd" name="a683373519c65627bf4e61db76aaea1cd"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>reservoirCSV</b></td></tr>
+<tr class="memdesc:a683373519c65627bf4e61db76aaea1cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Path to the reservoirs CSV file. <br /></td></tr>
+<tr class="separator:a683373519c65627bf4e61db76aaea1cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3656fa162e0e29233b27b15ddfd71065" id="r_a3656fa162e0e29233b27b15ddfd71065"><td class="memItemLeft" align="right" valign="top"><a id="a3656fa162e0e29233b27b15ddfd71065" name="a3656fa162e0e29233b27b15ddfd71065"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>stationsCSV</b></td></tr>
+<tr class="memdesc:a3656fa162e0e29233b27b15ddfd71065"><td class="mdescLeft">&#160;</td><td class="mdescRight">Path to the stations CSV file. <br /></td></tr>
+<tr class="separator:a3656fa162e0e29233b27b15ddfd71065"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af05e9ad3c1dd7c816b5c2ac9dfd7e72a" id="r_af05e9ad3c1dd7c816b5c2ac9dfd7e72a"><td class="memItemLeft" align="right" valign="top"><a id="af05e9ad3c1dd7c816b5c2ac9dfd7e72a" name="af05e9ad3c1dd7c816b5c2ac9dfd7e72a"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>citiesCSV</b></td></tr>
+<tr class="memdesc:af05e9ad3c1dd7c816b5c2ac9dfd7e72a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Path to the cities CSV file. <br /></td></tr>
+<tr class="separator:af05e9ad3c1dd7c816b5c2ac9dfd7e72a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91e91658fdd76b12f320f78ee7d85a11" id="r_a91e91658fdd76b12f320f78ee7d85a11"><td class="memItemLeft" align="right" valign="top"><a id="a91e91658fdd76b12f320f78ee7d85a11" name="a91e91658fdd76b12f320f78ee7d85a11"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>pipesCSV</b></td></tr>
+<tr class="memdesc:a91e91658fdd76b12f320f78ee7d85a11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Path to the cities CSV file. <br /></td></tr>
+<tr class="separator:a91e91658fdd76b12f320f78ee7d85a11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Parses input data files and populates data structures. </p>
@@ -201,8 +265,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/Users/chill-ry/Developer/Clion-Code/proj-da-01/include/<a class="el" href="_parse_data_8h_source.html">ParseData.h</a></li>
-<li>/Users/chill-ry/Developer/Clion-Code/proj-da-01/src/<b>ParseData.cpp</b></li>
+<li><a class="el" href="_parse_data_8h_source.html">ParseData.h</a></li>
+<li><b>ParseData.cpp</b></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

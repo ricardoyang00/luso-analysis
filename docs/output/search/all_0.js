@@ -4,5 +4,6 @@ var searchData=
   ['addtoreservoirhashtable_1',['addToReservoirHashTable',['../class_data_container.html#a196a010f709fa065e63d73965c1aff0f',1,'DataContainer']]],
   ['addtostationhashtable_2',['addToStationHashTable',['../class_data_container.html#a385b249fe7df2803d17a59d42a4ec55b',1,'DataContainer']]],
   ['analysis_3',['💧 LUSO ANALYSIS',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html',1,'']]],
-  ['and_20sensitivity_20to_20failures_4',['Reliability and Sensitivity to Failures',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md6',1,'']]]
+  ['and_20sensitivity_20to_20failures_4',['Reliability and Sensitivity to Failures',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md6',1,'']]],
+  ['augmentflowalongpath_5',['augmentFlowAlongPath',['../class_basic_service_metrics.html#a6066ab3644145d03d5f587f84da5da74',1,'BasicServiceMetrics']]]
 ];

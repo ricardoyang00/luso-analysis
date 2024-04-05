@@ -75,6 +75,9 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_basic_service_metrics-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BasicServiceMetrics Class Reference</div></div>
 </div><!--header-->
@@ -84,10 +87,22 @@ $(function() {
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_basic_service_metrics_8h_source.html">BasicServiceMetrics.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for BasicServiceMetrics:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_basic_service_metrics__coll__graph.png" border="0" usemap="#a_basic_service_metrics_coll__map" alt="Collaboration graph"/></div>
+<map name="a_basic_service_metrics_coll__map" id="a_basic_service_metrics_coll__map">
+<area shape="rect" title="Class for calculating basic service metrics related to water distribution." alt="" coords="58,109,200,135"/>
+<area shape="rect" href="class_graph.html" title=" " alt="" coords="5,5,117,31"/>
+<area shape="poly" title=" " alt="" coords="58,46,58,66,64,84,76,97,91,106,88,111,73,101,60,86,53,67,53,47"/>
+<area shape="rect" href="class_data_container.html" title="Represents a container for storing data entities." alt="" coords="146,5,251,31"/>
+<area shape="poly" title=" " alt="" coords="192,47,171,87,148,110,144,106,167,83,187,44"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4ad06e8027571a0653f6aa9fde55aa95" id="r_a4ad06e8027571a0653f6aa9fde55aa95"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ad06e8027571a0653f6aa9fde55aa95">BasicServiceMetrics</a> (<a class="el" href="class_edge.html">const</a> <a class="el" href="class_graph.html">Graph</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; &amp;codeGraph, <a class="el" href="class_edge.html">const</a> <a class="el" href="class_data_container.html">DataContainer</a> &amp;dataContainer)</td></tr>
+<tr class="memitem:a4ad06e8027571a0653f6aa9fde55aa95" id="r_a4ad06e8027571a0653f6aa9fde55aa95"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ad06e8027571a0653f6aa9fde55aa95">BasicServiceMetrics</a> (<a class="el" href="class_edge.html">const</a> <a class="el" href="class_graph.html">Graph</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; &amp;codeGraph, <a class="el" href="class_edge.html">const</a> <a class="el" href="class_data_container.html">DataContainer</a> &amp;<a class="el" href="#af1bf83127386ab2ccc169d2ea39362ed">dataContainer</a>)</td></tr>
 <tr class="memdesc:a4ad06e8027571a0653f6aa9fde55aa95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="class_basic_service_metrics.html" title="Class for calculating basic service metrics related to water distribution.">BasicServiceMetrics</a> class.  <br /></td></tr>
 <tr class="separator:a4ad06e8027571a0653f6aa9fde55aa95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34565e91b3aabea29bf53c742871d343" id="r_a34565e91b3aabea29bf53c742871d343"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_graph.html">Graph</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34565e91b3aabea29bf53c742871d343">getBSMGraph</a> ()</td></tr>
@@ -117,6 +132,33 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2ce4b1048df8ae408263cfed59a89903" id="r_a2ce4b1048df8ae408263cfed59a89903"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ce4b1048df8ae408263cfed59a89903">removePipes</a> (std::vector&lt; std::pair&lt; <a class="el" href="class_code.html">Code</a>, <a class="el" href="class_code.html">Code</a> &gt; &gt; <a class="el" href="class_edge.html">pipeCodes</a>)</td></tr>
 <tr class="memdesc:a2ce4b1048df8ae408263cfed59a89903"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes pipes from the system.  <br /></td></tr>
 <tr class="separator:a2ce4b1048df8ae408263cfed59a89903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a5d772126edd884d56039718ac8746a88" id="r_a5d772126edd884d56039718ac8746a88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d772126edd884d56039718ac8746a88">findAugmentingPath</a> (<a class="el" href="class_vertex.html">Vertex</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; *<a class="el" href="class_edge.html">s</a>, <a class="el" href="class_vertex.html">Vertex</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; *<a class="el" href="class_edge.html">t</a>)</td></tr>
+<tr class="memdesc:a5d772126edd884d56039718ac8746a88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds an augmenting path in the residual graph during the Edmonds-Karp algorithm.  <br /></td></tr>
+<tr class="separator:a5d772126edd884d56039718ac8746a88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:ada9d308986f3e91063aa603fabaf347f" id="r_ada9d308986f3e91063aa603fabaf347f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">static</a> <a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada9d308986f3e91063aa603fabaf347f">testAndVisit</a> (std::queue&lt; <a class="el" href="class_vertex.html">Vertex</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; * &gt; &amp;<a class="el" href="class_edge.html">q</a>, <a class="el" href="class_edge.html">Edge</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; *<a class="el" href="class_edge.html">e</a>, <a class="el" href="class_vertex.html">Vertex</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; *<a class="el" href="class_edge.html">w</a>, <a class="el" href="class_edge.html">double</a> <a class="el" href="class_edge.html">residual</a>)</td></tr>
+<tr class="memdesc:ada9d308986f3e91063aa603fabaf347f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests and visits a vertex in the residual graph during the Edmonds-Karp algorithm.  <br /></td></tr>
+<tr class="separator:ada9d308986f3e91063aa603fabaf347f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a862b0426d614b018212b833868da7767" id="r_a862b0426d614b018212b833868da7767"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">static</a> <a class="el" href="class_edge.html">double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a862b0426d614b018212b833868da7767">findBottleNeckValue</a> (<a class="el" href="class_vertex.html">Vertex</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; *<a class="el" href="class_edge.html">s</a>, <a class="el" href="class_vertex.html">Vertex</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; *<a class="el" href="class_edge.html">t</a>)</td></tr>
+<tr class="memdesc:a862b0426d614b018212b833868da7767"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the bottleneck value along an augmenting path during the Edmonds-Karp algorithm.  <br /></td></tr>
+<tr class="separator:a862b0426d614b018212b833868da7767"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6066ab3644145d03d5f587f84da5da74" id="r_a6066ab3644145d03d5f587f84da5da74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">static</a> <a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6066ab3644145d03d5f587f84da5da74">augmentFlowAlongPath</a> (<a class="el" href="class_vertex.html">Vertex</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; *<a class="el" href="class_edge.html">s</a>, <a class="el" href="class_vertex.html">Vertex</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; *<a class="el" href="class_edge.html">t</a>, <a class="el" href="class_edge.html">double</a> <a class="el" href="class_edge.html">bnValue</a>)</td></tr>
+<tr class="memdesc:a6066ab3644145d03d5f587f84da5da74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Augments the flow along an augmenting path during the Edmonds-Karp algorithm.  <br /></td></tr>
+<tr class="separator:a6066ab3644145d03d5f587f84da5da74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:af22a1adf7ea802ba4f76d8964be227b8" id="r_af22a1adf7ea802ba4f76d8964be227b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_graph.html">Graph</a>&lt; <a class="el" href="class_code.html">Code</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af22a1adf7ea802ba4f76d8964be227b8">originalCodeGraph</a></td></tr>
+<tr class="separator:af22a1adf7ea802ba4f76d8964be227b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c4c5e218d14cd129d2172a78a47215a" id="r_a8c4c5e218d14cd129d2172a78a47215a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_graph.html">Graph</a>&lt; <a class="el" href="class_code.html">Code</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c4c5e218d14cd129d2172a78a47215a">codeGraphCopy</a></td></tr>
+<tr class="separator:a8c4c5e218d14cd129d2172a78a47215a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1bf83127386ab2ccc169d2ea39362ed" id="r_af1bf83127386ab2ccc169d2ea39362ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">const</a> <a class="el" href="class_data_container.html">DataContainer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1bf83127386ab2ccc169d2ea39362ed">dataContainer</a></td></tr>
+<tr class="separator:af1bf83127386ab2ccc169d2ea39362ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for calculating basic service metrics related to water distribution. </p>
@@ -153,6 +195,51 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6066ab3644145d03d5f587f84da5da74" name="a6066ab3644145d03d5f587f84da5da74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6066ab3644145d03d5f587f84da5da74">&#9670;&#160;</a></span>augmentFlowAlongPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">void</a> BasicServiceMetrics::augmentFlowAlongPath </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_vertex.html">Vertex</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; *</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_vertex.html">Vertex</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; *</td>          <td class="paramname"><span class="paramname"><em>t</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_edge.html">double</a></td>          <td class="paramname"><span class="paramname"><em>bnValue</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Augments the flow along an augmenting path during the Edmonds-Karp algorithm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>Source vertex. </td></tr>
+    <tr><td class="paramname">t</td><td>Target vertex. </td></tr>
+    <tr><td class="paramname">bnValue</td><td>Bottleneck value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Time Complexity: O(V) </p>
+
+</div>
+</div>
 <a id="a8bf35c2bf8d06b36b7b1d9d74cc44d5c" name="a8bf35c2bf8d06b36b7b1d9d74cc44d5c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8bf35c2bf8d06b36b7b1d9d74cc44d5c">&#9670;&#160;</a></span>edmondsKarp()</h2>
 
@@ -170,6 +257,86 @@ Public Member Functions</h2></td></tr>
 
 <p>Runs the Edmonds-Karp algorithm to find the maximum flow in the graph. </p>
 <p>Time Complexity: O(V * E^2) </p>
+
+</div>
+</div>
+<a id="a5d772126edd884d56039718ac8746a88" name="a5d772126edd884d56039718ac8746a88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d772126edd884d56039718ac8746a88">&#9670;&#160;</a></span>findAugmentingPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">bool</a> BasicServiceMetrics::findAugmentingPath </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_vertex.html">Vertex</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; *</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_vertex.html">Vertex</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; *</td>          <td class="paramname"><span class="paramname"><em>t</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Finds an augmenting path in the residual graph during the Edmonds-Karp algorithm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>Source vertex. </td></tr>
+    <tr><td class="paramname">t</td><td>Target vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if an augmenting path is found, false otherwise.</dd></dl>
+<p>Time Complexity: O(V + E) </p>
+
+</div>
+</div>
+<a id="a862b0426d614b018212b833868da7767" name="a862b0426d614b018212b833868da7767"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a862b0426d614b018212b833868da7767">&#9670;&#160;</a></span>findBottleNeckValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">double</a> BasicServiceMetrics::findBottleNeckValue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_vertex.html">Vertex</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; *</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_vertex.html">Vertex</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; *</td>          <td class="paramname"><span class="paramname"><em>t</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Finds the bottleneck value along an augmenting path during the Edmonds-Karp algorithm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>Source vertex. </td></tr>
+    <tr><td class="paramname">t</td><td>Target vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Bottleneck value along the augmenting path.</dd></dl>
+<p>Time Complexity: O(V) </p>
 
 </div>
 </div>
@@ -361,9 +528,130 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ada9d308986f3e91063aa603fabaf347f" name="ada9d308986f3e91063aa603fabaf347f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada9d308986f3e91063aa603fabaf347f">&#9670;&#160;</a></span>testAndVisit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">void</a> BasicServiceMetrics::testAndVisit </td>
+          <td>(</td>
+          <td class="paramtype">std::queue&lt; <a class="el" href="class_vertex.html">Vertex</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; * &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>q</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_edge.html">Edge</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; *</td>          <td class="paramname"><span class="paramname"><em>e</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_vertex.html">Vertex</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; *</td>          <td class="paramname"><span class="paramname"><em>w</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_edge.html">double</a></td>          <td class="paramname"><span class="paramname"><em>residual</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tests and visits a vertex in the residual graph during the Edmonds-Karp algorithm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td>Queue of vertices to visit. </td></tr>
+    <tr><td class="paramname">e</td><td><a class="el" href="class_edge.html" title="Represents the connection between the water elements (Reservoir, Station and City).">Edge</a> to visit. </td></tr>
+    <tr><td class="paramname">w</td><td><a class="el" href="class_vertex.html" title="Represents either a Reservoir, a pumping Station, or a City.">Vertex</a> to visit. </td></tr>
+    <tr><td class="paramname">residual</td><td>Residual value of the edge.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Time Complexity: O(1) </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a8c4c5e218d14cd129d2172a78a47215a" name="a8c4c5e218d14cd129d2172a78a47215a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c4c5e218d14cd129d2172a78a47215a">&#9670;&#160;</a></span>codeGraphCopy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_graph.html">Graph</a>&lt;<a class="el" href="class_code.html">Code</a>&gt; BasicServiceMetrics::codeGraphCopy</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Copy of the code graph for water distribution. </p>
+
+</div>
+</div>
+<a id="af1bf83127386ab2ccc169d2ea39362ed" name="af1bf83127386ab2ccc169d2ea39362ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1bf83127386ab2ccc169d2ea39362ed">&#9670;&#160;</a></span>dataContainer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">const</a> <a class="el" href="class_data_container.html">DataContainer</a>&amp; BasicServiceMetrics::dataContainer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Reference to the data container for storing water distribution data. </p>
+
+</div>
+</div>
+<a id="af22a1adf7ea802ba4f76d8964be227b8" name="af22a1adf7ea802ba4f76d8964be227b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af22a1adf7ea802ba4f76d8964be227b8">&#9670;&#160;</a></span>originalCodeGraph</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_graph.html">Graph</a>&lt;<a class="el" href="class_code.html">Code</a>&gt; BasicServiceMetrics::originalCodeGraph</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Original code graph for water distribution. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/Users/chill-ry/Developer/Clion-Code/proj-da-01/include/<a class="el" href="_basic_service_metrics_8h_source.html">BasicServiceMetrics.h</a></li>
-<li>/Users/chill-ry/Developer/Clion-Code/proj-da-01/src/<b>BasicServiceMetrics.cpp</b></li>
+<li><a class="el" href="_basic_service_metrics_8h_source.html">BasicServiceMetrics.h</a></li>
+<li><b>BasicServiceMetrics.cpp</b></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

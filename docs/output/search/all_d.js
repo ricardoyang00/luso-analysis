@@ -1,16 +1,13 @@
 var searchData=
 [
-  ['sensitivity_20to_20failures_0',['Reliability and Sensitivity to Failures',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md6',1,'']]],
-  ['service_20metrics_1',['Basic Service Metrics',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md5',1,'']]],
-  ['setcode_2',['setCode',['../class_city.html#abe742b5899b5dc982c2295978fd66a7f',1,'City::setCode()'],['../class_reservoir.html#ad8e9fb61112152d5085f358207d0cd77',1,'Reservoir::setCode()'],['../class_station.html#ac31156a347eeba1bfb0b83e2963c8062',1,'Station::setCode()']]],
-  ['setdemand_3',['setDemand',['../class_city.html#a7da877cf4235e832c27097a04f5b3025',1,'City']]],
-  ['setid_4',['setId',['../class_city.html#a3e092c4da1cb2b1f0003f2039a8dd76a',1,'City::setId()'],['../class_reservoir.html#a672dc4e94c129e434381ecb08d4350d2',1,'Reservoir::setId()'],['../class_station.html#ada3e973a5dc8d9e47a76964f4f9892bf',1,'Station::setId()']]],
-  ['setmaxdelivery_5',['setMaxDelivery',['../class_reservoir.html#a50f53df4fe6b767ab8da316ba69e8def',1,'Reservoir']]],
-  ['setmunicipality_6',['setMunicipality',['../class_reservoir.html#ab909ef9456abbd6e67b090111da30788',1,'Reservoir']]],
-  ['setname_7',['setName',['../class_city.html#afd67e43e5013c933e00340a3c89034f0',1,'City::setName()'],['../class_reservoir.html#a04debe71abc483dcb7e15f0f29f9c0ed',1,'Reservoir::setName()']]],
-  ['setpopulation_8',['setPopulation',['../class_city.html#a8219e321986a1a4e3bc998d5a1a9a801',1,'City']]],
-  ['station_9',['Station',['../class_station.html',1,'Station'],['../class_station.html#a73d335726aad1d844d81cda6d9fd74e6',1,'Station::Station()'],['../class_station.html#a4e1ef463063774b6bdf6306e08e2ec51',1,'Station::Station(int id, Code code)']]],
-  ['station_2eh_10',['Station.h',['../_station_8h.html',1,'']]],
-  ['supply_20network_20management_20system_11',['Water Supply Network Management System',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md1',1,'']]],
-  ['system_12',['Water Supply Network Management System',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md1',1,'']]]
+  ['reliability_20and_20sensitivity_20to_20failures_0',['Reliability and Sensitivity to Failures',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md6',1,'']]],
+  ['removepipes_1',['removePipes',['../class_basic_service_metrics.html#a2ce4b1048df8ae408263cfed59a89903',1,'BasicServiceMetrics::removePipes()'],['../class_menu.html#ae5e64c4328d8d8e8d618e902ce27800d',1,'Menu::removePipes()']]],
+  ['removepumpingstation_2',['removePumpingStation',['../class_basic_service_metrics.html#afd1b0a63604a834a07ce60e812fccaae',1,'BasicServiceMetrics::removePumpingStation()'],['../class_menu.html#a6b891508fa7a6ca59c7d9f4dd58519d3',1,'Menu::removePumpingStation()']]],
+  ['removereservoir_3',['removeReservoir',['../class_basic_service_metrics.html#a598e0e6d775e64ca39973e2e88447620',1,'BasicServiceMetrics::removeReservoir()'],['../class_menu.html#a4bb366f59a5ab7a494ad0554d0b457f0',1,'Menu::removeReservoir()']]],
+  ['reservoir_4',['Reservoir',['../class_reservoir.html',1,'Reservoir'],['../class_reservoir.html#acd1e95dbd3b0621882245f6e43a6491b',1,'Reservoir::Reservoir()'],['../class_reservoir.html#adeff1f9706b2051bdc6f1ce5d768926f',1,'Reservoir::Reservoir(std::string name, std::string municipality, int id, Code code, int maxDelivery)']]],
+  ['reservoir_2eh_5',['Reservoir.h',['../_reservoir_8h.html',1,'']]],
+  ['reservoircsv_6',['reservoirCSV',['../class_parse_data.html#a683373519c65627bf4e61db76aaea1cd',1,'ParseData']]],
+  ['reservoirhashtable_7',['ReservoirHashTable',['../class_data_container.html#adfb558c4ee79e08eecae4700a85f77be',1,'DataContainer']]],
+  ['resetbsmgraph_8',['resetBSMGraph',['../class_basic_service_metrics.html#aaffc492f668b0908e64462b867c7bbeb',1,'BasicServiceMetrics']]],
+  ['run_9',['run',['../class_menu.html#af93a970cdfec463a8cb25ca65bf51da5',1,'Menu']]]
 ];

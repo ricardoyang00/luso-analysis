@@ -1,11 +1,25 @@
 var searchData=
 [
-  ['reliability_20and_20sensitivity_20to_20failures_0',['Reliability and Sensitivity to Failures',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md6',1,'']]],
-  ['removepipes_1',['removePipes',['../class_basic_service_metrics.html#a2ce4b1048df8ae408263cfed59a89903',1,'BasicServiceMetrics']]],
-  ['removepumpingstation_2',['removePumpingStation',['../class_basic_service_metrics.html#afd1b0a63604a834a07ce60e812fccaae',1,'BasicServiceMetrics']]],
-  ['removereservoir_3',['removeReservoir',['../class_basic_service_metrics.html#a598e0e6d775e64ca39973e2e88447620',1,'BasicServiceMetrics']]],
-  ['reservoir_4',['Reservoir',['../class_reservoir.html',1,'Reservoir'],['../class_reservoir.html#acd1e95dbd3b0621882245f6e43a6491b',1,'Reservoir::Reservoir()'],['../class_reservoir.html#adeff1f9706b2051bdc6f1ce5d768926f',1,'Reservoir::Reservoir(std::string name, std::string municipality, int id, Code code, int maxDelivery)']]],
-  ['reservoir_2eh_5',['Reservoir.h',['../_reservoir_8h.html',1,'']]],
-  ['resetbsmgraph_6',['resetBSMGraph',['../class_basic_service_metrics.html#aaffc492f668b0908e64462b867c7bbeb',1,'BasicServiceMetrics']]],
-  ['run_7',['run',['../class_menu.html#af93a970cdfec463a8cb25ca65bf51da5',1,'Menu']]]
+  ['parsecities_0',['parseCities',['../class_parse_data.html#ac50ed427a7091735ae1a5331f39c3a70',1,'ParseData']]],
+  ['parsedata_1',['ParseData',['../class_parse_data.html',1,'ParseData'],['../class_parse_data.html#a26a083fc2dc51fd18320913330b9746a',1,'ParseData::ParseData()']]],
+  ['parsedata_2eh_2',['ParseData.h',['../_parse_data_8h.html',1,'']]],
+  ['parsepipes_3',['parsePipes',['../class_parse_data.html#a417e21e60f37bb0ac65b20283af45bc9',1,'ParseData']]],
+  ['parser_4',['parser',['../class_menu.html#adc0f33c9aac9b15c97bf09d75f7f4f8a',1,'Menu']]],
+  ['parsereservoirs_5',['parseReservoirs',['../class_parse_data.html#a9fd2e5099da5e66a9fd563cce91a8cf9',1,'ParseData']]],
+  ['parsestations_6',['parseStations',['../class_parse_data.html#a345ab93c7ff56b1e56274216e03d5575',1,'ParseData']]],
+  ['pipescsv_7',['pipesCSV',['../class_parse_data.html#a91e91658fdd76b12f320f78ee7d85a11',1,'ParseData']]],
+  ['population_8',['population',['../class_city.html#a02355b0d03c7c1fdaf04496fc3b20330',1,'City']]],
+  ['printaffectedcities_9',['printAffectedCities',['../class_menu.html#a6f2314c53a6693e2f224dcbc1107201d',1,'Menu']]],
+  ['printalldatacontainer_10',['printAllDataContainer',['../class_menu.html#a605da6abd36f6377f3003d97dde1e384',1,'Menu']]],
+  ['printcitieswithwaterflowdeficit_11',['printCitiesWithWaterFlowDeficit',['../_printer_8h.html#af818084f686698ab06fc30964346aaf7',1,'Printer.cpp']]],
+  ['printcitymaxflow_12',['printCityMaxFlow',['../_printer_8h.html#a361162dfeb619212a16793fb519fbeb6',1,'Printer.h']]],
+  ['printeachcitymaxflow_13',['printEachCityMaxFlow',['../_printer_8h.html#a3331d63e14fed8aa001b1f1fe53e87d9',1,'Printer.cpp']]],
+  ['printeachpipeinitialmetrics_14',['printEachPipeInitialMetrics',['../_printer_8h.html#ae2d98a95c78646c81796a1436dd38f72',1,'Printer.cpp']]],
+  ['printer_2eh_15',['Printer.h',['../_printer_8h.html',1,'']]],
+  ['printheader_16',['printHeader',['../_printer_8h.html#a017fb1566b11411c9fed151e79c222ad',1,'Printer.cpp']]],
+  ['printmenu_17',['printMenu',['../class_menu.html#ab8f1521d0dec16eeabad713861968cad',1,'Menu']]],
+  ['printspecificcityflow_18',['printSpecificCityFlow',['../class_menu.html#a993d537bfb2fb7f176b66ced2c4e43c8',1,'Menu']]],
+  ['printspecificcitymaxflow_19',['printSpecificCityMaxFlow',['../_printer_8h.html#aba7beac81c149ff13efab4e6720dd694',1,'Printer.cpp']]],
+  ['problem_20data_20',['📊 Problem Data',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md3',1,'']]],
+  ['problem_20motivation_21',['🚀 Problem Motivation',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md4',1,'']]]
 ];

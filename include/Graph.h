@@ -13,7 +13,7 @@
 #include <queue>
 #include <limits>
 #include <algorithm>
-#include "../include/MutablePriorityQueue.h"
+#include "MutablePriorityQueue.h"
 
 template <class T>
 class Edge;

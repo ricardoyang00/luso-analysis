@@ -1,6 +1,6 @@
-/*
- * MutablePriorityQueue.h
- * A simple implementation of mutable priority queues, required by Dijkstra algorithm.
+/**
+ * @file MutablePriorityQueue.h
+ * @brief A simple implementation of mutable priority queues, required by Dijkstra algorithm.
  *
  * Created on: 17/03/2018
  *      Author: João Pascoal Faria
@@ -12,7 +12,9 @@
 #include <vector>
 
 /**
- * class T must have: (i) accessible field int queueIndex; (ii) operator< defined.
+ * @class MutablePriorityQueue
+ * @brief Mutable priority queues, required by Dijkstra algorithm.
+ * @param T must have: (i) accessible field int queueIndex; (ii) operator< defined.
  */
 
 template <class T>
