@@ -107,12 +107,10 @@ double BasicServiceMetrics::getTotalMaxFlow() {
     for (auto v : codeGraphCopy.getVertexSet()) {
         for (const auto e : v->getAdj()) {
             auto destCode = e->getDest()->getInfo();
-            //if (destCode.getType() == CodeType::CITY)
             if (destCode.getType() == CodeType::CITY && destCode.getNumber() == 0)
                 flow += e->getFlow();
         }
     }
-    //return flow / 2; // super sink not considered, only for algorithm
     return flow;
 }
 

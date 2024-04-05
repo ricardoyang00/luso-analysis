@@ -693,6 +693,8 @@ Graph<T>::~Graph() {
  * @tparam T Class type of the Graph.
  * @param originalGraph Original Graph.
  * @return Copy Graph.
+ *
+ * Time Complexity: O(V+E)
  */
 template <class T>
 Graph<T> deepGraphCopy (Graph<T> originalGraph){

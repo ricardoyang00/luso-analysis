@@ -45,7 +45,7 @@ void printCityMaxFlow(const std::string& name, const std::string& code, const do
 /**
  * @brief Print maximum flow data for each city in the water distribution system.
  *
- * @param bsmGraph The graph after running Edmond's Karp's algorithm.
+ * @param bsmGraph The graph after running Edmonds-Karp's algorithm.
  * @param dataContainer The container holding the graph data.
  */
 void printEachCityMaxFlow(const Graph<Code>& bsmGraph, const DataContainer& dataContainer);

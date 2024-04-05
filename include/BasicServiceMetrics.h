@@ -31,6 +31,8 @@ private:
      * @param e Edge to visit.
      * @param w Vertex to visit.
      * @param residual Residual value of the edge.
+     *
+     * Time Complexity: O(1)
      */
     static void testAndVisit(std::queue<Vertex<Code>*>& q, Edge<Code>* e, Vertex<Code>* w, double residual);
 
@@ -39,6 +41,8 @@ private:
      * @param s Source vertex.
      * @param t Target vertex.
      * @return True if an augmenting path is found, false otherwise.
+     *
+     * Time Complexity: O(V + E)
      */
     bool findAugmentingPath(Vertex<Code>* s, Vertex<Code>* t);
 
@@ -47,6 +51,8 @@ private:
      * @param s Source vertex.
      * @param t Target vertex.
      * @return Bottleneck value along the augmenting path.
+     *
+     * Time Complexity: O(V)
      */
     static double findBottleNeckValue(Vertex<Code>* s, Vertex<Code>* t);
 
@@ -55,6 +61,8 @@ private:
      * @param s Source vertex.
      * @param t Target vertex.
      * @param bnValue Bottleneck value.
+     *
+     * Time Complexity: O(V)
      */
     static void augmentFlowAlongPath(Vertex<Code>* s, Vertex<Code>* t, double bnValue);
 
@@ -69,22 +77,30 @@ public:
     /**
      * @brief Gets the graph used for basic service metrics calculations.
      * @return Reference to the graph used for basic service metrics calculations.
+     *
+     * Time Complexity: O(1)
      */
     Graph<Code>& getBSMGraph();
 
     /**
      * @brief Resets the graph used for basic service metrics calculations.
+     *
+     * Time Complexity: O(V * E^2)
      */
     void resetBSMGraph();
 
     /**
      * @brief Runs the Edmonds-Karp algorithm to find the maximum flow in the graph.
+     *
+     * Time Complexity: O(V * E^2)
      */
     void edmondsKarp();
 
     /**
      * @brief Calculates and returns the total maximum flow in the system.
      * @return Total maximum flow in the system.
+     *
+     * Time Complexity: O(V + E)
      */
     double getTotalMaxFlow();
 
@@ -92,30 +108,40 @@ public:
      * @brief Calculates and returns the flow to a specific city.
      * @param cityCode The code of the city.
      * @return Flow to the specified city.
+     *
+     * Time Complexity: O(V)
      */
     double getFlowToCity(const Code& cityCode);
 
     /**
      * @brief Retrieves the flows of all cities in the system.
      * @return Map containing the flow to each city.
+     *
+     * Time Complexity: O(C * V) (where C is the number of cities)
      */
     std::map<int,double> getCitiesFlow();
 
     /**
      * @brief Removes a reservoir from the system.
      * @param reservoirCode The code of the reservoir to remove.
+     *
+     * Time Complexity: O(V * E^2) (Edmonds-Karp dominant)
      */
     void removeReservoir(const Code& reservoirCode);
 
     /**
      * @brief Removes a pumping station from the system.
      * @param stationCode The code of the pumping station to remove.
+     *
+     * Time Complexity: O(V * E^2) (Edmonds-Karp dominant)
      */
     void removePumpingStation(const Code& stationCode);
 
     /**
      * @brief Removes pipes from the system.
      * @param pipeCodes Vector containing pairs of pipe codes to remove.
+     *
+     * Time Complexity: O(V * E^2) (Edmonds-Karp dominant)
      */
     void removePipes(std::vector<std::pair<Code,Code>> pipeCodes);
 };
