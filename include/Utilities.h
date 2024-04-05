@@ -1,3 +1,11 @@
+/**
+ * @file Utilities.h
+ * @brief Contains utility functions for string manipulation.
+ *
+ * This header file provides various utility functions used for string manipulation.
+ * Functions include string trimming and formatting text in bold for terminal output.
+ */
+
 #ifndef PROJ_DA_01_UTILITIES_H
 #define PROJ_DA_01_UTILITIES_H
 
@@ -5,6 +13,11 @@
 #include <algorithm>
 #include <sstream>
 
+/**
+ * @brief Trim whitespace from the beginning and end of a string.
+ * @param toTrim The string to be trimmed.
+ * @return The trimmed string.
+ */
 std::string TrimString(const std::string& toTrim);
 
 /**

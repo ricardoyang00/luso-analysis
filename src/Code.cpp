@@ -41,15 +41,6 @@ int Code::getNumber() const {
     return number;
 }
 
-std::string Code::codeTypeToString() const {
-    switch (type) {
-        case CodeType::RESERVOIR: return "RESERVOIR";
-        case CodeType::STATION: return "STATION";
-        case CodeType::CITY: return "CITY";
-        default: return "UNKNOWN";
-    }
-}
-
 bool Code::operator==(const Code &other) const {
     return completeCode == other.getCompleteCode();
 }
