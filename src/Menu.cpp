@@ -10,15 +10,15 @@ string pipesCSV = "../small-dataSet/Pipes_Madeira.csv";
 Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV), bsm(parser.getCodeGraph(), parser.getDataContainer()){
     menuIndex = {
             makeBold("[1] Specific City Maximum Flow"),
-            makeBold("[2] Total And Each City Maximum Flow"),
+            makeBold("[2] Total Maximum Flow"),
             makeBold("[3] Cities With Water Deficit"),
-            makeBold("[4] Print Each Pipe Flow Difference"),
+            makeBold("[4] Each Pipe Flow Difference"),
             makeBold("[5] Remove Reservoir"),
             makeBold("[6] Remove Pumping Station"),
             makeBold("[7] Remove Pipes"),
             makeBold("[8] Export All Cities Max Flow"),
-            makeBold("[9] Export Data Container"),
-            makeBold("[10] Export Critical Pipes per City"),
+            makeBold("[9] Export Critical Pipes per City"),
+            makeBold("[10] Export Data Container"),
             makeBold("[0] EXIT")
     };
 }
@@ -102,11 +102,11 @@ int Menu::run() {
             case 8:
                 exportAllCitiesMaxFlow("../output/allCitiesMaxFlow.txt", bsm.getBSMGraph(), parser.getDataContainer());
                 break;
-            case 9:     // export data container
-                printAllDataContainer();
-                break;
-            case 10:
+            case 9:
                 criticalPipes();
+                break;
+            case 10:     // export data container
+                printAllDataContainer();
                 break;
             default:
                 continue;
