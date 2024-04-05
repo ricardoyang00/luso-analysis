@@ -1,4 +1,5 @@
 #include "Printer.h"
+#include <iomanip>
 
 #define ALPHABET "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ " // space character used on purpose
 
@@ -185,13 +186,20 @@ void printEachPipeInitialMetrics(const Graph<Code>& bsmGraph) {
                 if (e->getReverse() == nullptr) {
                     cout << setw(8) << e->getOrig()->getInfo().getCompleteCode() << "|    ";
                     cout << setw(8) << e->getDest()->getInfo().getCompleteCode() << "|    ";
+                    cout << right << setw(3) << e->getFlow() << "/";
+                    cout << left << setw(12) << e->getWeight() << "|    ";
+                    cout << setw(16) << dif << endl;
                 } else {
-                    cout << "*" << setw(7) << e->getOrig()->getInfo().getCompleteCode() << "|    ";
-                    cout << "*" << setw(7) << e->getDest()->getInfo().getCompleteCode() << "|    ";
+                    if (e->getFlow() != 0) {
+                        cout << "*" << setw(7) << e->getOrig()->getInfo().getCompleteCode() << "|    ";
+                        cout << "*" << setw(7) << e->getDest()->getInfo().getCompleteCode() << "|    ";
+                        cout << right << setw(3) << e->getFlow() << "/";
+                        cout << left << setw(12) << e->getWeight() << "|    ";
+                        cout << setw(16) << dif << endl;
+                    } else {
+                        dif = 0; // exclude the bidirectional edge with no flow
+                    }
                 }
-                cout << right << setw(3) << e->getFlow() << "/";
-                cout << left << setw(12) << e->getWeight() << "|    ";
-                cout << setw(16) << dif << endl;
 
                 numberOfPipes += (e->getReverse() == nullptr) ? 1 : 0.5; // add 0.5 because pipe is bidirectional (summed twice)
 
