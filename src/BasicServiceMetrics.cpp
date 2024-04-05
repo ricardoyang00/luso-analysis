@@ -13,7 +13,7 @@ void BasicServiceMetrics::resetBSMGraph() {
 
 Graph<Code>& BasicServiceMetrics::getBSMGraph() { return codeGraphCopy; }
 
-void BasicServiceMetrics::testAndVisit(std::queue<Vertex<Code> *> &q, Edge<Code> *e, Vertex<Code> *w, double residual) {
+void BasicServiceMetrics::testAndVisit(queue<Vertex<Code> *> &q, Edge<Code> *e, Vertex<Code> *w, double residual) {
     if (!w->isVisited() && residual > 0) {
         w->setVisited(true);
         w->setPath(e);
@@ -27,7 +27,7 @@ bool BasicServiceMetrics::findAugmentingPath(Vertex<Code> *s, Vertex<Code> *t) {
         v->setPath(nullptr);
     }
 
-    std::queue<Vertex<Code>*> q;
+    queue<Vertex<Code>*> q;
     q.push(s);
     s->setVisited(true);
 
@@ -55,10 +55,10 @@ double BasicServiceMetrics::findBottleNeckValue(Vertex<Code> *s, Vertex<Code> *t
         auto edge = current->getPath();
 
         if (edge->getDest() == current) {
-            bnValue = std::min(bnValue, edge->getWeight() - edge->getFlow());
+            bnValue = min(bnValue, edge->getWeight() - edge->getFlow());
             current = edge->getOrig();
         } else {
-            bnValue = std::min(bnValue, edge->getFlow());
+            bnValue = min(bnValue, edge->getFlow());
             current = edge->getDest();
         }
     }
@@ -181,4 +181,75 @@ map<int,double> BasicServiceMetrics::getCitiesFlow() {
     }
 
     return citiesFlow;
+}
+
+void BasicServiceMetrics::removeExtraBidirectionalPipes() {
+    for (const auto& v : codeGraphCopy.getVertexSet()) {
+        for (auto& e : v->getAdj()) {
+            if (e->getReverse() != nullptr && e->getFlow() != 0 && e->getReverse()->getFlow() == 0) {
+                codeGraphCopy.removeEdge(e->getDest()->getInfo(), e->getOrig()->getInfo());
+            }
+        }
+    }
+}
+
+void BasicServiceMetrics::pumpRemainingWaterFromReservoirs() {
+    for (const auto& v : codeGraphCopy.getVertexSet()) {
+        if (v->getInfo().getType() == CodeType::RESERVOIR && v->getInfo().getNumber() != 0) {
+            auto rTable = dataContainer.getReservoirHashTable();
+            auto r = rTable.find(v->getInfo().getNumber())->second;
+
+            double maxDelivery = r.getMaxDelivery();
+            double currentDelivery = 0;
+
+            for (const auto& e : v->getAdj()) {
+                currentDelivery += e->getFlow();
+            }
+
+            double remainingDelivery = maxDelivery - currentDelivery;
+            for (auto& e : v->getAdj()) {
+                double availableFlow = e->getWeight() - e->getFlow();
+                if (availableFlow <= 0) continue; // No available flow on this edge
+                double flowToAdd = std::min(remainingDelivery, availableFlow);
+                e->setFlow(e->getFlow() + flowToAdd);
+                remainingDelivery -= flowToAdd;
+                if (remainingDelivery <= 0) break; // No more delivery needed
+            }
+        }
+    }
+}
+
+void BasicServiceMetrics::balanceFlow() {
+    map<int, double> citiesFlow = getCitiesFlow();
+
+    priority_queue<pair<double, Edge<Code>*>, vector<pair<double, Edge<Code>*>>, greater<>> pq;
+
+    removeExtraBidirectionalPipes();
+    pumpRemainingWaterFromReservoirs();
+
+    for (const auto& v : codeGraphCopy.getVertexSet()) {
+        if (v->getInfo().getNumber() != 0) {
+            for (const auto& e : v->getAdj()) {
+                double remainingCap = e->getWeight() - e->getFlow();
+                pq.emplace(remainingCap, e);
+            }
+        }
+    }
+
+    while (!pq.empty()) {
+        auto [remainingCap, edge] = pq.top();
+        pq.pop();
+
+        auto orig = edge->getOrig();
+        auto dest = edge->getDest();
+
+        for (auto adjEdge : orig->getAdj()) {
+            double adjRemCap = adjEdge->getWeight() - adjEdge->getFlow();
+            if (adjRemCap == 0) continue;
+
+            double transfer = min(remainingCap, adjRemCap);
+            edge->setFlow(edge->getFlow() + transfer);
+            adjEdge->setFlow(adjEdge->getFlow() - transfer);
+        }
+    }
 }
