@@ -106,7 +106,7 @@ int Menu::run() {
                 printAllDataContainer();
                 break;
             case 10:
-                bsm.pumpRemainingWaterFromReservoirs();
+                bsm.balanceFlow();
                 break;
             default:
                 continue;

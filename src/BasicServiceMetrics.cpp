@@ -183,7 +183,7 @@ map<int,double> BasicServiceMetrics::getCitiesFlow() {
     return citiesFlow;
 }
 
-void BasicServiceMetrics::removeExtraBidirectionalPipes() {
+/*void BasicServiceMetrics::removeExtraBidirectionalPipes() {
     for (const auto& v : codeGraphCopy.getVertexSet()) {
         for (auto& e : v->getAdj()) {
             if (e->getReverse() != nullptr && e->getFlow() != 0 && e->getReverse()->getFlow() == 0) {
@@ -191,9 +191,11 @@ void BasicServiceMetrics::removeExtraBidirectionalPipes() {
             }
         }
     }
-}
+}*/
 
-void BasicServiceMetrics::pumpRemainingWaterFromReservoirs() {
+unordered_map<Vertex<Code>*, double> BasicServiceMetrics::pumpRemainingWaterFromReservoirs() {
+    unordered_map<Vertex<Code>*, double> extraFlowReceived;
+
     for (const auto& v : codeGraphCopy.getVertexSet()) {
         if (v->getInfo().getType() == CodeType::RESERVOIR && v->getInfo().getNumber() != 0) {
             auto rTable = dataContainer.getReservoirHashTable();
@@ -216,15 +218,56 @@ void BasicServiceMetrics::pumpRemainingWaterFromReservoirs() {
                 flowToAdd = min(flowToAdd, remainingDelivery); // Ensure flowToAdd doesn't exceed remaining Delivery
 
                 e->setFlow(e->getFlow() + flowToAdd);
+                extraFlowReceived[e->getDest()] = flowToAdd;
+
                 remainingDelivery -= flowToAdd;
                 if (remainingDelivery == 0) break; // No more water to deliver from reservoir
             }
         }
     }
+
+    return extraFlowReceived;
 }
 
 void BasicServiceMetrics::balanceFlow() {
-    map<int, double> initialCitiesFlow = getCitiesFlow();
+    unordered_map<Vertex<Code>*, double> extraFlowReceived = pumpRemainingWaterFromReservoirs();
 
+    for (auto& pair : extraFlowReceived) {
+        auto vertex = codeGraphCopy.findVertex(pair.first->getInfo());
+        if (vertex == nullptr) {
+            throw logic_error("Couldn't find vertex (function balanceFlow)");
+        }
 
+        distributeExtraFlow(vertex, pair.second);
+    }
+}
+
+void BasicServiceMetrics::distributeExtraFlow(Vertex<Code> *vertex, double extraFlow) {
+    vector<pair<Edge<Code>*, double>> edgeRatios;
+    double totalRemCap = 0;
+
+    for (auto& e : vertex->getAdj()) {
+        double remCapacity = e->getWeight() - e->getFlow();
+        if (e->getDest()->getInfo().getType() != CodeType::CITY) {
+            totalRemCap += remCapacity;
+            edgeRatios.emplace_back(e, e->getFlow() / e->getWeight());
+        }
+    }
+
+    sort(edgeRatios.begin(), edgeRatios.end(), [](const pair<Edge<Code>*, double>& a, const pair<Edge<Code>*, double>& b) {
+        return a.second < b.second;
+    });
+
+    for (auto& [edge, ratio] : edgeRatios) {
+        double remCapacity = edge->getWeight() - edge->getFlow();
+
+        double flowToAdd = min(extraFlow, remCapacity);
+        flowToAdd = min(flowToAdd, extraFlow);
+        edge->setFlow(edge->getFlow() + flowToAdd);
+
+        // Recursively distribute the remaining extra flow to downstream vertices
+        if (flowToAdd > 0) {
+            distributeExtraFlow(edge->getDest(), flowToAdd);
+        }
+    }
 }

@@ -145,10 +145,9 @@ public:
      */
     void removePipes(std::vector<std::pair<Code,Code>> pipeCodes);
 
-    void removeSuperSourceSink();
-    void removeExtraBidirectionalPipes();
-    void pumpRemainingWaterFromReservoirs();
+    std::unordered_map<Vertex<Code>*, double> pumpRemainingWaterFromReservoirs();
     void balanceFlow();
+    void distributeExtraFlow(Vertex<Code>* vertex, double extraFlow);
 };
 
 
