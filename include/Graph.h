@@ -1,5 +1,11 @@
-// Original code by Gonçalo Leão
-// Updated by DA 2023/2024 Team
+/**
+ * @file Graph.h
+ * @brief Contains the declaration of the Graph class and its related classes: Vertex and Edge.
+ * This header file declares the Graph class, which represents a graph data structure along with its related classes: Vertex and Edge.
+ * It provides functionalities for graph manipulation, such as adding vertices, edges, performing depth-first search (DFS),
+ * breadth-first search (BFS), checking if the graph is a directed acyclic graph (DAG), and topological sorting.
+ *
+ */
 
 #ifndef PROJ_DA_01_GRAPH
 #define PROJ_DA_01_GRAPH
@@ -18,6 +24,12 @@ class Edge;
 
 /************************* Vertex  **************************/
 
+/**
+ * @class Vertex
+ * @brief Represents either a Reservoir, a pumping Station, or a City
+ *
+ * This class represents a vertex in a graph data structure.
+ */
 template <class T>
 class Vertex {
 public:
@@ -64,6 +76,12 @@ protected:
 
 /********************** Edge  ****************************/
 
+/**
+ * @class Edge
+ * @brief Represents the connection between the water elements (Reservoir, Station and City).
+ *
+ * This class represents an edge in a graph data structure.
+ */
 template <class T>
 class Edge {
 public:
@@ -95,6 +113,12 @@ protected:
 
 /********************** Graph  ****************************/
 
+/**
+ * @class Graph
+ * @brief Represents water supply network.
+ *
+ * This class represents a graph data structure and provides functionalities for graph manipulation and algorithms.
+ */
 template <class T>
 class Graph {
 public:
@@ -665,6 +689,13 @@ Graph<T>::~Graph() {
 }
 
 // make a deep copy of a graph
+
+/***
+ * @brief Creates a deep of graph of the original one.
+ * @tparam T Class type of the Graph.
+ * @param originalGraph Original Graph.
+ * @return Copy Graph.
+ */
 template <class T>
 Graph<T> deepGraphCopy (Graph<T> originalGraph){
     Graph<T> graphCopy;
