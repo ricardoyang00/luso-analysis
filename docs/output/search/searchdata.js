@@ -3,7 +3,7 @@ var indexSectionsWithContent =
   0: "bcdefgmoprstuv",
   1: "bcdegmprsv",
   2: "cu",
-  3: "cdgmot",
+  3: "cdgmost",
   4: "c",
   5: "df"
 };
