@@ -1,3 +1,14 @@
+/**
+ * @file printer.h
+ * @brief Contains functions for exporting and printing data related to a water distribution system.
+ *
+ * This file defines functions for exporting reservoir, station, and city data to text files,
+ * as well as functions for printing various metrics related to the water distribution system.
+ *
+ * The functions provided here facilitate the analysis and visualization of data associated with
+ * the water distribution system, aiding in understanding its performance and characteristics.
+ */
+
 #ifndef FEUP_DA_01_PRINTER_H
 #define FEUP_DA_01_PRINTER_H
 

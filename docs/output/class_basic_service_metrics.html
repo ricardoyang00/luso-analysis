@@ -93,13 +93,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a34565e91b3aabea29bf53c742871d343" id="r_a34565e91b3aabea29bf53c742871d343"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_graph.html">Graph</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34565e91b3aabea29bf53c742871d343">getBSMGraph</a> ()</td></tr>
 <tr class="memdesc:a34565e91b3aabea29bf53c742871d343"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the graph used for basic service metrics calculations.  <br /></td></tr>
 <tr class="separator:a34565e91b3aabea29bf53c742871d343"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaffc492f668b0908e64462b867c7bbeb" id="r_aaffc492f668b0908e64462b867c7bbeb"><td class="memItemLeft" align="right" valign="top"><a id="aaffc492f668b0908e64462b867c7bbeb" name="aaffc492f668b0908e64462b867c7bbeb"></a>
-<a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>resetBSMGraph</b> ()</td></tr>
-<tr class="memdesc:aaffc492f668b0908e64462b867c7bbeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the graph used for basic service metrics calculations. <br /></td></tr>
+<tr class="memitem:aaffc492f668b0908e64462b867c7bbeb" id="r_aaffc492f668b0908e64462b867c7bbeb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaffc492f668b0908e64462b867c7bbeb">resetBSMGraph</a> ()</td></tr>
+<tr class="memdesc:aaffc492f668b0908e64462b867c7bbeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the graph used for basic service metrics calculations.  <br /></td></tr>
 <tr class="separator:aaffc492f668b0908e64462b867c7bbeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8bf35c2bf8d06b36b7b1d9d74cc44d5c" id="r_a8bf35c2bf8d06b36b7b1d9d74cc44d5c"><td class="memItemLeft" align="right" valign="top"><a id="a8bf35c2bf8d06b36b7b1d9d74cc44d5c" name="a8bf35c2bf8d06b36b7b1d9d74cc44d5c"></a>
-<a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>edmondsKarp</b> ()</td></tr>
-<tr class="memdesc:a8bf35c2bf8d06b36b7b1d9d74cc44d5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the Edmonds-Karp algorithm to find the maximum flow in the graph. <br /></td></tr>
+<tr class="memitem:a8bf35c2bf8d06b36b7b1d9d74cc44d5c" id="r_a8bf35c2bf8d06b36b7b1d9d74cc44d5c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8bf35c2bf8d06b36b7b1d9d74cc44d5c">edmondsKarp</a> ()</td></tr>
+<tr class="memdesc:a8bf35c2bf8d06b36b7b1d9d74cc44d5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the Edmonds-Karp algorithm to find the maximum flow in the graph.  <br /></td></tr>
 <tr class="separator:a8bf35c2bf8d06b36b7b1d9d74cc44d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab41191a2fa89dac32ac3d1ab923176a6" id="r_ab41191a2fa89dac32ac3d1ab923176a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab41191a2fa89dac32ac3d1ab923176a6">getTotalMaxFlow</a> ()</td></tr>
 <tr class="memdesc:ab41191a2fa89dac32ac3d1ab923176a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates and returns the total maximum flow in the system.  <br /></td></tr>
@@ -155,6 +153,26 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8bf35c2bf8d06b36b7b1d9d74cc44d5c" name="a8bf35c2bf8d06b36b7b1d9d74cc44d5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bf35c2bf8d06b36b7b1d9d74cc44d5c">&#9670;&#160;</a></span>edmondsKarp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">void</a> BasicServiceMetrics::edmondsKarp </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Runs the Edmonds-Karp algorithm to find the maximum flow in the graph. </p>
+<p>Time Complexity: O(V * E^2) </p>
+
+</div>
+</div>
 <a id="a34565e91b3aabea29bf53c742871d343" name="a34565e91b3aabea29bf53c742871d343"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a34565e91b3aabea29bf53c742871d343">&#9670;&#160;</a></span>getBSMGraph()</h2>
 
@@ -171,7 +189,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the graph used for basic service metrics calculations. </p>
-<dl class="section return"><dt>Returns</dt><dd>Reference to the graph used for basic service metrics calculations. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the graph used for basic service metrics calculations.</dd></dl>
+<p>Time Complexity: O(1) </p>
 
 </div>
 </div>
@@ -191,7 +210,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Retrieves the flows of all cities in the system. </p>
-<dl class="section return"><dt>Returns</dt><dd>Map containing the flow to each city. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Map containing the flow to each city.</dd></dl>
+<p>Time Complexity: O(C * V) (where C is the number of cities) </p>
 
 </div>
 </div>
@@ -217,7 +237,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Flow to the specified city. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Flow to the specified city.</dd></dl>
+<p>Time Complexity: O(V) </p>
 
 </div>
 </div>
@@ -237,7 +258,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Calculates and returns the total maximum flow in the system. </p>
-<dl class="section return"><dt>Returns</dt><dd>Total maximum flow in the system. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Total maximum flow in the system.</dd></dl>
+<p>Time Complexity: O(V + E) </p>
 
 </div>
 </div>
@@ -259,10 +281,11 @@ Public Member Functions</h2></td></tr>
 <p>Removes pipes from the system. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pipeCodes</td><td>Vector containing pairs of pipe codes to remove. </td></tr>
+    <tr><td class="paramname">pipeCodes</td><td>Vector containing pairs of pipe codes to remove.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Time Complexity: O(V * E^2) (Edmonds-Karp dominant) </p>
 
 </div>
 </div>
@@ -284,10 +307,11 @@ Public Member Functions</h2></td></tr>
 <p>Removes a pumping station from the system. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">stationCode</td><td>The code of the pumping station to remove. </td></tr>
+    <tr><td class="paramname">stationCode</td><td>The code of the pumping station to remove.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Time Complexity: O(V * E^2) (Edmonds-Karp dominant) </p>
 
 </div>
 </div>
@@ -309,10 +333,31 @@ Public Member Functions</h2></td></tr>
 <p>Removes a reservoir from the system. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">reservoirCode</td><td>The code of the reservoir to remove. </td></tr>
+    <tr><td class="paramname">reservoirCode</td><td>The code of the reservoir to remove.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Time Complexity: O(V * E^2) (Edmonds-Karp dominant) </p>
+
+</div>
+</div>
+<a id="aaffc492f668b0908e64462b867c7bbeb" name="aaffc492f668b0908e64462b867c7bbeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaffc492f668b0908e64462b867c7bbeb">&#9670;&#160;</a></span>resetBSMGraph()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">void</a> BasicServiceMetrics::resetBSMGraph </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resets the graph used for basic service metrics calculations. </p>
+<p>Time Complexity: O(V * E^2) </p>
 
 </div>
 </div>
