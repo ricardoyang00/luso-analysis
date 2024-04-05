@@ -78,19 +78,127 @@ $(function() {
   <div class="headertitle"><div class="title">ParseData Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Parses input data files and populates data structures.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_parse_data_8h_source.html">ParseData.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a26a083fc2dc51fd18320913330b9746a" id="r_a26a083fc2dc51fd18320913330b9746a"><td class="memItemLeft" align="right" valign="top"><a id="a26a083fc2dc51fd18320913330b9746a" name="a26a083fc2dc51fd18320913330b9746a"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ParseData</b> (<a class="el" href="class_edge.html">const</a> std::string &amp;reservoirCSV, <a class="el" href="class_edge.html">const</a> std::string &amp;stationsCSV, <a class="el" href="class_edge.html">const</a> std::string &amp;citiesCSV, <a class="el" href="class_edge.html">const</a> std::string &amp;pipesCSV)</td></tr>
+<tr class="memitem:a26a083fc2dc51fd18320913330b9746a" id="r_a26a083fc2dc51fd18320913330b9746a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26a083fc2dc51fd18320913330b9746a">ParseData</a> (<a class="el" href="class_edge.html">const</a> std::string &amp;reservoirCSV, <a class="el" href="class_edge.html">const</a> std::string &amp;stationsCSV, <a class="el" href="class_edge.html">const</a> std::string &amp;citiesCSV, <a class="el" href="class_edge.html">const</a> std::string &amp;pipesCSV)</td></tr>
+<tr class="memdesc:a26a083fc2dc51fd18320913330b9746a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_parse_data.html" title="Parses input data files and populates data structures.">ParseData</a> object with the given input file paths.  <br /></td></tr>
 <tr class="separator:a26a083fc2dc51fd18320913330b9746a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc138eb0acc2d754c55080846836fb3b" id="r_adc138eb0acc2d754c55080846836fb3b"><td class="memItemLeft" align="right" valign="top"><a id="adc138eb0acc2d754c55080846836fb3b" name="adc138eb0acc2d754c55080846836fb3b"></a>
-<a class="el" href="class_edge.html">const</a> <a class="el" href="class_graph.html">Graph</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getCodeGraph</b> () <a class="el" href="class_edge.html">const</a></td></tr>
+<tr class="memitem:adc138eb0acc2d754c55080846836fb3b" id="r_adc138eb0acc2d754c55080846836fb3b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">const</a> <a class="el" href="class_graph.html">Graph</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc138eb0acc2d754c55080846836fb3b">getCodeGraph</a> () <a class="el" href="class_edge.html">const</a></td></tr>
+<tr class="memdesc:adc138eb0acc2d754c55080846836fb3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the graph representing connections between entities.  <br /></td></tr>
 <tr class="separator:adc138eb0acc2d754c55080846836fb3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac397f7f3fa3d48e66dd98fa21628345" id="r_aac397f7f3fa3d48e66dd98fa21628345"><td class="memItemLeft" align="right" valign="top"><a id="aac397f7f3fa3d48e66dd98fa21628345" name="aac397f7f3fa3d48e66dd98fa21628345"></a>
-<a class="el" href="class_edge.html">const</a> <a class="el" href="class_data_container.html">DataContainer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getDataContainer</b> () <a class="el" href="class_edge.html">const</a></td></tr>
+<tr class="memitem:aac397f7f3fa3d48e66dd98fa21628345" id="r_aac397f7f3fa3d48e66dd98fa21628345"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">const</a> <a class="el" href="class_data_container.html">DataContainer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac397f7f3fa3d48e66dd98fa21628345">getDataContainer</a> () <a class="el" href="class_edge.html">const</a></td></tr>
+<tr class="memdesc:aac397f7f3fa3d48e66dd98fa21628345"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the data container storing parsed data.  <br /></td></tr>
 <tr class="separator:aac397f7f3fa3d48e66dd98fa21628345"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Parses input data files and populates data structures. </p>
+<p>This class is responsible for parsing input CSV files containing data for reservoirs, stations, cities, and pipes. It populates the data structures used in the project, including a graph representing connections between entities. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a26a083fc2dc51fd18320913330b9746a" name="a26a083fc2dc51fd18320913330b9746a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26a083fc2dc51fd18320913330b9746a">&#9670;&#160;</a></span>ParseData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ParseData::ParseData </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_edge.html">const</a> std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>reservoirCSV</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_edge.html">const</a> std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>stationsCSV</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_edge.html">const</a> std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>citiesCSV</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_edge.html">const</a> std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>pipesCSV</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a <a class="el" href="class_parse_data.html" title="Parses input data files and populates data structures.">ParseData</a> object with the given input file paths. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reservoirCSV</td><td>Path to the reservoirs CSV file. </td></tr>
+    <tr><td class="paramname">stationsCSV</td><td>Path to the stations CSV file. </td></tr>
+    <tr><td class="paramname">citiesCSV</td><td>Path to the cities CSV file. </td></tr>
+    <tr><td class="paramname">pipesCSV</td><td>Path to the pipes CSV file. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="adc138eb0acc2d754c55080846836fb3b" name="adc138eb0acc2d754c55080846836fb3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc138eb0acc2d754c55080846836fb3b">&#9670;&#160;</a></span>getCodeGraph()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">const</a> <a class="el" href="class_graph.html">Graph</a>&lt; <a class="el" href="class_code.html">Code</a> &gt; &amp; ParseData::getCodeGraph </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the graph representing connections between entities. </p>
+<dl class="section return"><dt>Returns</dt><dd>The graph representing connections between entities. </dd></dl>
+
+</div>
+</div>
+<a id="aac397f7f3fa3d48e66dd98fa21628345" name="aac397f7f3fa3d48e66dd98fa21628345"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac397f7f3fa3d48e66dd98fa21628345">&#9670;&#160;</a></span>getDataContainer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">const</a> <a class="el" href="class_data_container.html">DataContainer</a> &amp; ParseData::getDataContainer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the data container storing parsed data. </p>
+<dl class="section return"><dt>Returns</dt><dd>The data container storing parsed data. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/Users/chill-ry/Developer/Clion-Code/proj-da-01/include/<a class="el" href="_parse_data_8h_source.html">ParseData.h</a></li>
 <li>/Users/chill-ry/Developer/Clion-Code/proj-da-01/src/<b>ParseData.cpp</b></li>

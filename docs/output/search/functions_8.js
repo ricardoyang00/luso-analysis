@@ -7,6 +7,5 @@ var searchData=
   ['setmunicipality_4',['setMunicipality',['../class_reservoir.html#ab909ef9456abbd6e67b090111da30788',1,'Reservoir']]],
   ['setname_5',['setName',['../class_city.html#afd67e43e5013c933e00340a3c89034f0',1,'City::setName()'],['../class_reservoir.html#a04debe71abc483dcb7e15f0f29f9c0ed',1,'Reservoir::setName()']]],
   ['setpopulation_6',['setPopulation',['../class_city.html#a8219e321986a1a4e3bc998d5a1a9a801',1,'City']]],
-  ['station_7',['Station',['../class_station.html',1,'Station'],['../class_station.html#a73d335726aad1d844d81cda6d9fd74e6',1,'Station::Station()'],['../class_station.html#a4e1ef463063774b6bdf6306e08e2ec51',1,'Station::Station(int id, Code code)']]],
-  ['station_2eh_8',['Station.h',['../_station_8h.html',1,'']]]
+  ['station_7',['Station',['../class_station.html#a73d335726aad1d844d81cda6d9fd74e6',1,'Station::Station()'],['../class_station.html#a4e1ef463063774b6bdf6306e08e2ec51',1,'Station::Station(int id, Code code)']]]
 ];

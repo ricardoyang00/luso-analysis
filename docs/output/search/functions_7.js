@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['trimstring_0',['TrimString',['../_utilities_8h.html#a61146d2609ffbef3c80509b4335728e2',1,'Utilities.h']]]
+  ['reservoir_0',['Reservoir',['../class_reservoir.html#acd1e95dbd3b0621882245f6e43a6491b',1,'Reservoir::Reservoir()'],['../class_reservoir.html#adeff1f9706b2051bdc6f1ce5d768926f',1,'Reservoir::Reservoir(std::string name, std::string municipality, int id, Code code, int maxDelivery)']]]
 ];

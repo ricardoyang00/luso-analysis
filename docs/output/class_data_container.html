@@ -78,28 +78,191 @@ $(function() {
   <div class="headertitle"><div class="title">DataContainer Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents a container for storing data entities.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_parse_data_8h_source.html">ParseData.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a229e82c4f6ddf9dc781d92ebc4fe098e" id="r_a229e82c4f6ddf9dc781d92ebc4fe098e"><td class="memItemLeft" align="right" valign="top"><a id="a229e82c4f6ddf9dc781d92ebc4fe098e" name="a229e82c4f6ddf9dc781d92ebc4fe098e"></a>
-std::unordered_map&lt; <a class="el" href="class_edge.html">int</a>, <a class="el" href="class_reservoir.html">Reservoir</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getReservoirHashTable</b> () <a class="el" href="class_edge.html">const</a></td></tr>
+<tr class="memitem:a76e1e60d717a64b7f742699f67c76276" id="r_a76e1e60d717a64b7f742699f67c76276"><td class="memItemLeft" align="right" valign="top"><a id="a76e1e60d717a64b7f742699f67c76276" name="a76e1e60d717a64b7f742699f67c76276"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>DataContainer</b> ()</td></tr>
+<tr class="memdesc:a76e1e60d717a64b7f742699f67c76276"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for the <a class="el" href="class_data_container.html" title="Represents a container for storing data entities.">DataContainer</a> class. <br /></td></tr>
+<tr class="separator:a76e1e60d717a64b7f742699f67c76276"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a229e82c4f6ddf9dc781d92ebc4fe098e" id="r_a229e82c4f6ddf9dc781d92ebc4fe098e"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; <a class="el" href="class_edge.html">int</a>, <a class="el" href="class_reservoir.html">Reservoir</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a229e82c4f6ddf9dc781d92ebc4fe098e">getReservoirHashTable</a> () <a class="el" href="class_edge.html">const</a></td></tr>
+<tr class="memdesc:a229e82c4f6ddf9dc781d92ebc4fe098e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the hash table of reservoirs.  <br /></td></tr>
 <tr class="separator:a229e82c4f6ddf9dc781d92ebc4fe098e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6fc413bce140bd38232afc6f7ab010a" id="r_ab6fc413bce140bd38232afc6f7ab010a"><td class="memItemLeft" align="right" valign="top"><a id="ab6fc413bce140bd38232afc6f7ab010a" name="ab6fc413bce140bd38232afc6f7ab010a"></a>
-std::unordered_map&lt; <a class="el" href="class_edge.html">int</a>, <a class="el" href="class_station.html">Station</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getStationHashTable</b> () <a class="el" href="class_edge.html">const</a></td></tr>
+<tr class="memitem:ab6fc413bce140bd38232afc6f7ab010a" id="r_ab6fc413bce140bd38232afc6f7ab010a"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; <a class="el" href="class_edge.html">int</a>, <a class="el" href="class_station.html">Station</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6fc413bce140bd38232afc6f7ab010a">getStationHashTable</a> () <a class="el" href="class_edge.html">const</a></td></tr>
+<tr class="memdesc:ab6fc413bce140bd38232afc6f7ab010a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the hash table of stations.  <br /></td></tr>
 <tr class="separator:ab6fc413bce140bd38232afc6f7ab010a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add74d8545cdfe581f685e4c8f2dfcb2f" id="r_add74d8545cdfe581f685e4c8f2dfcb2f"><td class="memItemLeft" align="right" valign="top"><a id="add74d8545cdfe581f685e4c8f2dfcb2f" name="add74d8545cdfe581f685e4c8f2dfcb2f"></a>
-std::unordered_map&lt; <a class="el" href="class_edge.html">int</a>, <a class="el" href="class_city.html">City</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getCityHashTable</b> () <a class="el" href="class_edge.html">const</a></td></tr>
+<tr class="memitem:add74d8545cdfe581f685e4c8f2dfcb2f" id="r_add74d8545cdfe581f685e4c8f2dfcb2f"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; <a class="el" href="class_edge.html">int</a>, <a class="el" href="class_city.html">City</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add74d8545cdfe581f685e4c8f2dfcb2f">getCityHashTable</a> () <a class="el" href="class_edge.html">const</a></td></tr>
+<tr class="memdesc:add74d8545cdfe581f685e4c8f2dfcb2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the hash table of cities.  <br /></td></tr>
 <tr class="separator:add74d8545cdfe581f685e4c8f2dfcb2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a196a010f709fa065e63d73965c1aff0f" id="r_a196a010f709fa065e63d73965c1aff0f"><td class="memItemLeft" align="right" valign="top"><a id="a196a010f709fa065e63d73965c1aff0f" name="a196a010f709fa065e63d73965c1aff0f"></a>
-<a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>addToReservoirHashTable</b> (<a class="el" href="class_code.html">Code</a> code, <a class="el" href="class_reservoir.html">Reservoir</a> <a class="el" href="class_edge.html">reservoir</a>)</td></tr>
+<tr class="memitem:a196a010f709fa065e63d73965c1aff0f" id="r_a196a010f709fa065e63d73965c1aff0f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a196a010f709fa065e63d73965c1aff0f">addToReservoirHashTable</a> (<a class="el" href="class_code.html">Code</a> code, <a class="el" href="class_reservoir.html">Reservoir</a> <a class="el" href="class_edge.html">reservoir</a>)</td></tr>
+<tr class="memdesc:a196a010f709fa065e63d73965c1aff0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a reservoir to the reservoir hash table.  <br /></td></tr>
 <tr class="separator:a196a010f709fa065e63d73965c1aff0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a385b249fe7df2803d17a59d42a4ec55b" id="r_a385b249fe7df2803d17a59d42a4ec55b"><td class="memItemLeft" align="right" valign="top"><a id="a385b249fe7df2803d17a59d42a4ec55b" name="a385b249fe7df2803d17a59d42a4ec55b"></a>
-<a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>addToStationHashTable</b> (<a class="el" href="class_code.html">Code</a> code, <a class="el" href="class_station.html">Station</a> <a class="el" href="class_edge.html">station</a>)</td></tr>
+<tr class="memitem:a385b249fe7df2803d17a59d42a4ec55b" id="r_a385b249fe7df2803d17a59d42a4ec55b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a385b249fe7df2803d17a59d42a4ec55b">addToStationHashTable</a> (<a class="el" href="class_code.html">Code</a> code, <a class="el" href="class_station.html">Station</a> <a class="el" href="class_edge.html">station</a>)</td></tr>
+<tr class="memdesc:a385b249fe7df2803d17a59d42a4ec55b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a pumping station to the station hash table.  <br /></td></tr>
 <tr class="separator:a385b249fe7df2803d17a59d42a4ec55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80cd6f1d09159f8e663cf1caf4aa306d" id="r_a80cd6f1d09159f8e663cf1caf4aa306d"><td class="memItemLeft" align="right" valign="top"><a id="a80cd6f1d09159f8e663cf1caf4aa306d" name="a80cd6f1d09159f8e663cf1caf4aa306d"></a>
-<a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>addToCityHashTable</b> (<a class="el" href="class_code.html">Code</a> code, <a class="el" href="class_city.html">City</a> <a class="el" href="class_edge.html">city</a>)</td></tr>
+<tr class="memitem:a80cd6f1d09159f8e663cf1caf4aa306d" id="r_a80cd6f1d09159f8e663cf1caf4aa306d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80cd6f1d09159f8e663cf1caf4aa306d">addToCityHashTable</a> (<a class="el" href="class_code.html">Code</a> code, <a class="el" href="class_city.html">City</a> <a class="el" href="class_edge.html">city</a>)</td></tr>
+<tr class="memdesc:a80cd6f1d09159f8e663cf1caf4aa306d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a city to the city hash table.  <br /></td></tr>
 <tr class="separator:a80cd6f1d09159f8e663cf1caf4aa306d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a container for storing data entities. </p>
+<p>This class provides storage for reservoirs, stations, and cities using unordered maps. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a80cd6f1d09159f8e663cf1caf4aa306d" name="a80cd6f1d09159f8e663cf1caf4aa306d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80cd6f1d09159f8e663cf1caf4aa306d">&#9670;&#160;</a></span>addToCityHashTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">void</a> DataContainer::addToCityHashTable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_code.html">Code</a></td>          <td class="paramname"><span class="paramname"><em>code</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_city.html">City</a></td>          <td class="paramname"><span class="paramname"><em>city</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a city to the city hash table. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>The code of the city. </td></tr>
+    <tr><td class="paramname">city</td><td>The city to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a196a010f709fa065e63d73965c1aff0f" name="a196a010f709fa065e63d73965c1aff0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a196a010f709fa065e63d73965c1aff0f">&#9670;&#160;</a></span>addToReservoirHashTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">void</a> DataContainer::addToReservoirHashTable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_code.html">Code</a></td>          <td class="paramname"><span class="paramname"><em>code</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_reservoir.html">Reservoir</a></td>          <td class="paramname"><span class="paramname"><em>reservoir</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a reservoir to the reservoir hash table. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>The code of the reservoir. </td></tr>
+    <tr><td class="paramname">reservoir</td><td>The reservoir to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a385b249fe7df2803d17a59d42a4ec55b" name="a385b249fe7df2803d17a59d42a4ec55b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a385b249fe7df2803d17a59d42a4ec55b">&#9670;&#160;</a></span>addToStationHashTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">void</a> DataContainer::addToStationHashTable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_code.html">Code</a></td>          <td class="paramname"><span class="paramname"><em>code</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_station.html">Station</a></td>          <td class="paramname"><span class="paramname"><em>station</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a pumping station to the station hash table. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>The code of the station. </td></tr>
+    <tr><td class="paramname">station</td><td>The station to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="add74d8545cdfe581f685e4c8f2dfcb2f" name="add74d8545cdfe581f685e4c8f2dfcb2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add74d8545cdfe581f685e4c8f2dfcb2f">&#9670;&#160;</a></span>getCityHashTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">unordered_map</a>&lt; <a class="el" href="class_edge.html">int</a>, <a class="el" href="class_city.html">City</a> &gt; DataContainer::getCityHashTable </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the hash table of cities. </p>
+<dl class="section return"><dt>Returns</dt><dd>The hash table of cities. </dd></dl>
+
+</div>
+</div>
+<a id="a229e82c4f6ddf9dc781d92ebc4fe098e" name="a229e82c4f6ddf9dc781d92ebc4fe098e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a229e82c4f6ddf9dc781d92ebc4fe098e">&#9670;&#160;</a></span>getReservoirHashTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">unordered_map</a>&lt; <a class="el" href="class_edge.html">int</a>, <a class="el" href="class_reservoir.html">Reservoir</a> &gt; DataContainer::getReservoirHashTable </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the hash table of reservoirs. </p>
+<dl class="section return"><dt>Returns</dt><dd>The hash table of reservoirs. </dd></dl>
+
+</div>
+</div>
+<a id="ab6fc413bce140bd38232afc6f7ab010a" name="ab6fc413bce140bd38232afc6f7ab010a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6fc413bce140bd38232afc6f7ab010a">&#9670;&#160;</a></span>getStationHashTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">unordered_map</a>&lt; <a class="el" href="class_edge.html">int</a>, <a class="el" href="class_station.html">Station</a> &gt; DataContainer::getStationHashTable </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the hash table of stations. </p>
+<dl class="section return"><dt>Returns</dt><dd>The hash table of stations. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/Users/chill-ry/Developer/Clion-Code/proj-da-01/include/<a class="el" href="_parse_data_8h_source.html">ParseData.h</a></li>
 <li>/Users/chill-ry/Developer/Clion-Code/proj-da-01/src/<b>ParseData.cpp</b></li>
