@@ -2,6 +2,7 @@
 #define FEUP_DA_01_PRINTER_H
 
 #include "ParseData.h"
+#include <cmath>
 
 void exportReservoirData(const std::string& filename, const DataContainer& dataContainer);
 void exportStationData(const std::string& filename, const DataContainer& dataContainer);

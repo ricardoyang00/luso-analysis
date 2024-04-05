@@ -1,8 +1,4 @@
 #include "Printer.h"
-#include <iomanip>
-#include <fstream>
-#include <cmath>
-#include <limits>
 
 #define ALPHABET "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ " // space character used on purpose
 
