@@ -59,6 +59,11 @@ private:
     void getTotalMaxFlow();
 
     /**
+     * @brief Prints the user selected city max flow
+     */
+    void printSpecificCityFlow();
+
+    /**
      * @brief Prints affected cities given old and new cities' flow.
      * @param oldCitiesFlow Map containing old cities' flow.
      * @param newCitiesFlow Map containing new cities' flow.

@@ -9,12 +9,13 @@ string pipesCSV = "../small-dataSet/Pipes_Madeira.csv";
 
 Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV), bsm(parser.getCodeGraph(), parser.getDataContainer()){
     menuIndex = {
-            makeBold("[1] Total Maximum Flow"),
-            makeBold("[2] Cities With Water Deficit"),
-            makeBold("[3] Print Each Pipe Flow Difference"),
-            makeBold("[4] Remove Reservoir"),
-            makeBold("[5] Remove Pumping Station"),
-            makeBold("[6] Remove Pipes"),
+            makeBold("[1] Specific City Maximum Flow"),
+            makeBold("[2] Total And Each City Maximum Flow"),
+            makeBold("[3] Cities With Water Deficit"),
+            makeBold("[4] Print Each Pipe Flow Difference"),
+            makeBold("[5] Remove Reservoir"),
+            makeBold("[6] Remove Pumping Station"),
+            makeBold("[7] Remove Pipes"),
             makeBold("[9] Export Data Container"),
             makeBold("[0] EXIT")
     };
@@ -71,25 +72,28 @@ int Menu::run() {
             case 0:     // exit
                 clearScreen();
                 return 0;
-            case 1:     // maximum flow all cities (total)
+            case 1:
+                printSpecificCityFlow();
+                break;
+            case 2:     // maximum flow all cities (total)
                 getTotalMaxFlow();
                 printEachCityMaxFlow(bsm.getBSMGraph(), parser.getDataContainer());
                 break;
-            case 2:     // cities with water deficit
+            case 3:     // cities with water deficit
                 printCitiesWithWaterFlowDeficit(bsm.getBSMGraph(), parser.getDataContainer());
                 break;
-            case 3:     // initial metrics
+            case 4:     // initial metrics
                 printEachPipeInitialMetrics(bsm.getBSMGraph());
                 break;
-            case 4:     // remove reservoir
+            case 5:     // remove reservoir
                 clearScreen();
                 removeReservoir();
                 break;
-            case 5:
+            case 6:
                 clearScreen();
                 removePumpingStation();
                 break;
-            case 6:
+            case 7:
                 clearScreen();
                 removePipes();
                 break;
@@ -112,6 +116,18 @@ void Menu::printAllDataContainer() {
 void Menu::getTotalMaxFlow() {
     cout << endl;
     cout << makeBold("Total max flow: ") << bsm.getTotalMaxFlow() << endl;
+}
+
+void Menu::printSpecificCityFlow() {
+    int codeNumber;
+    if (inputParser(codeNumber, "Enter the City ID number (eg. C_9, enter 9): ")) {
+        cout << "ERROR: Couldn't find Reservoir" << endl;
+        return;
+    }
+
+    Code cityCode("C_" + to_string(codeNumber));
+
+    printSpecificCityMaxFlow(bsm.getBSMGraph(), parser.getDataContainer(), cityCode);
 }
 
 void Menu::removeReservoir() {
