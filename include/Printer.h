@@ -39,16 +39,26 @@ void exportStationData(const std::string& filename, const DataContainer& dataCon
  */
 void exportCityData(const std::string& filename, const DataContainer& dataContainer);
 
+/**
+ * @brief Export maximum flow data for each city in the water distribution system to a text file.
+ *
+ * @param filename The name of the file to export the data to.
+ * @param bsmGraph The graph after running Edmonds-Karp's algorithm.
+ * @param dataContainer The container holding the graph data.
+ */
 void exportAllCitiesMaxFlow(const std::string& filename, const Graph<Code>& bsmGraph, const DataContainer& dataContainer);
 
 /**
  * @brief Print a header for city maximum flow data.
+ *
+ * @param output The output stream where the city data will be printed.
  */
 static void printHeader(std::ostream& output);
 
 /**
  * @brief Print maximum flow data for the city.
  *
+ * @param output The output stream where the city data will be printed.
  * @param name The name of the city.
  * @param code The code of the city.
  * @param maxFlow The maximum flow for the city.
@@ -58,6 +68,7 @@ void printCityMaxFlow(std::ostream& output, const std::string& name, const std::
 /**
  * @brief Print maximum flow data for each city in the water distribution system.
  *
+ * @param output The output stream where the city data will be printed.
  * @param bsmGraph The graph after running Edmonds-Karp's algorithm.
  * @param dataContainer The container holding the graph data.
  */
