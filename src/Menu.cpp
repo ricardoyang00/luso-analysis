@@ -19,6 +19,7 @@ Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV), bsm(parse
             makeBold("[8] Export All Cities Max Flow"),
             makeBold("[9] Export Critical Pipes per City"),
             makeBold("[10] Export Data Container"),
+            makeBold("[11] Balance Beta Version"),
             makeBold("[0] EXIT")
     };
 }
@@ -107,6 +108,9 @@ int Menu::run() {
                 break;
             case 10:     // export data container
                 printAllDataContainer();
+                break;
+            case 11:
+                bsm.balanceFlow();
                 break;
             default:
                 continue;

@@ -13,7 +13,7 @@ void BasicServiceMetrics::resetBSMGraph() {
 
 Graph<Code>& BasicServiceMetrics::getBSMGraph() { return codeGraphCopy; }
 
-void BasicServiceMetrics::testAndVisit(std::queue<Vertex<Code> *> &q, Edge<Code> *e, Vertex<Code> *w, double residual) {
+void BasicServiceMetrics::testAndVisit(queue<Vertex<Code> *> &q, Edge<Code> *e, Vertex<Code> *w, double residual) {
     if (!w->isVisited() && residual > 0) {
         w->setVisited(true);
         w->setPath(e);
@@ -27,7 +27,7 @@ bool BasicServiceMetrics::findAugmentingPath(Vertex<Code> *s, Vertex<Code> *t) {
         v->setPath(nullptr);
     }
 
-    std::queue<Vertex<Code>*> q;
+    queue<Vertex<Code>*> q;
     q.push(s);
     s->setVisited(true);
 
@@ -55,10 +55,10 @@ double BasicServiceMetrics::findBottleNeckValue(Vertex<Code> *s, Vertex<Code> *t
         auto edge = current->getPath();
 
         if (edge->getDest() == current) {
-            bnValue = std::min(bnValue, edge->getWeight() - edge->getFlow());
+            bnValue = min(bnValue, edge->getWeight() - edge->getFlow());
             current = edge->getOrig();
         } else {
-            bnValue = std::min(bnValue, edge->getFlow());
+            bnValue = min(bnValue, edge->getFlow());
             current = edge->getDest();
         }
     }
@@ -159,7 +159,7 @@ void BasicServiceMetrics::removePipes(vector<pair<Code,Code>> pipeCodes) {
             continue;
         }
         if (targetPipe == nullptr) {
-            cout << "Error: Coudln't find " << pair.second.getCompleteCode() << endl;
+            cout << "Error: Couldn't find " << pair.second.getCompleteCode() << endl;
             continue;
         }
 
@@ -181,4 +181,93 @@ map<int,double> BasicServiceMetrics::getCitiesFlow() {
     }
 
     return citiesFlow;
+}
+
+/*void BasicServiceMetrics::removeExtraBidirectionalPipes() {
+    for (const auto& v : codeGraphCopy.getVertexSet()) {
+        for (auto& e : v->getAdj()) {
+            if (e->getReverse() != nullptr && e->getFlow() != 0 && e->getReverse()->getFlow() == 0) {
+                codeGraphCopy.removeEdge(e->getDest()->getInfo(), e->getOrig()->getInfo());
+            }
+        }
+    }
+}*/
+
+unordered_map<Vertex<Code>*, double> BasicServiceMetrics::pumpRemainingWaterFromReservoirs() {
+    unordered_map<Vertex<Code>*, double> extraFlowReceived;
+
+    for (const auto& v : codeGraphCopy.getVertexSet()) {
+        if (v->getInfo().getType() == CodeType::RESERVOIR && v->getInfo().getNumber() != 0) {
+            auto rTable = dataContainer.getReservoirHashTable();
+            auto r = rTable.find(v->getInfo().getNumber())->second;
+
+            double maxDelivery = r.getMaxDelivery();
+            double currentDelivery = 0;
+
+            for (const auto& e : v->getAdj()) {
+                currentDelivery += e->getFlow();
+            }
+
+            double remainingDelivery = maxDelivery - currentDelivery;
+
+            for (auto& e : v->getAdj()) {
+                double availableFlow = e->getWeight() - e->getFlow();
+                if (availableFlow == 0) continue; // No remaining capacity on this edge
+
+                double flowToAdd = min(remainingDelivery, availableFlow);
+                flowToAdd = min(flowToAdd, remainingDelivery); // Ensure flowToAdd doesn't exceed remaining Delivery
+
+                e->setFlow(e->getFlow() + flowToAdd);
+                extraFlowReceived[e->getDest()] = flowToAdd;
+
+                remainingDelivery -= flowToAdd;
+                if (remainingDelivery == 0) break; // No more water to deliver from reservoir
+            }
+        }
+    }
+
+    return extraFlowReceived;
+}
+
+void BasicServiceMetrics::balanceFlow() {
+    unordered_map<Vertex<Code>*, double> extraFlowReceived = pumpRemainingWaterFromReservoirs();
+
+    for (auto& pair : extraFlowReceived) {
+        auto vertex = codeGraphCopy.findVertex(pair.first->getInfo());
+        if (vertex == nullptr) {
+            throw logic_error("Couldn't find vertex (function balanceFlow)");
+        }
+
+        distributeExtraFlow(vertex, pair.second);
+    }
+}
+
+void BasicServiceMetrics::distributeExtraFlow(Vertex<Code> *vertex, double extraFlow) {
+    vector<pair<Edge<Code>*, double>> edgeRatios;
+    double totalRemCap = 0;
+
+    for (auto& e : vertex->getAdj()) {
+        double remCapacity = e->getWeight() - e->getFlow();
+        if (e->getDest()->getInfo().getType() != CodeType::CITY) {
+            totalRemCap += remCapacity;
+            edgeRatios.emplace_back(e, e->getFlow() / e->getWeight());
+        }
+    }
+
+    sort(edgeRatios.begin(), edgeRatios.end(), [](const pair<Edge<Code>*, double>& a, const pair<Edge<Code>*, double>& b) {
+        return a.second < b.second;
+    });
+
+    for (auto& [edge, ratio] : edgeRatios) {
+        double remCapacity = edge->getWeight() - edge->getFlow();
+
+        double flowToAdd = min(extraFlow, remCapacity);
+        flowToAdd = min(flowToAdd, extraFlow);
+        edge->setFlow(edge->getFlow() + flowToAdd);
+
+        // Recursively distribute the remaining extra flow to downstream vertices
+        if (flowToAdd > 0) {
+            distributeExtraFlow(edge->getDest(), flowToAdd);
+        }
+    }
 }

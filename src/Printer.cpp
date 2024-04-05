@@ -199,15 +199,15 @@ void printEachPipeInitialMetrics(const Graph<Code>& bsmGraph) {
                 if (e->getReverse() == nullptr) {
                     cout << setw(8) << e->getOrig()->getInfo().getCompleteCode() << "|    ";
                     cout << setw(8) << e->getDest()->getInfo().getCompleteCode() << "|    ";
-                    cout << right << setw(3) << e->getFlow() << "/";
-                    cout << left << setw(12) << e->getWeight() << "|    ";
+                    cout << right << setw(5) << e->getFlow() << "/";
+                    cout << left << setw(10) << e->getWeight() << "|    ";
                     cout << setw(16) << dif << endl;
                 } else {
                     if (e->getFlow() != 0) {
                         cout << "*" << setw(7) << e->getOrig()->getInfo().getCompleteCode() << "|    ";
                         cout << "*" << setw(7) << e->getDest()->getInfo().getCompleteCode() << "|    ";
-                        cout << right << setw(3) << e->getFlow() << "/";
-                        cout << left << setw(12) << e->getWeight() << "|    ";
+                        cout << right << setw(5) << e->getFlow() << "/";
+                        cout << left << setw(10) << e->getWeight() << "|    ";
                         cout << setw(16) << dif << endl;
                     } else {
                         dif = 0; // exclude the bidirectional edge with no flow
@@ -233,7 +233,7 @@ void printEachPipeInitialMetrics(const Graph<Code>& bsmGraph) {
     for (auto v : bsmGraph.getVertexSet()) {
         for (auto e : v->getAdj()) {
             if (e->getOrig()->getInfo().getNumber() != 0 && e->getDest()->getInfo().getNumber() != 0) {
-                if (e->getReverse() == nullptr || (e->getReverse() != nullptr && e->getFlow() != 0)) {
+                if (e->getReverse() == nullptr || (e->getReverse() != nullptr && e->getFlow() != 0 && e->getReverse()->getFlow() == 0)) {
                     double squaredDif = pow((e->getWeight() - e->getFlow() - avgDif), 2);
                     totalSquaredDif += squaredDif;
                 }
