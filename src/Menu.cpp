@@ -16,6 +16,7 @@ Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV), bsm(parse
             makeBold("[5] Remove Reservoir"),
             makeBold("[6] Remove Pumping Station"),
             makeBold("[7] Remove Pipes"),
+            makeBold("[8] Export All Cities Max Flow"),
             makeBold("[9] Export Data Container"),
             makeBold("[0] EXIT")
     };
@@ -77,7 +78,7 @@ int Menu::run() {
                 break;
             case 2:     // maximum flow all cities (total)
                 getTotalMaxFlow();
-                printEachCityMaxFlow(bsm.getBSMGraph(), parser.getDataContainer());
+                printEachCityMaxFlow(cout, bsm.getBSMGraph(), parser.getDataContainer());
                 break;
             case 3:     // cities with water deficit
                 printCitiesWithWaterFlowDeficit(bsm.getBSMGraph(), parser.getDataContainer());
@@ -96,6 +97,9 @@ int Menu::run() {
             case 7:
                 clearScreen();
                 removePipes();
+                break;
+            case 8:
+                exportAllCitiesMaxFlow("../output/allCitiesMaxFlow.txt", bsm.getBSMGraph(), parser.getDataContainer());
                 break;
             case 9:     // export data container
                 printAllDataContainer();

@@ -71,37 +71,50 @@ void exportCityData(const string& filename, const DataContainer& dataContainer) 
     file.close();
 }
 
-void printHeader() {
-    cout << left << setw(20) << "Name" << "|    ";
-    cout << setw(8) << "Code" << "|    ";
-    cout << setw(10) << "Max Flow" << endl;
+void exportAllCitiesMaxFlow(const string& filename, const Graph<Code>& bsmGraph, const DataContainer& dataContainer) {
+    ofstream file(filename);
+    if (!file.is_open()) {
+        cerr << "Error: Unable to open file " << filename << " for writing!" << endl;
+        return;
+    }
 
-    cout << setfill('-') << setw(20) << "" << "|";
-    cout << setw(12) << "" << "|";
-    cout << setw(14) << "" << setfill(' ') << endl;
+    printEachCityMaxFlow(file, bsmGraph, dataContainer);
+
+    cout << "Successful: Exported to " + filename << endl;
+    file.close();
 }
 
-void printCityMaxFlow(const string& name, const string& code, const double& maxFlow) {
+void printHeader(ostream& output) {
+    output << left << setw(20) << "Name" << "|    ";
+    output << setw(8) << "Code" << "|    ";
+    output << setw(10) << "Max Flow" << endl;
+
+    output << setfill('-') << setw(20) << "" << "|";
+    output << setw(12) << "" << "|";
+    output << setw(14) << "" << setfill(' ') << endl;
+}
+
+void printCityMaxFlow(ostream& output, const string& name, const string& code, const double& maxFlow) {
     int nameWidth = (name.find_first_not_of(ALPHABET) != string::npos) ? 21 : 20;
-    cout << setw(nameWidth) << name << "|    ";
-    cout << setw(8) << code << "|    ";
-    cout << setw(10) << maxFlow << endl;
+    output << setw(nameWidth) << name << "|    ";
+    output << setw(8) << code << "|    ";
+    output << setw(10) << maxFlow << endl;
 }
 
-void printEachCityMaxFlow(const Graph<Code>& bsmGraph, const DataContainer& dataContainer) {
+void printEachCityMaxFlow(ostream& output, const Graph<Code>& bsmGraph, const DataContainer& dataContainer) {
     Vertex<Code>* superSink = bsmGraph.findVertex(Code("C_0"));
     if (superSink == nullptr) {
         throw logic_error("Couldn't find super sink C_0");
     }
 
     auto cTable = dataContainer.getCityHashTable();
-    printHeader();
+    printHeader(output);
 
     for (const auto& edge : superSink->getIncoming()) {
         auto cityVertex = edge->getOrig()->getInfo();
         auto c = cTable.find(cityVertex.getNumber())->second;
 
-        printCityMaxFlow(c.getName(), cityVertex.getCompleteCode(), edge->getFlow());
+        printCityMaxFlow(output, c.getName(), cityVertex.getCompleteCode(), edge->getFlow());
     }
 }
 
@@ -112,13 +125,13 @@ void printSpecificCityMaxFlow(const Graph<Code>& bsmGraph, const DataContainer& 
     }
 
     auto cTable = dataContainer.getCityHashTable();
-    printHeader();
+    printHeader(cout);
 
     for (const auto& edge : superSink->getIncoming()) {
         auto cityVertex = edge->getOrig()->getInfo();
         if (cityVertex == city) {
             auto c = cTable.find(cityVertex.getNumber())->second;
-            printCityMaxFlow(c.getName(), cityVertex.getCompleteCode(), edge->getFlow());
+            printCityMaxFlow(cout, c.getName(), cityVertex.getCompleteCode(), edge->getFlow());
             return;
         }
     }

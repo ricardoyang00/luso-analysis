@@ -1,58 +1,9 @@
 >> CITY INFORMATION
-         City: Porto Moniz
-           ID: 1
-         Code: C_1
-       Demand: 18
-   Population: 2517
-
->> CITY INFORMATION
-         City: São Vicente
-           ID: 2
-         Code: C_2
-       Demand: 34
-   Population: 4865
-
->> CITY INFORMATION
-         City: Santana
-           ID: 3
-         Code: C_3
-       Demand: 46
-   Population: 6553
-
->> CITY INFORMATION
-         City: Machico
-           ID: 4
-         Code: C_4
-       Demand: 137
-   Population: 19593
-
->> CITY INFORMATION
-         City: Santa Cruz
-           ID: 5
-         Code: C_5
-       Demand: 295
-   Population: 42168
-
->> CITY INFORMATION
-         City: Funchal
-           ID: 6
-         Code: C_6
-       Demand: 740
-   Population: 105782
-
->> CITY INFORMATION
-         City: Câmara de Lobos
-           ID: 7
-         Code: C_7
-       Demand: 225
-   Population: 32162
-
->> CITY INFORMATION
-         City: Ribeira Brava
-           ID: 8
-         Code: C_8
-       Demand: 89
-   Population: 12680
+         City: Calheta
+           ID: 10
+         Code: C_10
+       Demand: 76
+   Population: 10915
 
 >> CITY INFORMATION
          City: Ponta do Sol
@@ -62,9 +13,58 @@
    Population: 8360
 
 >> CITY INFORMATION
-         City: Calheta
-           ID: 10
-         Code: C_10
-       Demand: 76
-   Population: 10915
+         City: Ribeira Brava
+           ID: 8
+         Code: C_8
+       Demand: 89
+   Population: 12680
+
+>> CITY INFORMATION
+         City: Câmara de Lobos
+           ID: 7
+         Code: C_7
+       Demand: 225
+   Population: 32162
+
+>> CITY INFORMATION
+         City: Funchal
+           ID: 6
+         Code: C_6
+       Demand: 740
+   Population: 105782
+
+>> CITY INFORMATION
+         City: Santa Cruz
+           ID: 5
+         Code: C_5
+       Demand: 295
+   Population: 42168
+
+>> CITY INFORMATION
+         City: Machico
+           ID: 4
+         Code: C_4
+       Demand: 137
+   Population: 19593
+
+>> CITY INFORMATION
+         City: Santana
+           ID: 3
+         Code: C_3
+       Demand: 46
+   Population: 6553
+
+>> CITY INFORMATION
+         City: São Vicente
+           ID: 2
+         Code: C_2
+       Demand: 34
+   Population: 4865
+
+>> CITY INFORMATION
+         City: Porto Moniz
+           ID: 1
+         Code: C_1
+       Demand: 18
+   Population: 2517
 
