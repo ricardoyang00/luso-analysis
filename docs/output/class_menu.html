@@ -75,6 +75,9 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_menu-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Menu Class Reference</div></div>
 </div><!--header-->
@@ -84,6 +87,24 @@ $(function() {
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_menu_8h_source.html">Menu.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for Menu:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_menu__coll__graph.png" border="0" usemap="#a_menu_coll__map" alt="Collaboration graph"/></div>
+<map name="a_menu_coll__map" id="a_menu_coll__map">
+<area shape="rect" title="Class representing a menu for managing data related to a water distribution system." alt="" coords="158,198,212,223"/>
+<area shape="rect" href="class_parse_data.html" title="Parses input data files and populates data structures." alt="" coords="77,109,160,135"/>
+<area shape="poly" title=" " alt="" coords="139,145,178,196,174,199,135,149"/>
+<area shape="rect" href="class_graph.html" title=" " alt="" coords="5,5,117,31"/>
+<area shape="poly" title=" " alt="" coords="26,42,15,56,10,70,15,84,27,96,42,105,77,115,76,120,40,110,24,100,10,86,5,70,10,54,22,39"/>
+<area shape="rect" href="class_basic_service_metrics.html" title="Class for calculating basic service metrics related to water distribution." alt="" coords="184,109,325,135"/>
+<area shape="poly" title=" " alt="" coords="77,43,93,67,106,83,138,95,184,106,183,111,136,100,103,87,88,70,73,46"/>
+<area shape="rect" href="class_data_container.html" title="Represents a container for storing data entities." alt="" coords="251,5,356,31"/>
+<area shape="poly" title=" " alt="" coords="267,41,244,57,232,72,219,87,190,103,161,113,160,108,188,98,215,83,228,69,241,53,264,37"/>
+<area shape="poly" title=" " alt="" coords="329,42,335,54,340,71,335,86,322,101,305,111,302,106,318,97,331,84,335,70,331,56,324,44"/>
+<area shape="poly" title=" " alt="" coords="237,149,197,199,192,196,233,145"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -94,11 +115,145 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af93a970cdfec463a8cb25ca65bf51da5" id="r_af93a970cdfec463a8cb25ca65bf51da5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af93a970cdfec463a8cb25ca65bf51da5">run</a> ()</td></tr>
 <tr class="memdesc:af93a970cdfec463a8cb25ca65bf51da5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the menu interface.  <br /></td></tr>
 <tr class="separator:af93a970cdfec463a8cb25ca65bf51da5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ab8f1521d0dec16eeabad713861968cad" id="r_ab8f1521d0dec16eeabad713861968cad"><td class="memItemLeft" align="right" valign="top"><a id="ab8f1521d0dec16eeabad713861968cad" name="ab8f1521d0dec16eeabad713861968cad"></a>
+<a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>printMenu</b> ()</td></tr>
+<tr class="memdesc:ab8f1521d0dec16eeabad713861968cad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the menu options to the console. <br /></td></tr>
+<tr class="separator:ab8f1521d0dec16eeabad713861968cad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a605da6abd36f6377f3003d97dde1e384" id="r_a605da6abd36f6377f3003d97dde1e384"><td class="memItemLeft" align="right" valign="top"><a id="a605da6abd36f6377f3003d97dde1e384" name="a605da6abd36f6377f3003d97dde1e384"></a>
+<a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>printAllDataContainer</b> ()</td></tr>
+<tr class="memdesc:a605da6abd36f6377f3003d97dde1e384"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints data of all reservoirs, pumping stations, and cities. <br /></td></tr>
+<tr class="separator:a605da6abd36f6377f3003d97dde1e384"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f7d8f581f3cd26bfb9eee72c8f3eda2" id="r_a7f7d8f581f3cd26bfb9eee72c8f3eda2"><td class="memItemLeft" align="right" valign="top"><a id="a7f7d8f581f3cd26bfb9eee72c8f3eda2" name="a7f7d8f581f3cd26bfb9eee72c8f3eda2"></a>
+<a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getTotalMaxFlow</b> ()</td></tr>
+<tr class="memdesc:a7f7d8f581f3cd26bfb9eee72c8f3eda2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates and prints the total maximum flow in the system. <br /></td></tr>
+<tr class="separator:a7f7d8f581f3cd26bfb9eee72c8f3eda2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a993d537bfb2fb7f176b66ced2c4e43c8" id="r_a993d537bfb2fb7f176b66ced2c4e43c8"><td class="memItemLeft" align="right" valign="top"><a id="a993d537bfb2fb7f176b66ced2c4e43c8" name="a993d537bfb2fb7f176b66ced2c4e43c8"></a>
+<a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>printSpecificCityFlow</b> ()</td></tr>
+<tr class="memdesc:a993d537bfb2fb7f176b66ced2c4e43c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the user selected city max flow. <br /></td></tr>
+<tr class="separator:a993d537bfb2fb7f176b66ced2c4e43c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f2314c53a6693e2f224dcbc1107201d" id="r_a6f2314c53a6693e2f224dcbc1107201d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f2314c53a6693e2f224dcbc1107201d">printAffectedCities</a> (std::map&lt; <a class="el" href="class_edge.html">int</a>, <a class="el" href="class_edge.html">double</a> &gt; <a class="el" href="class_edge.html">oldCitiesFlow</a>, std::map&lt; <a class="el" href="class_edge.html">int</a>, <a class="el" href="class_edge.html">double</a> &gt; <a class="el" href="class_edge.html">newCitiesFlow</a>)</td></tr>
+<tr class="memdesc:a6f2314c53a6693e2f224dcbc1107201d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints affected cities given old and new cities' flow.  <br /></td></tr>
+<tr class="separator:a6f2314c53a6693e2f224dcbc1107201d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bb366f59a5ab7a494ad0554d0b457f0" id="r_a4bb366f59a5ab7a494ad0554d0b457f0"><td class="memItemLeft" align="right" valign="top"><a id="a4bb366f59a5ab7a494ad0554d0b457f0" name="a4bb366f59a5ab7a494ad0554d0b457f0"></a>
+<a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>removeReservoir</b> ()</td></tr>
+<tr class="memdesc:a4bb366f59a5ab7a494ad0554d0b457f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a reservoir from the system. <br /></td></tr>
+<tr class="separator:a4bb366f59a5ab7a494ad0554d0b457f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b891508fa7a6ca59c7d9f4dd58519d3" id="r_a6b891508fa7a6ca59c7d9f4dd58519d3"><td class="memItemLeft" align="right" valign="top"><a id="a6b891508fa7a6ca59c7d9f4dd58519d3" name="a6b891508fa7a6ca59c7d9f4dd58519d3"></a>
+<a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>removePumpingStation</b> ()</td></tr>
+<tr class="memdesc:a6b891508fa7a6ca59c7d9f4dd58519d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a pumping station from the system. <br /></td></tr>
+<tr class="separator:a6b891508fa7a6ca59c7d9f4dd58519d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5e64c4328d8d8e8d618e902ce27800d" id="r_ae5e64c4328d8d8e8d618e902ce27800d"><td class="memItemLeft" align="right" valign="top"><a id="ae5e64c4328d8d8e8d618e902ce27800d" name="ae5e64c4328d8d8e8d618e902ce27800d"></a>
+<a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>removePipes</b> ()</td></tr>
+<tr class="memdesc:ae5e64c4328d8d8e8d618e902ce27800d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes pipes from the system. <br /></td></tr>
+<tr class="separator:ae5e64c4328d8d8e8d618e902ce27800d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:ae3a5edcb580112ec449d12d9eb5a3e7c" id="r_ae3a5edcb580112ec449d12d9eb5a3e7c"><td class="memItemLeft" align="right" valign="top"><a id="ae3a5edcb580112ec449d12d9eb5a3e7c" name="ae3a5edcb580112ec449d12d9eb5a3e7c"></a>
+<a class="el" href="class_edge.html">static</a> <a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>clearScreen</b> ()</td></tr>
+<tr class="memdesc:ae3a5edcb580112ec449d12d9eb5a3e7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the console screen. <br /></td></tr>
+<tr class="separator:ae3a5edcb580112ec449d12d9eb5a3e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad921fa3b2f0b21669776f89ea2a677ab" id="r_ad921fa3b2f0b21669776f89ea2a677ab"><td class="memItemLeft" align="right" valign="top"><a id="ad921fa3b2f0b21669776f89ea2a677ab" name="ad921fa3b2f0b21669776f89ea2a677ab"></a>
+<a class="el" href="class_edge.html">static</a> <a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>waitPress</b> ()</td></tr>
+<tr class="memdesc:ad921fa3b2f0b21669776f89ea2a677ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pauses execution and waits for user input. <br /></td></tr>
+<tr class="separator:ad921fa3b2f0b21669776f89ea2a677ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2d5aa6ce6ebed2598cfc338f5d854be" id="r_af2d5aa6ce6ebed2598cfc338f5d854be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">static</a> <a class="el" href="class_edge.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2d5aa6ce6ebed2598cfc338f5d854be">inputParser</a> (<a class="el" href="class_edge.html">int</a> &amp;<a class="el" href="class_edge.html">choice</a>, <a class="el" href="class_edge.html">const</a> std::string &amp;<a class="el" href="class_edge.html">text</a>)</td></tr>
+<tr class="memdesc:af2d5aa6ce6ebed2598cfc338f5d854be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses user input.  <br /></td></tr>
+<tr class="separator:af2d5aa6ce6ebed2598cfc338f5d854be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:adc0f33c9aac9b15c97bf09d75f7f4f8a" id="r_adc0f33c9aac9b15c97bf09d75f7f4f8a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parse_data.html">ParseData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc0f33c9aac9b15c97bf09d75f7f4f8a">parser</a></td></tr>
+<tr class="separator:adc0f33c9aac9b15c97bf09d75f7f4f8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25a3fb0a3064b8d630c452454ecf95b0" id="r_a25a3fb0a3064b8d630c452454ecf95b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_basic_service_metrics.html">BasicServiceMetrics</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25a3fb0a3064b8d630c452454ecf95b0">bsm</a></td></tr>
+<tr class="separator:a25a3fb0a3064b8d630c452454ecf95b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac88b6f60404f6fa417ec8bc3c3c01735" id="r_ac88b6f60404f6fa417ec8bc3c3c01735"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac88b6f60404f6fa417ec8bc3c3c01735">menuIndex</a></td></tr>
+<tr class="separator:ac88b6f60404f6fa417ec8bc3c3c01735"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class representing a menu for managing data related to a water distribution system. </p>
 <p>The <a class="el" href="class_menu.html" title="Class representing a menu for managing data related to a water distribution system.">Menu</a> class provides functionality for displaying and interacting with a menu for managing data related to reservoirs, pumping stations, and cities in a water distribution system. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="af2d5aa6ce6ebed2598cfc338f5d854be" name="af2d5aa6ce6ebed2598cfc338f5d854be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2d5aa6ce6ebed2598cfc338f5d854be">&#9670;&#160;</a></span>inputParser()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">int</a> Menu::inputParser </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_edge.html">int</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>choice</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_edge.html">const</a> std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>text</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parses user input. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">choice</td><td>Reference to store the user's choice. </td></tr>
+    <tr><td class="paramname">text</td><td>Text prompt for input. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Integer representing the success of input parsing. </dd></dl>
+
+</div>
+</div>
+<a id="a6f2314c53a6693e2f224dcbc1107201d" name="a6f2314c53a6693e2f224dcbc1107201d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f2314c53a6693e2f224dcbc1107201d">&#9670;&#160;</a></span>printAffectedCities()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_edge.html">void</a> Menu::printAffectedCities </td>
+          <td>(</td>
+          <td class="paramtype">std::map&lt; <a class="el" href="class_edge.html">int</a>, <a class="el" href="class_edge.html">double</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>oldCitiesFlow</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::map&lt; <a class="el" href="class_edge.html">int</a>, <a class="el" href="class_edge.html">double</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>newCitiesFlow</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prints affected cities given old and new cities' flow. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oldCitiesFlow</td><td>Map containing old cities' flow. </td></tr>
+    <tr><td class="paramname">newCitiesFlow</td><td>Map containing new cities' flow. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="af93a970cdfec463a8cb25ca65bf51da5" name="af93a970cdfec463a8cb25ca65bf51da5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af93a970cdfec463a8cb25ca65bf51da5">&#9670;&#160;</a></span>run()</h2>
 
@@ -119,9 +274,79 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a25a3fb0a3064b8d630c452454ecf95b0" name="a25a3fb0a3064b8d630c452454ecf95b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25a3fb0a3064b8d630c452454ecf95b0">&#9670;&#160;</a></span>bsm</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_basic_service_metrics.html">BasicServiceMetrics</a> Menu::bsm</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p><a class="el" href="class_basic_service_metrics.html" title="Class for calculating basic service metrics related to water distribution.">BasicServiceMetrics</a> object for calculating basic service metrics. </p>
+
+</div>
+</div>
+<a id="ac88b6f60404f6fa417ec8bc3c3c01735" name="ac88b6f60404f6fa417ec8bc3c3c01735"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac88b6f60404f6fa417ec8bc3c3c01735">&#9670;&#160;</a></span>menuIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; Menu::menuIndex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Vector storing menu options. </p>
+
+</div>
+</div>
+<a id="adc0f33c9aac9b15c97bf09d75f7f4f8a" name="adc0f33c9aac9b15c97bf09d75f7f4f8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc0f33c9aac9b15c97bf09d75f7f4f8a">&#9670;&#160;</a></span>parser</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parse_data.html">ParseData</a> Menu::parser</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p><a class="el" href="class_parse_data.html" title="Parses input data files and populates data structures.">ParseData</a> object for handling data parsing. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/Users/chill-ry/Developer/Clion-Code/proj-da-01/include/<a class="el" href="_menu_8h_source.html">Menu.h</a></li>
-<li>/Users/chill-ry/Developer/Clion-Code/proj-da-01/src/<b>Menu.cpp</b></li>
+<li><a class="el" href="_menu_8h_source.html">Menu.h</a></li>
+<li><b>Menu.cpp</b></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

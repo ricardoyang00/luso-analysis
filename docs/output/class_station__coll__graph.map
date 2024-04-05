@@ -1,0 +1,5 @@
+<map id="Station" name="Station">
+<area shape="rect" id="Node000001" title="Represents a water pumping station." alt="" coords="5,94,68,120"/>
+<area shape="rect" id="Node000002" href="$class_code.html" title="Represents a code used for Reservoir, Station and City." alt="" coords="10,5,63,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="39,47,39,94,34,94,34,47"/>
+</map>

@@ -17,7 +17,7 @@ var searchData=
   ['getpopulation_14',['getPopulation',['../class_city.html#a23be6779c2ba1f5ee0f303b9a160216d',1,'City']]],
   ['getreservoirhashtable_15',['getReservoirHashTable',['../class_data_container.html#a229e82c4f6ddf9dc781d92ebc4fe098e',1,'DataContainer']]],
   ['getstationhashtable_16',['getStationHashTable',['../class_data_container.html#ab6fc413bce140bd38232afc6f7ab010a',1,'DataContainer']]],
-  ['gettotalmaxflow_17',['getTotalMaxFlow',['../class_basic_service_metrics.html#ab41191a2fa89dac32ac3d1ab923176a6',1,'BasicServiceMetrics']]],
+  ['gettotalmaxflow_17',['getTotalMaxFlow',['../class_basic_service_metrics.html#ab41191a2fa89dac32ac3d1ab923176a6',1,'BasicServiceMetrics::getTotalMaxFlow()'],['../class_menu.html#a7f7d8f581f3cd26bfb9eee72c8f3eda2',1,'Menu::getTotalMaxFlow()']]],
   ['gettype_18',['getType',['../class_code.html#a5467b3d2ac7b7d97f0c6ad8823ba4bcc',1,'Code']]],
   ['graph_19',['Graph',['../class_graph.html',1,'']]],
   ['graph_2eh_20',['Graph.h',['../_graph_8h.html',1,'']]],

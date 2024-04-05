@@ -75,6 +75,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_data_container-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">DataContainer Class Reference</div></div>
 </div><!--header-->
@@ -109,6 +110,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a80cd6f1d09159f8e663cf1caf4aa306d" id="r_a80cd6f1d09159f8e663cf1caf4aa306d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_edge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80cd6f1d09159f8e663cf1caf4aa306d">addToCityHashTable</a> (<a class="el" href="class_code.html">Code</a> code, <a class="el" href="class_city.html">City</a> <a class="el" href="class_edge.html">city</a>)</td></tr>
 <tr class="memdesc:a80cd6f1d09159f8e663cf1caf4aa306d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a city to the city hash table.  <br /></td></tr>
 <tr class="separator:a80cd6f1d09159f8e663cf1caf4aa306d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:adfb558c4ee79e08eecae4700a85f77be" id="r_adfb558c4ee79e08eecae4700a85f77be"><td class="memItemLeft" align="right" valign="top"><a id="adfb558c4ee79e08eecae4700a85f77be" name="adfb558c4ee79e08eecae4700a85f77be"></a>
+std::unordered_map&lt; <a class="el" href="class_edge.html">int</a>, <a class="el" href="class_reservoir.html">Reservoir</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ReservoirHashTable</b></td></tr>
+<tr class="memdesc:adfb558c4ee79e08eecae4700a85f77be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash table for storing reservoirs. <br /></td></tr>
+<tr class="separator:adfb558c4ee79e08eecae4700a85f77be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e81d7e37d80a9309fbec0f45e5813bf" id="r_a0e81d7e37d80a9309fbec0f45e5813bf"><td class="memItemLeft" align="right" valign="top"><a id="a0e81d7e37d80a9309fbec0f45e5813bf" name="a0e81d7e37d80a9309fbec0f45e5813bf"></a>
+std::unordered_map&lt; <a class="el" href="class_edge.html">int</a>, <a class="el" href="class_station.html">Station</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>StationHashTable</b></td></tr>
+<tr class="memdesc:a0e81d7e37d80a9309fbec0f45e5813bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash table for storing stations. <br /></td></tr>
+<tr class="separator:a0e81d7e37d80a9309fbec0f45e5813bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe58345f715661a2f55c6f460e7b3cad" id="r_afe58345f715661a2f55c6f460e7b3cad"><td class="memItemLeft" align="right" valign="top"><a id="afe58345f715661a2f55c6f460e7b3cad" name="afe58345f715661a2f55c6f460e7b3cad"></a>
+std::unordered_map&lt; <a class="el" href="class_edge.html">int</a>, <a class="el" href="class_city.html">City</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>CityHashTable</b></td></tr>
+<tr class="memdesc:afe58345f715661a2f55c6f460e7b3cad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash table for storing cities. <br /></td></tr>
+<tr class="separator:afe58345f715661a2f55c6f460e7b3cad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a container for storing data entities. </p>
@@ -265,8 +281,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/Users/chill-ry/Developer/Clion-Code/proj-da-01/include/<a class="el" href="_parse_data_8h_source.html">ParseData.h</a></li>
-<li>/Users/chill-ry/Developer/Clion-Code/proj-da-01/src/<b>ParseData.cpp</b></li>
+<li><a class="el" href="_parse_data_8h_source.html">ParseData.h</a></li>
+<li><b>ParseData.cpp</b></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

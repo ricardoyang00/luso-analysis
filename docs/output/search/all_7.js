@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['luso_20analysis_0',['💧 LUSO ANALYSIS',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html',1,'']]]
+  ['id_0',['id',['../class_city.html#aef9846a5f7e0653bf951576cc17670f3',1,'City::id'],['../class_reservoir.html#ae8e0a21e8823a973da261d717eddc07d',1,'Reservoir::id'],['../class_station.html#a4144cd1a5a69d5900f473ea9d792b3fe',1,'Station::id']]],
+  ['inputparser_1',['inputParser',['../class_menu.html#af2d5aa6ce6ebed2598cfc338f5d854be',1,'Menu']]]
 ];
