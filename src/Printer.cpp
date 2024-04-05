@@ -220,8 +220,10 @@ void printEachPipeInitialMetrics(const Graph<Code>& bsmGraph) {
     for (auto v : bsmGraph.getVertexSet()) {
         for (auto e : v->getAdj()) {
             if (e->getOrig()->getInfo().getNumber() != 0 && e->getDest()->getInfo().getNumber() != 0) {
-                double squaredDif = pow((e->getWeight() - e->getFlow() - avgDif), 2);
-                totalSquaredDif += squaredDif;
+                if (e->getReverse() == nullptr || (e->getReverse() != nullptr && e->getFlow() != 0)) {
+                    double squaredDif = pow((e->getWeight() - e->getFlow() - avgDif), 2);
+                    totalSquaredDif += squaredDif;
+                }
             }
         }
     }
