@@ -207,13 +207,17 @@ void BasicServiceMetrics::pumpRemainingWaterFromReservoirs() {
             }
 
             double remainingDelivery = maxDelivery - currentDelivery;
+
             for (auto& e : v->getAdj()) {
                 double availableFlow = e->getWeight() - e->getFlow();
-                if (availableFlow <= 0) continue; // No available flow on this edge
-                double flowToAdd = std::min(remainingDelivery, availableFlow);
+                if (availableFlow == 0) continue; // No remaining capacity on this edge
+
+                double flowToAdd = min(remainingDelivery, availableFlow);
+                flowToAdd = min(flowToAdd, remainingDelivery); // Ensure flowToAdd doesn't exceed remaining Delivery
+
                 e->setFlow(e->getFlow() + flowToAdd);
                 remainingDelivery -= flowToAdd;
-                if (remainingDelivery <= 0) break; // No more delivery needed
+                if (remainingDelivery == 0) break; // No more water to deliver from reservoir
             }
         }
     }
