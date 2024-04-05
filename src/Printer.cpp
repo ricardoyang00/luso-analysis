@@ -245,3 +245,30 @@ void printEachPipeInitialMetrics(const Graph<Code>& bsmGraph) {
 
     cout << makeBold("Variance: ") << variance << endl;
 }
+
+void exportCriticalPipesForEachCity(const string& pathName, const std::map<int,std::vector<std::pair<Code,Code>>>& criticalPipes, const DataContainer& dataContainer) {
+    std::ofstream outputFile(pathName);
+    if (!outputFile.is_open()) {
+        std::cerr << "Error: Unable to open file for writing." << std::endl;
+        return;
+    }
+
+    // Redirect output to file
+    std::ostream& output = outputFile;
+    output << "CRITICAL PIPES FOR EACH CITY\n" << endl;
+    output << "For each city, determine which pipelines, if ruptured would make it impossible \nto deliver the desired amount of water to a given city.\n" << endl;
+    int i = 1;
+    for (auto pair : criticalPipes) {
+        output << i++ << ". [" << dataContainer.getCityHashTable().find(pair.first)->second.getCode().getCompleteCode()
+               << "] " << dataContainer.getCityHashTable().find(pair.first)->second.getName() << " :" << endl;
+        int j = 1;
+        for (auto city : pair.second) {
+            output << "    " << j++ << ". " << city.first.getCompleteCode() << " -> " << city.second.getCompleteCode() << endl;
+        }
+        output << endl;
+    }
+
+    cout << "Successful: Exported to " + pathName << endl;
+
+    outputFile.close();
+}

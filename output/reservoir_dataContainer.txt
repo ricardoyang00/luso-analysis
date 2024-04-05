@@ -1,16 +1,9 @@
 >> RESERVOIR INFORMATION
-           Name: Ribeiro Frio
-   Municipality: Santana
-             ID: 4
-           Code: R_4
-   Max Delivery: 385
-
->> RESERVOIR INFORMATION
-           Name: Curral das Freiras
-   Municipality: Câmara de Lobos
-             ID: 3
-           Code: R_3
-   Max Delivery: 630
+           Name: Ribeira do Seixal
+   Municipality: Porto Moniz
+             ID: 1
+           Code: R_1
+   Max Delivery: 525
 
 >> RESERVOIR INFORMATION
            Name: Serra de Água
@@ -20,9 +13,16 @@
    Max Delivery: 300
 
 >> RESERVOIR INFORMATION
-           Name: Ribeira do Seixal
-   Municipality: Porto Moniz
-             ID: 1
-           Code: R_1
-   Max Delivery: 525
+           Name: Curral das Freiras
+   Municipality: Câmara de Lobos
+             ID: 3
+           Code: R_3
+   Max Delivery: 630
+
+>> RESERVOIR INFORMATION
+           Name: Ribeiro Frio
+   Municipality: Santana
+             ID: 4
+           Code: R_4
+   Max Delivery: 385
 

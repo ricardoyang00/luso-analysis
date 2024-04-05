@@ -1,0 +1,118 @@
+CRITICAL PIPES FOR EACH CITY
+
+For each city, determine which pipelines, if ruptured would make it impossible 
+to deliver the desired amount of water to a given city.
+
+1. [C_1] Porto Moniz :
+    1. R_1 -> PS_1
+    2. PS_1 -> C_1
+
+2. [C_2] São Vicente :
+    1. PS_2 -> C_2
+    2. PS_3 -> C_2
+
+3. [C_3] Santana :
+    1. PS_5 -> C_3
+    2. PS_6 -> C_3
+
+4. [C_4] Machico :
+    1. R_1 -> PS_2
+    2. R_3 -> PS_4
+    3. PS_2 -> PS_3
+    4. PS_6 -> PS_7
+    5. PS_7 -> C_4
+    6. PS_7 -> PS_6
+    7. PS_7 -> PS_8
+    8. PS_8 -> C_4
+    9. PS_8 -> PS_7
+
+5. [C_5] Santa Cruz :
+    1. R_1 -> PS_1
+    2. R_1 -> PS_2
+    3. R_2 -> PS_12
+    4. R_3 -> PS_4
+    5. R_4 -> PS_4
+    6. PS_1 -> PS_2
+    7. PS_2 -> PS_3
+    8. PS_3 -> PS_4
+    9. PS_3 -> PS_5
+    10. PS_4 -> PS_3
+    11. PS_5 -> PS_3
+    12. PS_5 -> PS_6
+    13. PS_6 -> PS_5
+    14. PS_6 -> PS_7
+    15. PS_7 -> PS_6
+    16. PS_7 -> PS_8
+    17. PS_8 -> C_5
+    18. PS_8 -> PS_7
+    19. PS_9 -> C_5
+
+6. [C_6] Funchal :
+    1. R_1 -> PS_1
+    2. R_1 -> PS_2
+    3. R_1 -> PS_12
+    4. R_2 -> PS_11
+    5. R_2 -> PS_12
+    6. R_3 -> PS_4
+    7. R_3 -> PS_10
+    8. R_3 -> PS_11
+    9. R_4 -> PS_4
+    10. R_4 -> PS_6
+    11. R_4 -> PS_7
+    12. R_4 -> PS_9
+    13. R_4 -> PS_10
+    14. PS_1 -> C_1
+    15. PS_1 -> C_10
+    16. PS_1 -> PS_2
+    17. PS_2 -> C_2
+    18. PS_2 -> PS_3
+    19. PS_3 -> C_2
+    20. PS_3 -> PS_4
+    21. PS_3 -> PS_5
+    22. PS_4 -> PS_3
+    23. PS_4 -> PS_5
+    24. PS_4 -> PS_10
+    25. PS_5 -> C_3
+    26. PS_5 -> PS_3
+    27. PS_5 -> PS_4
+    28. PS_5 -> PS_6
+    29. PS_6 -> C_3
+    30. PS_6 -> PS_5
+    31. PS_6 -> PS_7
+    32. PS_7 -> C_4
+    33. PS_7 -> PS_6
+    34. PS_7 -> PS_8
+    35. PS_8 -> C_4
+    36. PS_8 -> PS_7
+    37. PS_8 -> PS_9
+    38. PS_9 -> C_6
+    39. PS_9 -> PS_8
+    40. PS_9 -> PS_10
+    41. PS_10 -> C_6
+    42. PS_10 -> PS_9
+    43. PS_10 -> PS_4
+    44. PS_11 -> C_8
+    45. PS_11 -> C_9
+    46. PS_11 -> C_2
+    47. PS_12 -> C_9
+    48. PS_12 -> C_10
+
+7. [C_7] Câmara de Lobos :
+    1. R_3 -> PS_10
+    2. PS_4 -> PS_10
+    3. PS_10 -> C_7
+    4. PS_10 -> PS_4
+
+8. [C_8] Ribeira Brava :
+    1. PS_11 -> C_8
+
+9. [C_9] Ponta do Sol :
+    1. R_2 -> PS_11
+    2. PS_11 -> C_9
+    3. PS_12 -> C_9
+
+10. [C_10] Calheta :
+    1. R_1 -> PS_1
+    2. PS_1 -> C_10
+    3. PS_12 -> C_10
+

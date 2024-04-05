@@ -14,6 +14,7 @@
 
 #include "ParseData.h"
 #include <cmath>
+#include <map>
 
 /**
  * @brief Export reservoir data to a text file.
@@ -97,5 +98,7 @@ void printCitiesWithWaterFlowDeficit(const Graph<Code>& bsmGraph, const DataCont
  * @param bsmGraph The graph after running Edmond's Karp's algorithm.
  */
 void printEachPipeInitialMetrics(const Graph<Code>& bsmGraph);
+
+void exportCriticalPipesForEachCity(const std::string& pathName, const std::map<int,std::vector<std::pair<Code,Code>>>& criticalPipes, const DataContainer& dataContainer);
 
 #endif //FEUP_DA_01_PRINTER_H

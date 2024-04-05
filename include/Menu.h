@@ -85,6 +85,8 @@ private:
      */
     void removePipes();
 
+    void criticalPipes();
+
 public:
     /**
      * @brief Default constructor for the Menu class.

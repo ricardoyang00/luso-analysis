@@ -18,6 +18,7 @@ Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV), bsm(parse
             makeBold("[7] Remove Pipes"),
             makeBold("[8] Export All Cities Max Flow"),
             makeBold("[9] Export Data Container"),
+            makeBold("[10] Export Critical Pipes per City"),
             makeBold("[0] EXIT")
     };
 }
@@ -103,6 +104,9 @@ int Menu::run() {
                 break;
             case 9:     // export data container
                 printAllDataContainer();
+                break;
+            case 10:
+                criticalPipes();
                 break;
             default:
                 continue;
@@ -275,4 +279,43 @@ void Menu::printAffectedCities(map<int,double> oldCitiesFlow, map<int,double> ne
              << city.getName() << " (" << bsm.getFlowToCity(city.getCode())
              << "/" << city.getDemand() << "), " << oldFlow << endl;
     }
+}
+
+void Menu::criticalPipes() {
+    map<int,vector<pair<Code,Code>>> cityCriticalPipes;  // first - city code , second - vector of pipes
+
+    for (auto v : parser.getCodeGraph().getVertexSet()) {
+        for (auto e : v->getAdj()) {
+            auto source = v->getInfo();
+            auto target = e->getDest()->getInfo();
+
+            if (source.getNumber() == 0 || target.getNumber() == 0) continue;
+
+            vector<pair<Code,Code>> edge;
+            edge.emplace_back(source,target);
+
+            bsm.removePipes(edge);
+            map<int,double> newCitiesFlow = bsm.getCitiesFlow();
+
+            bsm.resetBSMGraph();
+
+            vector<City> affectedCities;
+            for (auto city : newCitiesFlow) {
+                int cityCodeNumber = city.first;
+                City cityObj = parser.getDataContainer().getCityHashTable().find(cityCodeNumber)->second;
+                double cityDemand = cityObj.getDemand();
+                double newFlow = city.second;
+
+                if (cityDemand > newFlow) {
+                    affectedCities.emplace_back(cityObj);
+                }
+            }
+
+            for (auto affected : affectedCities) {
+                cityCriticalPipes[affected.getId()].emplace_back(source,target);
+            }
+        }
+    }
+
+    exportCriticalPipesForEachCity("../output/criticalPipesPerCity.txt", cityCriticalPipes, parser.getDataContainer());
 }
