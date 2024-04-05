@@ -116,9 +116,9 @@ int Menu::run() {
 }
 
 void Menu::printAllDataContainer() {
-    exportReservoirData("../output/reservoir_dataContainer.txt", parser.getDataContainer());
-    exportStationData("../output/station_dataContainer.txt", parser.getDataContainer());
-    exportCityData("../output/city_dataContainer.txt", parser.getDataContainer());
+    exportReservoirData("../output/dataContainer_reservoir.txt", parser.getDataContainer());
+    exportStationData("../output/dataContainer_station.txt", parser.getDataContainer());
+    exportCityData("../output/dataContainer_city.txt", parser.getDataContainer());
 }
 
 void Menu::getTotalMaxFlow() {
