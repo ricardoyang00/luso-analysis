@@ -1,9 +1,10 @@
 # 💧 LUSO ANALYSIS
 ### Water Supply Network Management System
 
-> DA 2023/24 - Project 01, Group G07_9
-
+## Description
 This project provides a comprehensive management system for water supply networks in Portugal.
+It offers functionalities to analyze basic service metrics and assess the network's resilience to failures.
+
 
 ## 📊 Problem Data
 Utilizing an idealized [dataset](large-dataSet/) representing the Portuguese continental water supply network,
@@ -27,3 +28,8 @@ The project includes comprehensive documentation using Doxygen, providing detail
 time complexity analysis for key algorithms.
 
 Find the complete documentation in the [Doxygen HTML Documentation](docs/output/index.html).
+
+## 🤝 Contributors
+This project was developed for the [Algorithm Design](https://sigarra.up.pt/feup/en/UCURR_GERAL.FICHA_UC_VIEW?pv_ocorrencia_id=484424) course.
+
+@ DA 2023/24 - Project 01, Group G07_9

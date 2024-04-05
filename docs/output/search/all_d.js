@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['sensitivity_20to_20failures_0',['Reliability and Sensitivity to Failures',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md5',1,'']]],
-  ['service_20metrics_1',['Basic Service Metrics',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md4',1,'']]],
+  ['sensitivity_20to_20failures_0',['Reliability and Sensitivity to Failures',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md6',1,'']]],
+  ['service_20metrics_1',['Basic Service Metrics',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md5',1,'']]],
   ['setcode_2',['setCode',['../class_city.html#abe742b5899b5dc982c2295978fd66a7f',1,'City::setCode()'],['../class_reservoir.html#ad8e9fb61112152d5085f358207d0cd77',1,'Reservoir::setCode()'],['../class_station.html#ac31156a347eeba1bfb0b83e2963c8062',1,'Station::setCode()']]],
   ['setdemand_3',['setDemand',['../class_city.html#a7da877cf4235e832c27097a04f5b3025',1,'City']]],
   ['setid_4',['setId',['../class_city.html#a3e092c4da1cb2b1f0003f2039a8dd76a',1,'City::setId()'],['../class_reservoir.html#a672dc4e94c129e434381ecb08d4350d2',1,'Reservoir::setId()'],['../class_station.html#ada3e973a5dc8d9e47a76964f4f9892bf',1,'Station::setId()']]],
