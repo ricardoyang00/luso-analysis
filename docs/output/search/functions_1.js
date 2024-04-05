@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['city_0',['City',['../class_city.html#a1b1f549430f0a7ecd0ec7b1605415193',1,'City::City()'],['../class_city.html#af504ddc3d57cb18d0e6c49b7a0e04d56',1,'City::City(std::string name, int id, Code code, int demand, int population)']]],
-  ['code_1',['Code',['../class_code.html#a3605683bd8fd54691437ff05ba4431b9',1,'Code::Code()'],['../class_code.html#a07ea09f3eb8dca634d9c1cd93637c05c',1,'Code::Code(const std::string &amp;code)']]]
+  ['basicservicemetrics_0',['BasicServiceMetrics',['../class_basic_service_metrics.html#a4ad06e8027571a0653f6aa9fde55aa95',1,'BasicServiceMetrics']]]
 ];

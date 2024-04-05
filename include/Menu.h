@@ -1,6 +1,6 @@
 /**
  * @file Menu.h
- * @brief Header file for the Menu class.
+ * @brief Contains the declaration of the Menu class.
  *
  * This header file declares the Menu class, which provides functionality for displaying and interacting with a menu
  * for managing data related to reservoirs, pumping stations, and cities in a water distribution system.

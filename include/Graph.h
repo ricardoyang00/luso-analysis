@@ -1,9 +1,7 @@
 /**
  * @file Graph.h
  * @brief Contains the declaration of the Graph class and its related classes: Vertex and Edge.
- * This header file declares the Graph class, which represents a graph data structure along with its related classes: Vertex and Edge.
- * It provides functionalities for graph manipulation, such as adding vertices, edges, performing depth-first search (DFS),
- * breadth-first search (BFS), checking if the graph is a directed acyclic graph (DAG), and topological sorting.
+ * It provides functionalities for graph manipulation.
  *
  */
 
