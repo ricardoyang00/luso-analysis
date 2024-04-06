@@ -7,7 +7,7 @@ int main() {
     bool dataSetChosen = false;
     while (!dataSetChosen) {
         cout << "\n";
-        cout << "Choose dataset:" << endl;
+        cout << makeBold("Choose dataset:") << endl;
         cout << "1. Portugal Continental (large dataset)" << endl;
         cout << "2. Madeira (small dataset)" << endl;
         cout << "\n";
