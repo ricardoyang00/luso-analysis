@@ -74,6 +74,8 @@ private:
      * It updates the flow on the edges accordingly and returns a mapping of destination vertices to the amount of extra flow received.
      *
      * @return An unordered map containing destination vertices as keys and the amount of extra flow received from reservoirs as values.
+     *
+     * Time Complexity: O(V * E)
      */
     std::unordered_map<Vertex<Code>*, double> pumpRemainingWaterFromReservoirs();
 
@@ -87,6 +89,8 @@ private:
      *
      * @param vertex Pointer to the vertex that received flow.
      * @param extraFlow The amount of extra flow received from the origin vertex.
+     *
+     * Time Complexity: O(E logE)
      */
     void distributeExtraFlow(Vertex<Code>* vertex, double extraFlow);
 public:
@@ -174,6 +178,8 @@ public:
      * This function calls the pumpRemainingWaterFromReservoirs() function to get the extra flow received from reservoirs
      * and then distributes this extra flow using the distributeExtraFlow() function.
      * It ensures a balanced distribution of extra flow throughout the network.
+     *
+     * Time Complexity: O(V * E logE)
      */
     void balanceFlow();
 };
