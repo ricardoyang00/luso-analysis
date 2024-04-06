@@ -8,7 +8,7 @@ Menu::Menu(const std::string& r, const std::string& s, const std::string& c, con
             makeBold("[2] Total Maximum Flow"),
             makeBold("[3] Cities With Water Deficit"),
             makeBold("[4] Each Pipe Flow Difference And Initial Metrics"),
-            makeBold("[5] Balance Beta Version"),
+            makeBold("[5] Balance Graph"),
             makeBold("[6] Remove Reservoir"),
             makeBold("[7] Remove Pumping Station"),
             makeBold("[8] Remove Pipes"),
