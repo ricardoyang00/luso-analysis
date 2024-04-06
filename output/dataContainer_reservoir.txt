@@ -1,28 +1,168 @@
 >> RESERVOIR INFORMATION
-           Name: Ribeiro Frio
-   Municipality: Santana
-             ID: 4
-           Code: R_4
-   Max Delivery: 385
-
->> RESERVOIR INFORMATION
-           Name: Curral das Freiras
-   Municipality: Câmara de Lobos
-             ID: 3
-           Code: R_3
-   Max Delivery: 630
-
->> RESERVOIR INFORMATION
-           Name: Serra de Água
-   Municipality: Ponta do Sol
-             ID: 2
-           Code: R_2
-   Max Delivery: 300
-
->> RESERVOIR INFORMATION
-           Name: Ribeira do Seixal
-   Municipality: Porto Moniz
+           Name: Ermida
+   Municipality: Aveiro
              ID: 1
            Code: R_1
-   Max Delivery: 525
+   Max Delivery: 2750
+
+>> RESERVOIR INFORMATION
+           Name: Aguieira
+   Municipality: Coimbra
+             ID: 2
+           Code: R_2
+   Max Delivery: 2080
+
+>> RESERVOIR INFORMATION
+           Name: Fonte Longa
+   Municipality: Bragança
+             ID: 3
+           Code: R_3
+   Max Delivery: 40
+
+>> RESERVOIR INFORMATION
+           Name: Alto Rabagão
+   Municipality: Vila real
+             ID: 4
+           Code: R_4
+   Max Delivery: 250
+
+>> RESERVOIR INFORMATION
+           Name: Touvedo
+   Municipality: Viana do Castelo
+             ID: 5
+           Code: R_5
+   Max Delivery: 2000
+
+>> RESERVOIR INFORMATION
+           Name: Carrapatelo
+   Municipality: Porto
+             ID: 6
+           Code: R_6
+   Max Delivery: 8500
+
+>> RESERVOIR INFORMATION
+           Name: Penide
+   Municipality: Braga
+             ID: 7
+           Code: R_7
+   Max Delivery: 500
+
+>> RESERVOIR INFORMATION
+           Name: Vilar Tabuaço
+   Municipality: Viseu
+             ID: 8
+           Code: R_8
+   Max Delivery: 500
+
+>> RESERVOIR INFORMATION
+           Name: Caldeirão
+   Municipality: Guarda
+             ID: 9
+           Code: R_9
+   Max Delivery: 242
+
+>> RESERVOIR INFORMATION
+           Name: Pretarouca
+   Municipality: Viseu
+             ID: 10
+           Code: R_10
+   Max Delivery: 280
+
+>> RESERVOIR INFORMATION
+           Name: Cova Do Viriato
+   Municipality: Castelo Branco
+             ID: 11
+           Code: R_11
+   Max Delivery: 100
+
+>> RESERVOIR INFORMATION
+           Name: Capinha
+   Municipality: Castelo Branco
+             ID: 12
+           Code: R_12
+   Max Delivery: 30
+
+>> RESERVOIR INFORMATION
+           Name: Castelo De Bode
+   Municipality: Santarém
+             ID: 13
+           Code: R_13
+   Max Delivery: 10000
+
+>> RESERVOIR INFORMATION
+           Name: Magos
+   Municipality: Santarém
+             ID: 14
+           Code: R_14
+   Max Delivery: 110
+
+>> RESERVOIR INFORMATION
+           Name: Caia
+   Municipality: Portalegre
+             ID: 15
+           Code: R_15
+   Max Delivery: 430
+
+>> RESERVOIR INFORMATION
+           Name: Maranhão
+   Municipality: Portalegre
+             ID: 16
+           Code: R_16
+   Max Delivery: 3000
+
+>> RESERVOIR INFORMATION
+           Name: Montargil
+   Municipality: Portalegre
+             ID: 17
+           Code: R_17
+   Max Delivery: 3000
+
+>> RESERVOIR INFORMATION
+           Name: Pêgo Do Altar
+   Municipality: Setúbal
+             ID: 18
+           Code: R_18
+   Max Delivery: 2500
+
+>> RESERVOIR INFORMATION
+           Name: Do Alvito
+   Municipality: Beja
+             ID: 19
+           Code: R_19
+   Max Delivery: 56
+
+>> RESERVOIR INFORMATION
+           Name: Enxoé
+   Municipality: Beja
+             ID: 20
+           Code: R_20
+   Max Delivery: 35
+
+>> RESERVOIR INFORMATION
+           Name: Santa Clara
+   Municipality: Beja
+             ID: 21
+           Code: R_21
+   Max Delivery: 208
+
+>> RESERVOIR INFORMATION
+           Name: Beliche
+   Municipality: Faro
+             ID: 22
+           Code: R_22
+   Max Delivery: 267
+
+>> RESERVOIR INFORMATION
+           Name: Monte Da Rocha
+   Municipality: Beja
+             ID: 23
+           Code: R_23
+   Max Delivery: 260
+
+>> RESERVOIR INFORMATION
+           Name: Roxo
+   Municipality: Beja
+             ID: 24
+           Code: R_24
+   Max Delivery: 64
 

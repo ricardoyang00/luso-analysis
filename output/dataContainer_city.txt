@@ -1,70 +1,154 @@
 >> CITY INFORMATION
-         City: Calheta
-           ID: 10
-         Code: C_10
-       Demand: 76
-   Population: 10915
-
->> CITY INFORMATION
-         City: Ponta do Sol
-           ID: 9
-         Code: C_9
-       Demand: 59
-   Population: 8360
-
->> CITY INFORMATION
-         City: Ribeira Brava
-           ID: 8
-         Code: C_8
-       Demand: 89
-   Population: 12680
-
->> CITY INFORMATION
-         City: Câmara de Lobos
-           ID: 7
-         Code: C_7
-       Demand: 225
-   Population: 32162
-
->> CITY INFORMATION
-         City: Funchal
-           ID: 6
-         Code: C_6
-       Demand: 740
-   Population: 105782
-
->> CITY INFORMATION
-         City: Santa Cruz
-           ID: 5
-         Code: C_5
-       Demand: 295
-   Population: 42168
-
->> CITY INFORMATION
-         City: Machico
-           ID: 4
-         Code: C_4
-       Demand: 137
-   Population: 19593
-
->> CITY INFORMATION
-         City: Santana
-           ID: 3
-         Code: C_3
-       Demand: 46
-   Population: 6553
-
->> CITY INFORMATION
-         City: São Vicente
-           ID: 2
-         Code: C_2
-       Demand: 34
-   Population: 4865
-
->> CITY INFORMATION
-         City: Porto Moniz
+         City: Alcacer do Sal
            ID: 1
          Code: C_1
-       Demand: 18
-   Population: 2517
+       Demand: 52
+   Population: 7733
+
+>> CITY INFORMATION
+         City: Aveiro
+           ID: 2
+         Code: C_2
+       Demand: 515
+   Population: 77241
+
+>> CITY INFORMATION
+         City: Beja
+           ID: 3
+         Code: C_3
+       Demand: 160
+   Population: 24079
+
+>> CITY INFORMATION
+         City: Braga
+           ID: 4
+         Code: C_4
+       Demand: 1208
+   Population: 181182
+
+>> CITY INFORMATION
+         City: Bragança
+           ID: 5
+         Code: C_5
+       Demand: 152
+   Population: 22693
+
+>> CITY INFORMATION
+         City: Castelo Branco
+           ID: 6
+         Code: C_6
+       Demand: 230
+   Population: 34471
+
+>> CITY INFORMATION
+         City: Coimbra
+           ID: 7
+         Code: C_7
+       Demand: 896
+   Population: 134348
+
+>> CITY INFORMATION
+         City: Covilhã
+           ID: 8
+         Code: C_8
+       Demand: 122
+   Population: 18220
+
+>> CITY INFORMATION
+         City: Estremoz
+           ID: 9
+         Code: C_9
+       Demand: 53
+   Population: 7890
+
+>> CITY INFORMATION
+         City: Évora
+           ID: 10
+         Code: C_10
+       Demand: 313
+   Population: 46966
+
+>> CITY INFORMATION
+         City: Faro
+           ID: 11
+         Code: C_11
+       Demand: 407
+   Population: 61073
+
+>> CITY INFORMATION
+         City: Guarda
+           ID: 12
+         Code: C_12
+       Demand: 177
+   Population: 26446
+
+>> CITY INFORMATION
+         City: Lagos
+           ID: 13
+         Code: C_13
+       Demand: 158
+   Population: 23653
+
+>> CITY INFORMATION
+         City: Leiria
+           ID: 14
+         Code: C_14
+       Demand: 406
+   Population: 60876
+
+>> CITY INFORMATION
+         City: Lisboa
+           ID: 15
+         Code: C_15
+       Demand: 12250
+   Population: 1842352
+
+>> CITY INFORMATION
+         City: Portalegre
+           ID: 16
+         Code: C_16
+       Demand: 96
+   Population: 14318
+
+>> CITY INFORMATION
+         City: Porto
+           ID: 17
+         Code: C_17
+       Demand: 6324
+   Population: 948613
+
+>> CITY INFORMATION
+         City: Santarém
+           ID: 18
+         Code: C_18
+       Demand: 200
+   Population: 30021
+
+>> CITY INFORMATION
+         City: Setúbal
+           ID: 19
+         Code: C_19
+       Demand: 780
+   Population: 116979
+
+>> CITY INFORMATION
+         City: Viana do Castelo
+           ID: 20
+         Code: C_20
+       Demand: 168
+   Population: 25158
+
+>> CITY INFORMATION
+         City: Vila real
+           ID: 21
+         Code: C_21
+       Demand: 161
+   Population: 24112
+
+>> CITY INFORMATION
+         City: Viseu
+           ID: 22
+         Code: C_22
+       Demand: 397
+   Population: 59469
 

@@ -1,12 +1,24 @@
 Name                |    Code    |    Max Flow  
 --------------------|------------|--------------
-Porto Moniz         |    C_1     |    18        
-São Vicente         |    C_2     |    34        
-Santana             |    C_3     |    46        
-Machico             |    C_4     |    137       
-Santa Cruz          |    C_5     |    295       
-Funchal             |    C_6     |    664       
-Câmara de Lobos     |    C_7     |    225       
-Ribeira Brava       |    C_8     |    89        
-Ponta do Sol        |    C_9     |    59        
-Calheta             |    C_10    |    76        
+Alcacer do Sal      |    C_1     |    52        
+Aveiro              |    C_2     |    515       
+Beja                |    C_3     |    110       
+Braga               |    C_4     |    1208      
+Bragança            |    C_5     |    125       
+Castelo Branco      |    C_6     |    230       
+Coimbra             |    C_7     |    896       
+Covilhã             |    C_8     |    100       
+Estremoz            |    C_9     |    53        
+Évora               |    C_10    |    220       
+Faro                |    C_11    |    407       
+Guarda              |    C_12    |    177       
+Lagos               |    C_13    |    123       
+Leiria              |    C_14    |    406       
+Lisboa              |    C_15    |    12250     
+Portalegre          |    C_16    |    96        
+Porto               |    C_17    |    5650      
+Santarém            |    C_18    |    200       
+Setúbal             |    C_19    |    780       
+Viana do Castelo    |    C_20    |    100       
+Vila real           |    C_21    |    135       
+Viseu               |    C_22    |    330       
