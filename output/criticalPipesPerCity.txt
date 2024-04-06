@@ -3,116 +3,118 @@ CRITICAL PIPES FOR EACH CITY
 For each city, determine which pipelines, if ruptured would make it impossible 
 to deliver the desired amount of water to a given city.
 
-1. [C_1] Porto Moniz :
-    1. R_1 -> PS_1
-    2. PS_1 -> C_1
+(flow = city's flow if current pipe removed)
 
-2. [C_2] São Vicente :
-    1. PS_2 -> C_2
-    2. PS_3 -> C_2
+1. [C_1] Porto Moniz : (demand: 18)
+    1. R_1 -> PS_1 (flow: 0)
+    2. PS_1 -> C_1 (flow: 0)
 
-3. [C_3] Santana :
-    1. PS_5 -> C_3
-    2. PS_6 -> C_3
+2. [C_2] São Vicente : (demand: 34)
+    1. PS_2 -> C_2 (flow: 30)
+    2. PS_3 -> C_2 (flow: 30)
 
-4. [C_4] Machico :
-    1. R_1 -> PS_2
-    2. R_3 -> PS_4
-    3. PS_2 -> PS_3
-    4. PS_6 -> PS_7
-    5. PS_7 -> C_4
-    6. PS_7 -> PS_6
-    7. PS_7 -> PS_8
-    8. PS_8 -> C_4
-    9. PS_8 -> PS_7
+3. [C_3] Santana : (demand: 46)
+    1. PS_5 -> C_3 (flow: 20)
+    2. PS_6 -> C_3 (flow: 40)
 
-5. [C_5] Santa Cruz :
-    1. R_1 -> PS_1
-    2. R_1 -> PS_2
-    3. R_2 -> PS_12
-    4. R_3 -> PS_4
-    5. R_4 -> PS_4
-    6. PS_1 -> PS_2
-    7. PS_2 -> PS_3
-    8. PS_3 -> PS_4
-    9. PS_3 -> PS_5
-    10. PS_4 -> PS_3
-    11. PS_5 -> PS_3
-    12. PS_5 -> PS_6
-    13. PS_6 -> PS_5
-    14. PS_6 -> PS_7
-    15. PS_7 -> PS_6
-    16. PS_7 -> PS_8
-    17. PS_8 -> C_5
-    18. PS_8 -> PS_7
-    19. PS_9 -> C_5
+4. [C_4] Machico : (demand: 137)
+    1. R_1 -> PS_2 (flow: 80)
+    2. R_3 -> PS_4 (flow: 121)
+    3. PS_2 -> PS_3 (flow: 80)
+    4. PS_6 -> PS_7 (flow: 50)
+    5. PS_7 -> C_4 (flow: 80)
+    6. PS_7 -> PS_6 (flow: 50)
+    7. PS_7 -> PS_8 (flow: 80)
+    8. PS_8 -> C_4 (flow: 80)
+    9. PS_8 -> PS_7 (flow: 80)
 
-6. [C_6] Funchal :
-    1. R_1 -> PS_1
-    2. R_1 -> PS_2
-    3. R_1 -> PS_12
-    4. R_2 -> PS_11
-    5. R_2 -> PS_12
-    6. R_3 -> PS_4
-    7. R_3 -> PS_10
-    8. R_3 -> PS_11
-    9. R_4 -> PS_4
-    10. R_4 -> PS_6
-    11. R_4 -> PS_7
-    12. R_4 -> PS_9
-    13. R_4 -> PS_10
-    14. PS_1 -> C_1
-    15. PS_1 -> C_10
-    16. PS_1 -> PS_2
-    17. PS_2 -> C_2
-    18. PS_2 -> PS_3
-    19. PS_3 -> C_2
-    20. PS_3 -> PS_4
-    21. PS_3 -> PS_5
-    22. PS_4 -> PS_3
-    23. PS_4 -> PS_5
-    24. PS_4 -> PS_10
-    25. PS_5 -> C_3
-    26. PS_5 -> PS_3
-    27. PS_5 -> PS_4
-    28. PS_5 -> PS_6
-    29. PS_6 -> C_3
-    30. PS_6 -> PS_5
-    31. PS_6 -> PS_7
-    32. PS_7 -> C_4
-    33. PS_7 -> PS_6
-    34. PS_7 -> PS_8
-    35. PS_8 -> C_4
-    36. PS_8 -> PS_7
-    37. PS_8 -> PS_9
-    38. PS_9 -> C_6
-    39. PS_9 -> PS_8
-    40. PS_9 -> PS_10
-    41. PS_10 -> C_6
-    42. PS_10 -> PS_9
-    43. PS_10 -> PS_4
-    44. PS_11 -> C_8
-    45. PS_11 -> C_9
-    46. PS_11 -> C_2
-    47. PS_12 -> C_9
-    48. PS_12 -> C_10
+5. [C_5] Santa Cruz : (demand: 295)
+    1. R_1 -> PS_1 (flow: 278)
+    2. R_1 -> PS_2 (flow: 100)
+    3. R_2 -> PS_12 (flow: 290)
+    4. R_3 -> PS_4 (flow: 100)
+    5. R_4 -> PS_4 (flow: 249)
+    6. PS_1 -> PS_2 (flow: 278)
+    7. PS_2 -> PS_3 (flow: 100)
+    8. PS_3 -> PS_4 (flow: 252)
+    9. PS_3 -> PS_5 (flow: 152)
+    10. PS_4 -> PS_3 (flow: 252)
+    11. PS_5 -> PS_3 (flow: 152)
+    12. PS_5 -> PS_6 (flow: 107)
+    13. PS_6 -> PS_5 (flow: 107)
+    14. PS_6 -> PS_7 (flow: 100)
+    15. PS_7 -> PS_6 (flow: 100)
+    16. PS_7 -> PS_8 (flow: 100)
+    17. PS_8 -> C_5 (flow: 100)
+    18. PS_8 -> PS_7 (flow: 100)
+    19. PS_9 -> C_5 (flow: 200)
 
-7. [C_7] Câmara de Lobos :
-    1. R_3 -> PS_10
-    2. PS_4 -> PS_10
-    3. PS_10 -> C_7
-    4. PS_10 -> PS_4
+6. [C_6] Funchal : (demand: 740)
+    1. R_1 -> PS_1 (flow: 625)
+    2. R_1 -> PS_2 (flow: 516)
+    3. R_1 -> PS_12 (flow: 664)
+    4. R_2 -> PS_11 (flow: 634)
+    5. R_2 -> PS_12 (flow: 625)
+    6. R_3 -> PS_4 (flow: 625)
+    7. R_3 -> PS_10 (flow: 489)
+    8. R_3 -> PS_11 (flow: 664)
+    9. R_4 -> PS_4 (flow: 625)
+    10. R_4 -> PS_6 (flow: 629)
+    11. R_4 -> PS_7 (flow: 664)
+    12. R_4 -> PS_9 (flow: 629)
+    13. R_4 -> PS_10 (flow: 664)
+    14. PS_1 -> C_1 (flow: 682)
+    15. PS_1 -> C_10 (flow: 690)
+    16. PS_1 -> PS_2 (flow: 625)
+    17. PS_2 -> C_2 (flow: 668)
+    18. PS_2 -> PS_3 (flow: 480)
+    19. PS_3 -> C_2 (flow: 668)
+    20. PS_3 -> PS_4 (flow: 625)
+    21. PS_3 -> PS_5 (flow: 625)
+    22. PS_4 -> PS_3 (flow: 625)
+    23. PS_4 -> PS_5 (flow: 664)
+    24. PS_4 -> PS_10 (flow: 698)
+    25. PS_5 -> C_3 (flow: 690)
+    26. PS_5 -> PS_3 (flow: 625)
+    27. PS_5 -> PS_4 (flow: 664)
+    28. PS_5 -> PS_6 (flow: 625)
+    29. PS_6 -> C_3 (flow: 670)
+    30. PS_6 -> PS_5 (flow: 625)
+    31. PS_6 -> PS_7 (flow: 625)
+    32. PS_7 -> C_4 (flow: 721)
+    33. PS_7 -> PS_6 (flow: 625)
+    34. PS_7 -> PS_8 (flow: 625)
+    35. PS_8 -> C_4 (flow: 721)
+    36. PS_8 -> PS_7 (flow: 625)
+    37. PS_8 -> PS_9 (flow: 630)
+    38. PS_9 -> C_6 (flow: 450)
+    39. PS_9 -> PS_8 (flow: 630)
+    40. PS_9 -> PS_10 (flow: 664)
+    41. PS_10 -> C_6 (flow: 500)
+    42. PS_10 -> PS_9 (flow: 664)
+    43. PS_10 -> PS_4 (flow: 698)
+    44. PS_11 -> C_8 (flow: 664)
+    45. PS_11 -> C_9 (flow: 664)
+    46. PS_11 -> C_2 (flow: 654)
+    47. PS_12 -> C_9 (flow: 664)
+    48. PS_12 -> C_10 (flow: 650)
 
-8. [C_8] Ribeira Brava :
-    1. PS_11 -> C_8
+7. [C_7] Câmara de Lobos : (demand: 225)
+    1. R_3 -> PS_10 (flow: 100)
+    2. PS_4 -> PS_10 (flow: 0)
+    3. PS_10 -> C_7 (flow: 0)
+    4. PS_10 -> PS_4 (flow: 0)
 
-9. [C_9] Ponta do Sol :
-    1. R_2 -> PS_11
-    2. PS_11 -> C_9
-    3. PS_12 -> C_9
+8. [C_8] Ribeira Brava : (demand: 89)
+    1. PS_11 -> C_8 (flow: 0)
 
-10. [C_10] Calheta :
-    1. R_1 -> PS_1
-    2. PS_1 -> C_10
-    3. PS_12 -> C_10
+9. [C_9] Ponta do Sol : (demand: 59)
+    1. R_2 -> PS_11 (flow: 31)
+    2. PS_11 -> C_9 (flow: 20)
+    3. PS_12 -> C_9 (flow: 40)
+
+10. [C_10] Calheta : (demand: 76)
+    1. R_1 -> PS_1 (flow: 50)
+    2. PS_1 -> C_10 (flow: 50)
+    3. PS_12 -> C_10 (flow: 40)
 

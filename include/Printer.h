@@ -106,6 +106,6 @@ void printEachPipeMetrics(const Graph<Code>& bsmGraph);
  * @param criticalPipes The data of the critical pipes per city.
  * @param dataContainer The container holding the cities data.
  */
-void exportCriticalPipesForEachCity(const std::string& pathName, const std::map<int,std::vector<std::pair<Code,Code>>>& criticalPipes, const DataContainer& dataContainer);
+void exportCriticalPipesForEachCity(const std::string& pathName, const std::map<int,std::vector<std::pair<std::pair<Code,Code>,double>>>& criticalPipes, const DataContainer& dataContainer);
 
 #endif //FEUP_DA_01_PRINTER_H

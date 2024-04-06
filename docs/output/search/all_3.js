@@ -7,5 +7,6 @@ var searchData=
   ['demand_4',['demand',['../class_city.html#ad781e5ca5ab707514b3ab0b9ca589ade',1,'City']]],
   ['description_5',['Description',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md2',1,'']]],
   ['dfsisdag_6',['dfsIsDAG',['../class_graph.html#a06743c0b3e219cfeefa5aade38556cb7',1,'Graph']]],
-  ['documentation_7',['📚 Documentation',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md7',1,'']]]
+  ['distributeextraflow_7',['distributeExtraFlow',['../class_basic_service_metrics.html#a9f00d0d2000934fded20f9426c37d10f',1,'BasicServiceMetrics']]],
+  ['documentation_8',['📚 Documentation',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md7',1,'']]]
 ];

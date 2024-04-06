@@ -283,7 +283,7 @@ void Menu::printAffectedCities(const map<int,double>& oldCitiesFlow, map<int,dou
 }
 
 void Menu::criticalPipes() {
-    map<int,vector<pair<Code,Code>>> cityCriticalPipes;  // first - city code , second - vector of pipes
+    map<int,vector<pair<pair<Code,Code>,double>>> cityCriticalPipes;  // first - city code , second - vector of pipes
 
     for (auto v : parser.getCodeGraph().getVertexSet()) {
         for (auto e : v->getAdj()) {
@@ -300,7 +300,7 @@ void Menu::criticalPipes() {
 
             bsm.resetBSMGraph();
 
-            vector<City> affectedCities;
+            vector<pair<City,double>> affectedCities;
             for (auto city : newCitiesFlow) {
                 int cityCodeNumber = city.first;
                 City cityObj = parser.getDataContainer().getCityHashTable().find(cityCodeNumber)->second;
@@ -308,12 +308,12 @@ void Menu::criticalPipes() {
                 double newFlow = city.second;
 
                 if (cityDemand > newFlow) {
-                    affectedCities.emplace_back(cityObj);
+                    affectedCities.emplace_back(cityObj,newFlow);
                 }
             }
 
             for (const auto& affected : affectedCities) {
-                cityCriticalPipes[affected.getId()].emplace_back(source,target);
+                cityCriticalPipes[affected.first.getId()].emplace_back(make_pair(source,target),affected.second);
             }
         }
     }

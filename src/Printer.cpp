@@ -242,7 +242,7 @@ void printEachPipeMetrics(const Graph<Code>& bsmGraph) {
     cout << makeBold("Variance: ") << variance << endl;
 }
 
-void exportCriticalPipesForEachCity(const string& pathName, const std::map<int,std::vector<std::pair<Code,Code>>>& criticalPipes, const DataContainer& dataContainer) {
+void exportCriticalPipesForEachCity(const string& pathName, const map<int,vector<pair<pair<Code,Code>,double>>>& criticalPipes, const DataContainer& dataContainer) {
     std::ofstream outputFile(pathName);
     if (!outputFile.is_open()) {
         std::cerr << "Error: Unable to open file for writing." << std::endl;
@@ -253,13 +253,16 @@ void exportCriticalPipesForEachCity(const string& pathName, const std::map<int,s
     std::ostream& output = outputFile;
     output << "CRITICAL PIPES FOR EACH CITY\n" << endl;
     output << "For each city, determine which pipelines, if ruptured would make it impossible \nto deliver the desired amount of water to a given city.\n" << endl;
+    output << "(flow = city's flow if current pipe removed)\n" << endl;
     int i = 1;
     for (const auto& pair : criticalPipes) {
-        output << i++ << ". [" << dataContainer.getCityHashTable().find(pair.first)->second.getCode().getCompleteCode()
-               << "] " << dataContainer.getCityHashTable().find(pair.first)->second.getName() << " :" << endl;
+        City city = dataContainer.getCityHashTable().find(pair.first)->second;
+        output << i++ << ". [" << city.getCode().getCompleteCode()
+               << "] " << city.getName() << " : " << "(demand: " << city.getDemand() << ")" << endl;
         int j = 1;
         for (const auto& city : pair.second) {
-            output << "    " << j++ << ". " << city.first.getCompleteCode() << " -> " << city.second.getCompleteCode() << endl;
+            output << "    " << j++ << ". " << city.first.first.getCompleteCode() << " -> " << city.first.second.getCompleteCode() <<
+            " (flow: " << city.second << ")" << endl;
         }
         output << endl;
     }

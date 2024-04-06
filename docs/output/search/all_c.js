@@ -9,17 +9,18 @@ var searchData=
   ['parsestations_6',['parseStations',['../class_parse_data.html#a345ab93c7ff56b1e56274216e03d5575',1,'ParseData']]],
   ['pipescsv_7',['pipesCSV',['../class_parse_data.html#a91e91658fdd76b12f320f78ee7d85a11',1,'ParseData']]],
   ['population_8',['population',['../class_city.html#a02355b0d03c7c1fdaf04496fc3b20330',1,'City']]],
-  ['printaffectedcities_9',['printAffectedCities',['../class_menu.html#a6f2314c53a6693e2f224dcbc1107201d',1,'Menu']]],
+  ['printaffectedcities_9',['printAffectedCities',['../class_menu.html#a7f2292a7822667163602d9d880125f77',1,'Menu']]],
   ['printalldatacontainer_10',['printAllDataContainer',['../class_menu.html#a605da6abd36f6377f3003d97dde1e384',1,'Menu']]],
   ['printcitieswithwaterflowdeficit_11',['printCitiesWithWaterFlowDeficit',['../_printer_8h.html#af818084f686698ab06fc30964346aaf7',1,'Printer.cpp']]],
   ['printcitymaxflow_12',['printCityMaxFlow',['../_printer_8h.html#af604e8b6ba6b45eaa950d1ac1c56febd',1,'Printer.h']]],
   ['printeachcitymaxflow_13',['printEachCityMaxFlow',['../_printer_8h.html#a0e8e5d1b97261f48270ebd5aeadb7afa',1,'Printer.h']]],
-  ['printeachpipeinitialmetrics_14',['printEachPipeInitialMetrics',['../_printer_8h.html#ae2d98a95c78646c81796a1436dd38f72',1,'Printer.cpp']]],
+  ['printeachpipemetrics_14',['printEachPipeMetrics',['../_printer_8h.html#aa2c3e99192c1baa738fb096dec2c7aae',1,'Printer.cpp']]],
   ['printer_2eh_15',['Printer.h',['../_printer_8h.html',1,'']]],
   ['printheader_16',['printHeader',['../_printer_8h.html#a8dd03b0acc36697814071d8b012a9480',1,'Printer.h']]],
   ['printmenu_17',['printMenu',['../class_menu.html#ab8f1521d0dec16eeabad713861968cad',1,'Menu']]],
   ['printspecificcityflow_18',['printSpecificCityFlow',['../class_menu.html#a993d537bfb2fb7f176b66ced2c4e43c8',1,'Menu']]],
   ['printspecificcitymaxflow_19',['printSpecificCityMaxFlow',['../_printer_8h.html#aba7beac81c149ff13efab4e6720dd694',1,'Printer.cpp']]],
   ['problem_20data_20',['📊 Problem Data',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md3',1,'']]],
-  ['problem_20motivation_21',['🚀 Problem Motivation',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md4',1,'']]]
+  ['problem_20motivation_21',['🚀 Problem Motivation',['../md__2_users_2chill-ry_2_developer_2_clion-_code_2proj-da-01_2_r_e_a_d_m_e.html#autotoc_md4',1,'']]],
+  ['pumpremainingwaterfromreservoirs_22',['pumpRemainingWaterFromReservoirs',['../class_basic_service_metrics.html#af24e3728aebac0c4112cff34f7e2f6d5',1,'BasicServiceMetrics']]]
 ];
