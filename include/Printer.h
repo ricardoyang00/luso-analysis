@@ -93,11 +93,11 @@ void printSpecificCityMaxFlow(const Graph<Code>& bsmGraph, const DataContainer& 
 void printCitiesWithWaterFlowDeficit(const Graph<Code>& bsmGraph, const DataContainer& dataContainer);
 
 /**
- * @brief Print initial metrics for each pipe in the water distribution system.
+ * @brief Print metrics for each pipe in the water distribution system.
  *
  * @param bsmGraph The graph after running Edmond's Karp's algorithm.
  */
-void printEachPipeInitialMetrics(const Graph<Code>& bsmGraph);
+void printEachPipeMetrics(const Graph<Code>& bsmGraph);
 
 /**
  * @brief Export critical pipes for each city in the water distribution system to a text file.

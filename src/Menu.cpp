@@ -2,28 +2,19 @@
 
 using namespace std;
 
-string reservoirCSV = "../large-dataSet/Reservoirs.csv";
-string stationsCSV = "../large-dataSet/Stations.csv";
-string citiesCSV = "../large-dataSet/Cities.csv";
-string pipesCSV = "../large-dataSet/Pipes.csv";
-/*string reservoirCSV = "../small-dataSet/Reservoirs_Madeira.csv";
-string stationsCSV = "../small-dataSet/Stations_Madeira.csv";
-string citiesCSV = "../small-dataSet/Cities_Madeira.csv";
-string pipesCSV = "../small-dataSet/Pipes_Madeira.csv";*/
-
-Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV), bsm(parser.getCodeGraph(), parser.getDataContainer()){
+Menu::Menu(const std::string& r, const std::string& s, const std::string& c, const std::string& p) : parser(r, s, c, p), bsm(parser.getCodeGraph(), parser.getDataContainer()){
     menuIndex = {
             makeBold("[1] Specific City Maximum Flow"),
             makeBold("[2] Total Maximum Flow"),
             makeBold("[3] Cities With Water Deficit"),
-            makeBold("[4] Each Pipe Flow Difference"),
-            makeBold("[5] Remove Reservoir"),
-            makeBold("[6] Remove Pumping Station"),
-            makeBold("[7] Remove Pipes"),
-            makeBold("[8] Export All Cities Max Flow"),
-            makeBold("[9] Export Critical Pipes per City"),
-            makeBold("[10] Export Data Container"),
-            makeBold("[11] Balance Beta Version"),
+            makeBold("[4] Each Pipe Flow Difference And Initial Metrics"),
+            makeBold("[5] Balance Beta Version"),
+            makeBold("[6] Remove Reservoir"),
+            makeBold("[7] Remove Pumping Station"),
+            makeBold("[8] Remove Pipes"),
+            makeBold("[9] Export All Cities Max Flow"),
+            makeBold("[10] Export Critical Pipes per City"),
+            makeBold("[11] Export Data Container"),
             makeBold("[0] EXIT")
     };
 }
@@ -89,32 +80,33 @@ int Menu::run() {
             case 3:     // cities with water deficit
                 printCitiesWithWaterFlowDeficit(bsm.getBSMGraph(), parser.getDataContainer());
                 break;
-            case 4:     // initial metrics
-                printEachPipeInitialMetrics(bsm.getBSMGraph());
+            case 4:     // metrics
+                printEachPipeMetrics(bsm.getBSMGraph());
                 break;
-            case 5:     // remove reservoir
+            case 5:
+                bsm.balanceFlow();
+                cout << "Balance algorithm successfully terminated, please check [4] again to see the differences" << endl;
+                break;
+            case 6:     // remove reservoir
                 clearScreen();
                 removeReservoir();
                 break;
-            case 6:
+            case 7:
                 clearScreen();
                 removePumpingStation();
                 break;
-            case 7:
+            case 8:
                 clearScreen();
                 removePipes();
                 break;
-            case 8:
+            case 9:
                 exportAllCitiesMaxFlow("../output/allCitiesMaxFlow.txt", bsm.getBSMGraph(), parser.getDataContainer());
                 break;
-            case 9:
+            case 10:
                 criticalPipes();
                 break;
-            case 10:     // export data container
+            case 11:     // export data container
                 printAllDataContainer();
-                break;
-            case 11:
-                bsm.balanceFlow();
                 break;
             default:
                 continue;

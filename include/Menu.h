@@ -94,8 +94,13 @@ private:
 public:
     /**
      * @brief Default constructor for the Menu class.
+     *
+     * @param r Path to the CSV file containing reservoir data.
+     * @param s Path to the CSV file containing pumping station data.
+     * @param c Path to the CSV file containing city data.
+     * @param p Path to the CSV file containing pipe data.
      */
-    Menu();
+    Menu(const std::string& r, const std::string& s, const std::string& c, const std::string& p);
 
     /**
      * @brief Runs the menu interface.

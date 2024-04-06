@@ -172,13 +172,13 @@ void printCitiesWithWaterFlowDeficit(const Graph<Code>& bsmGraph, const DataCont
     }
 }
 
-void printEachPipeInitialMetrics(const Graph<Code>& bsmGraph) {
+void printEachPipeMetrics(const Graph<Code>& bsmGraph) {
     double totalDifference = 0;
     double numberOfPipes = 0;
     double maxDif = numeric_limits<double>::min();
 
     cout << "\n";
-    cout << makeBold("Note: ") << "* represents the pipes that are bidirectional" << endl;
+    cout << makeBold("Note: ") << "'*' represents the pipes that are bidirectional" << endl;
     cout << "\n";
 
     cout << left << setw(8) << "Orig" << "|    ";
