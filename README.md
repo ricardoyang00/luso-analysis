@@ -17,6 +17,7 @@ facilitating easy access to network analysis tools and operations.
 ### Basic Service Metrics
 - **Determine Maximum Water Reach**: Calculate the maximum water flow to each city using the Edmonds-Karp algorithm.
 - **Verify Network Configuration**: Assess if the existing configuration can meet all customer water needs and identify areas with deficits.
+- **Load Balancing**: Develop algorithms to balance the load across the network, minimizing flow discrepancies.
 
 ### Reliability and Sensitivity to Failures
 - **Reservoir Outage Impact**: Evaluate the effect of reservoir outages on delivery capacity and identify affected cities.
