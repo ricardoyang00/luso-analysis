@@ -219,19 +219,6 @@ unordered_map<Vertex<Code>*, double> BasicServiceMetrics::pumpRemainingWaterFrom
     return extraFlowReceived;
 }
 
-void BasicServiceMetrics::balanceFlow() {
-    unordered_map<Vertex<Code>*, double> extraFlowReceived = pumpRemainingWaterFromReservoirs();
-
-    for (auto& pair : extraFlowReceived) {
-        auto vertex = codeGraphCopy.findVertex(pair.first->getInfo());
-        if (vertex == nullptr) {
-            throw logic_error("Couldn't find vertex (function balanceFlow)");
-        }
-
-        distributeExtraFlow(vertex, pair.second);
-    }
-}
-
 void BasicServiceMetrics::distributeExtraFlow(Vertex<Code> *vertex, double extraFlow) {
     vector<pair<Edge<Code>*, double>> edgeRatios;
     double totalRemCap = 0;
@@ -259,5 +246,18 @@ void BasicServiceMetrics::distributeExtraFlow(Vertex<Code> *vertex, double extra
         if (flowToAdd > 0) {
             distributeExtraFlow(edge->getDest(), flowToAdd);
         }
+    }
+}
+
+void BasicServiceMetrics::balanceFlow() {
+    unordered_map<Vertex<Code>*, double> extraFlowReceived = pumpRemainingWaterFromReservoirs();
+
+    for (auto& pair : extraFlowReceived) {
+        auto vertex = codeGraphCopy.findVertex(pair.first->getInfo());
+        if (vertex == nullptr) {
+            throw logic_error("Couldn't find vertex (function balanceFlow)");
+        }
+
+        distributeExtraFlow(vertex, pair.second);
     }
 }

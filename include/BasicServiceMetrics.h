@@ -66,6 +66,29 @@ private:
      */
     static void augmentFlowAlongPath(Vertex<Code>* s, Vertex<Code>* t, double bnValue);
 
+    /**
+     * @brief Calculates and returns the remaining water that can be pumped from reservoirs to connected pipes.
+     *
+     * This function iterates through each vertex in the code graph copy, checks if it represents a reservoir (excluding the super reservoir),
+     * and calculates the remaining water that can be pumped from it to connected pipes based on its maximum delivery capacity.
+     * It updates the flow on the edges accordingly and returns a mapping of destination vertices to the amount of extra flow received.
+     *
+     * @return An unordered map containing destination vertices as keys and the amount of extra flow received from reservoirs as values.
+     */
+    std::unordered_map<Vertex<Code>*, double> pumpRemainingWaterFromReservoirs();
+
+    /**
+     * @brief Distributes extra flow received from origin vertex and distributes to its destiny vertices based on their flow ratios.
+     *
+     * This function takes a vertex and the amount of extra flow received from it.
+     * It calculates the remaining capacity of each connected pipe and sorts them based on their flow / weight ratios.
+     * The extra flow is then distributed to pipes with lower flow ratios first, ensuring a balanced distribution.
+     * It recursively distributes the remaining extra flow to downstream vertices as needed.
+     *
+     * @param vertex Pointer to the vertex that received flow.
+     * @param extraFlow The amount of extra flow received from the origin vertex.
+     */
+    void distributeExtraFlow(Vertex<Code>* vertex, double extraFlow);
 public:
     /**
      * @brief Constructor for the BasicServiceMetrics class.
@@ -145,9 +168,14 @@ public:
      */
     void removePipes(const std::vector<std::pair<Code,Code>>& pipeCodes);
 
-    std::unordered_map<Vertex<Code>*, double> pumpRemainingWaterFromReservoirs();
+    /**
+     * @brief Balances the flow by distributing extra flow received from reservoirs.
+     *
+     * This function calls the pumpRemainingWaterFromReservoirs() function to get the extra flow received from reservoirs
+     * and then distributes this extra flow using the distributeExtraFlow() function.
+     * It ensures a balanced distribution of extra flow throughout the network.
+     */
     void balanceFlow();
-    void distributeExtraFlow(Vertex<Code>* vertex, double extraFlow);
 };
 
 
