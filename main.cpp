@@ -30,7 +30,8 @@ int main() {
             dataSetChosen = true;
         } else {
             cout << "INVALID CHOICE PLEASE TRY AGAIN" << endl;
-            system("clear || cls");
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
     }
 
