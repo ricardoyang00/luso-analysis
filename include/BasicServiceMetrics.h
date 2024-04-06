@@ -143,7 +143,7 @@ public:
      *
      * Time Complexity: O(V * E^2) (Edmonds-Karp dominant)
      */
-    void removePipes(std::vector<std::pair<Code,Code>> pipeCodes);
+    void removePipes(const std::vector<std::pair<Code,Code>>& pipeCodes);
 
     std::unordered_map<Vertex<Code>*, double> pumpRemainingWaterFromReservoirs();
     void balanceFlow();

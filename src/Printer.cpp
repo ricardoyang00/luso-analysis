@@ -199,22 +199,18 @@ void printEachPipeInitialMetrics(const Graph<Code>& bsmGraph) {
                 if (e->getReverse() == nullptr) {
                     cout << setw(8) << e->getOrig()->getInfo().getCompleteCode() << "|    ";
                     cout << setw(8) << e->getDest()->getInfo().getCompleteCode() << "|    ";
-                    cout << right << setw(5) << e->getFlow() << "/";
-                    cout << left << setw(10) << e->getWeight() << "|    ";
-                    cout << setw(16) << dif << endl;
                 } else {
-                    if (e->getFlow() != 0) {
-                        cout << "*" << setw(7) << e->getOrig()->getInfo().getCompleteCode() << "|    ";
-                        cout << "*" << setw(7) << e->getDest()->getInfo().getCompleteCode() << "|    ";
-                        cout << right << setw(5) << e->getFlow() << "/";
-                        cout << left << setw(10) << e->getWeight() << "|    ";
-                        cout << setw(16) << dif << endl;
-                    } else {
-                        dif = 0; // exclude the bidirectional edge with no flow
-                    }
+                    cout << "*" << setw(7) << e->getOrig()->getInfo().getCompleteCode() << "|    ";
+                    cout << "*" << setw(7) << e->getDest()->getInfo().getCompleteCode() << "|    ";
                 }
 
-                numberOfPipes += (e->getReverse() == nullptr) ? 1 : 0.5; // add 0.5 because pipe is bidirectional (summed twice)
+                cout << right << setw(5) << e->getFlow() << "/";
+                cout << left << setw(10) << e->getWeight() << "|    ";
+                cout << setw(16) << dif << endl;
+
+                //numberOfPipes += (e->getReverse() == nullptr) ? 1 : 0.5; // add 0.5 because pipe is bidirectional (summed twice)
+                // In this context consider bidirectional edges as 2 pipes
+                numberOfPipes ++;
 
                 totalDifference += dif;
                 if (dif > maxDif) maxDif = dif;
@@ -258,11 +254,11 @@ void exportCriticalPipesForEachCity(const string& pathName, const std::map<int,s
     output << "CRITICAL PIPES FOR EACH CITY\n" << endl;
     output << "For each city, determine which pipelines, if ruptured would make it impossible \nto deliver the desired amount of water to a given city.\n" << endl;
     int i = 1;
-    for (auto pair : criticalPipes) {
+    for (const auto& pair : criticalPipes) {
         output << i++ << ". [" << dataContainer.getCityHashTable().find(pair.first)->second.getCode().getCompleteCode()
                << "] " << dataContainer.getCityHashTable().find(pair.first)->second.getName() << " :" << endl;
         int j = 1;
-        for (auto city : pair.second) {
+        for (const auto& city : pair.second) {
             output << "    " << j++ << ". " << city.first.getCompleteCode() << " -> " << city.second.getCompleteCode() << endl;
         }
         output << endl;

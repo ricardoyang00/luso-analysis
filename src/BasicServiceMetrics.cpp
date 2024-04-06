@@ -150,8 +150,8 @@ void BasicServiceMetrics::removePumpingStation(const Code& stationCode) {
     edmondsKarp();
 }
 
-void BasicServiceMetrics::removePipes(vector<pair<Code,Code>> pipeCodes) {
-    for (auto pair : pipeCodes) {
+void BasicServiceMetrics::removePipes(const vector<pair<Code,Code>>& pipeCodes) {
+    for (const auto& pair : pipeCodes) {
         auto sourcePipe = codeGraphCopy.findVertex(pair.first);
         auto targetPipe = codeGraphCopy.findVertex(pair.second);
         if (sourcePipe == nullptr) {
@@ -182,16 +182,6 @@ map<int,double> BasicServiceMetrics::getCitiesFlow() {
 
     return citiesFlow;
 }
-
-/*void BasicServiceMetrics::removeExtraBidirectionalPipes() {
-    for (const auto& v : codeGraphCopy.getVertexSet()) {
-        for (auto& e : v->getAdj()) {
-            if (e->getReverse() != nullptr && e->getFlow() != 0 && e->getReverse()->getFlow() == 0) {
-                codeGraphCopy.removeEdge(e->getDest()->getInfo(), e->getOrig()->getInfo());
-            }
-        }
-    }
-}*/
 
 unordered_map<Vertex<Code>*, double> BasicServiceMetrics::pumpRemainingWaterFromReservoirs() {
     unordered_map<Vertex<Code>*, double> extraFlowReceived;

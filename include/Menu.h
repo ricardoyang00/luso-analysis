@@ -68,7 +68,7 @@ private:
      * @param oldCitiesFlow Map containing old cities' flow.
      * @param newCitiesFlow Map containing new cities' flow.
      */
-    void printAffectedCities(std::map<int,double> oldCitiesFlow, std::map<int,double> newCitiesFlow);
+    void printAffectedCities(const std::map<int,double>& oldCitiesFlow, std::map<int,double> newCitiesFlow);
 
     /**
      * @brief Removes a reservoir from the system.

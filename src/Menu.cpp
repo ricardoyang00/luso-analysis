@@ -2,10 +2,14 @@
 
 using namespace std;
 
-string reservoirCSV = "../small-dataSet/Reservoirs_Madeira.csv";
+string reservoirCSV = "../large-dataSet/Reservoirs.csv";
+string stationsCSV = "../large-dataSet/Stations.csv";
+string citiesCSV = "../large-dataSet/Cities.csv";
+string pipesCSV = "../large-dataSet/Pipes.csv";
+/*string reservoirCSV = "../small-dataSet/Reservoirs_Madeira.csv";
 string stationsCSV = "../small-dataSet/Stations_Madeira.csv";
 string citiesCSV = "../small-dataSet/Cities_Madeira.csv";
-string pipesCSV = "../small-dataSet/Pipes_Madeira.csv";
+string pipesCSV = "../small-dataSet/Pipes_Madeira.csv";*/
 
 Menu::Menu() : parser(reservoirCSV, stationsCSV, citiesCSV, pipesCSV), bsm(parser.getCodeGraph(), parser.getDataContainer()){
     menuIndex = {
@@ -256,7 +260,7 @@ void Menu::removePipes() {
     }
 }
 
-void Menu::printAffectedCities(map<int,double> oldCitiesFlow, map<int,double> newCitiesFlow) {
+void Menu::printAffectedCities(const map<int,double>& oldCitiesFlow, map<int,double> newCitiesFlow) {
     vector<pair<City,double>> affectedCities;
     for (auto cityOld : oldCitiesFlow) {
         int cityCodeNumber = cityOld.first;
@@ -315,7 +319,7 @@ void Menu::criticalPipes() {
                 }
             }
 
-            for (auto affected : affectedCities) {
+            for (const auto& affected : affectedCities) {
                 cityCriticalPipes[affected.getId()].emplace_back(source,target);
             }
         }
