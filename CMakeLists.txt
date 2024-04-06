@@ -1,16 +1,11 @@
 cmake_minimum_required(VERSION 3.27)
 project(feup_da_01)
-# Set the C++ standard to 17
 set(CMAKE_CXX_STANDARD 17)
-# Ensure that the C++ standard is required
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+file(COPY data/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/data/)
 
-file(COPY large-dataSet/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/large-dataSet/)
-
-# Include directories
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
-# Add source files to the executable
 add_executable(feup_da_01
         main.cpp
         include/Graph.h
@@ -23,11 +18,9 @@ add_executable(feup_da_01
         include/ParseData.h             src/ParseData.cpp
         include/BasicServiceMetrics.h   src/BasicServiceMetrics.cpp
         include/Printer.h               src/Printer.cpp
-        src/Menu.cpp
-        include/Menu.h
+        include/Menu.h                  src/Menu.cpp
 )
 
-# Add a target to generate Doxygen documentation
 find_package(Doxygen)
 if(DOXYGEN_FOUND)
     set(DOXYGEN_INPUT ${PROJECT_SOURCE_DIR}/include)
@@ -43,6 +36,5 @@ if(DOXYGEN_FOUND)
             COMMENT "Generating API documentation with Doxygen" VERBATIM
     )
 
-    # Make the 'docs' target a dependency of the 'ALL' target
     add_dependencies(feup_da_01 docs)
 endif(DOXYGEN_FOUND)

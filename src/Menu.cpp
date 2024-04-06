@@ -86,7 +86,7 @@ int Menu::run() {
             case 5:
                 bsm.balanceFlow();
                 cout << "Balance algorithm successfully terminated, please check [4] again to see the differences" << endl;
-                cout << makeBold("⚠\uFE0FAFTER THIS PLEASE ENSURE THAT YOU RESET THE GRAPH TO AS IT WAS BY CLICKIG [2] Total Maximum Flow⚠\uFE0F") << endl;
+                cout << makeBold("⚠\uFE0FAFTER THIS PLEASE ENSURE THAT YOU RESET THE GRAPH TO AS IT WAS BY CLICKING [2] Total Maximum Flow⚠\uFE0F") << endl;
                 break;
             case 6:     // remove reservoir
                 clearScreen();

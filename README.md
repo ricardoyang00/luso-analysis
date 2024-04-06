@@ -7,7 +7,7 @@ It offers functionalities to analyze basic service metrics and assess the networ
 
 
 ## 📊 Problem Data
-Utilizing an idealized [dataset](large-dataSet/) representing the Portuguese continental water supply network,
+Utilizing an idealized [dataset](data/large-dataSet/) representing the Portuguese continental water supply network,
 the system employs a directed graph structure to model various network elements such as water `reservoirs`,
 `pumping stations`, and delivery sites `cities`. The user interacts with the system through a menu-driven interface,
 facilitating easy access to network analysis tools and operations.

@@ -17,16 +17,16 @@ int main() {
         cin >> choice;
 
         if (choice == 1) {
-            reservoirCSV = "../large-dataSet/Reservoirs.csv";
-            stationsCSV = "../large-dataSet/Stations.csv";
-            citiesCSV = "../large-dataSet/Cities.csv";
-            pipesCSV = "../large-dataSet/Pipes.csv";
+            reservoirCSV = "../data/large-dataSet/Reservoirs.csv";
+            stationsCSV = "../data/large-dataSet/Stations.csv";
+            citiesCSV = "../data/large-dataSet/Cities.csv";
+            pipesCSV = "../data/large-dataSet/Pipes.csv";
             dataSetChosen = true;
         } else if (choice == 2) {
-            reservoirCSV = "../small-dataSet/Reservoirs_Madeira.csv";
-            stationsCSV = "../small-dataSet/Stations_Madeira.csv";
-            citiesCSV = "../small-dataSet/Cities_Madeira.csv";
-            pipesCSV = "../small-dataSet/Pipes_Madeira.csv";
+            reservoirCSV = "../data/small-dataSet/Reservoirs_Madeira.csv";
+            stationsCSV = "../data/small-dataSet/Stations_Madeira.csv";
+            citiesCSV = "../data/small-dataSet/Cities_Madeira.csv";
+            pipesCSV = "../data/small-dataSet/Pipes_Madeira.csv";
             dataSetChosen = true;
         } else {
             cout << "INVALID CHOICE PLEASE TRY AGAIN" << endl;
