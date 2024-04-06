@@ -112,7 +112,7 @@ int Menu::run() {
                 break;
             case 12:    // reset Graph
                 bsm.resetBSMGraph();
-                cout << "\n✅Graph reset successively" << endl;
+                cout << "\nGraph reset successively ✅" << endl;
                 break;
             default:
                 continue;
