@@ -12,6 +12,9 @@ the system employs a directed graph structure to model various network elements 
 `pumping stations`, and delivery sites `cities`. The user interacts with the system through a menu-driven interface,
 facilitating easy access to network analysis tools and operations.
 
+<p align="center"><img src="docs/images/portugal_map.png" width=50%></p>
+<p align="center">Image - Portugal's water system map</p>
+
 ## 🚀 Problem Motivation
 
 ### Basic Service Metrics
