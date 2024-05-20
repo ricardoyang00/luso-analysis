@@ -37,3 +37,7 @@ Find the complete documentation in the [Doxygen HTML Documentation](docs/output/
 This project was developed for the [Algorithm Design](https://sigarra.up.pt/feup/en/UCURR_GERAL.FICHA_UC_VIEW?pv_ocorrencia_id=484424) course.
 
 @ DA 2023/24 - Project 01, Group G07_9
+
+<br>
+
+__This project was developed for [DA](https://sigarra.up.pt/feup/en/UCURR_GERAL.FICHA_UC_VIEW?pv_ocorrencia_id=520321) at @FEUP__
